@@ -7,7 +7,7 @@
   <meta name="referrer" content="no-referrer" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://server8.mp3quran.net; connect-src 'self';" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>لعبة حور: العب وتعلّم 🎮✨ | النسخة الاحترافية الكاملة (22 مرحلة)</title>
+  <title>لعبة حور: العب وتعلّم | النسخة الاحترافية الكاملة (22 مرحلة)</title>
 
   <!-- خطوط عربية حديثة وواضحة: Cairo, Tajawal, Amiri -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -81,9 +81,250 @@
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: #0F172A; }
     ::-webkit-scrollbar-thumb { background: #10B981; border-radius: 999px; }
+
+    :root {
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-right: env(safe-area-inset-right, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
+      --safe-left: env(safe-area-inset-left, 0px);
+    }
+
+    body {
+      min-height: 100dvh;
+      padding-bottom: var(--safe-bottom);
+    }
+
+    button, select, input {
+      font: inherit;
+    }
+
+    button, [role="button"] {
+      min-height: 44px;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:focus-visible, select:focus-visible, input:focus-visible, [tabindex]:focus-visible {
+      outline: 3px solid #FBBF24;
+      outline-offset: 3px;
+    }
+
+    .main-view {
+      animation: viewEnter 180ms ease-out both;
+      scroll-margin-top: 92px;
+    }
+
+    .mobile-bottom-nav {
+      display: none;
+    }
+
+    .network-status {
+      position: fixed;
+      top: max(0.5rem, var(--safe-top));
+      left: 50%;
+      z-index: 70;
+      transform: translate(-50%, -150%);
+      transition: transform 220ms ease, opacity 220ms ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .network-status.is-visible {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    .touch-control {
+      min-width: 86px;
+      min-height: 52px;
+      touch-action: manipulation;
+      user-select: none;
+    }
+
+    .nav-tab, .mobile-nav-tab {
+      transition: background-color 160ms ease, color 160ms ease, transform 160ms ease;
+    }
+
+    .nav-tab[aria-current="page"], .mobile-nav-tab[aria-current="page"] {
+      box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.45), 0 8px 22px rgba(16, 185, 129, 0.18);
+    }
+
+    @keyframes viewEnter {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* لوحة ألوان هادئة: نحتفظ بلون التمييز للإنجازات فقط ونخفف الضوضاء البصرية. */
+    body {
+      background-color: #111827;
+      background-image: none;
+    }
+
+    .islamic-pattern {
+      background-image: radial-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px);
+    }
+
+    .gold-glow { box-shadow: 0 0 18px rgba(245, 158, 11, 0.16); }
+    .emerald-glow { box-shadow: 0 0 18px rgba(16, 185, 129, 0.14); }
+    .cosmic-glow { box-shadow: 0 0 20px rgba(99, 102, 241, 0.16); }
+
+    header, #desktopNav, .mobile-bottom-nav {
+      background-color: rgba(17, 24, 39, 0.95) !important;
+      border-color: rgba(71, 85, 105, 0.55) !important;
+    }
+
+    .nav-tab { letter-spacing: 0; }
+    .nav-tab:not([aria-current="page"]):hover { background-color: #273449 !important; }
+
+    @media (max-width: 640px) {
+      .mobile-nav-tab .nav-icon { font-size: 1.08rem; opacity: 0.9; }
+      .mobile-nav-tab[aria-current="page"] { background: #1F4D49; box-shadow: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+      body {
+        padding-bottom: calc(76px + var(--safe-bottom));
+      }
+
+      header {
+        padding-top: max(0.55rem, var(--safe-top));
+      }
+
+      header > div {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      header .font-display {
+        max-width: 100%;
+        display: block;
+        white-space: normal;
+        overflow-wrap: anywhere;
+      }
+
+      header .flex.items-center.gap-2.flex-wrap {
+        max-width: 100%;
+        justify-content: flex-end;
+      }
+
+      header .flex.items-center.gap-2.flex-wrap > div {
+        padding-inline: 0.55rem;
+      }
+
+      main {
+        padding: 0.75rem !important;
+        gap: 0.9rem !important;
+      }
+
+      #desktopNav {
+        display: none;
+      }
+
+      .mobile-bottom-nav {
+        position: fixed;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 60;
+        padding: 0.45rem max(0.35rem, var(--safe-left)) calc(0.45rem + var(--safe-bottom)) max(0.35rem, var(--safe-right));
+        background: rgba(15, 23, 42, 0.96);
+        border-top: 1px solid rgba(16, 185, 129, 0.35);
+        box-shadow: 0 -12px 30px rgba(2, 6, 23, 0.45);
+        backdrop-filter: blur(18px);
+      }
+
+      .mobile-nav-tab {
+        min-height: 56px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.12rem;
+        padding: 0.25rem 0.15rem;
+        border-radius: 0.9rem;
+        background: transparent;
+        color: #94A3B8;
+        font-size: 0.68rem;
+        font-weight: 800;
+        line-height: 1.1;
+      }
+
+      .mobile-nav-tab .nav-icon {
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+
+      .mobile-nav-tab[aria-current="page"] {
+        color: #F8FAFC;
+        background: linear-gradient(180deg, rgba(16, 185, 129, 0.42), rgba(5, 150, 105, 0.2));
+      }
+
+      #view-play > .grid {
+        display: flex;
+        flex-direction: column;
+      }
+
+      #view-play > .grid > div:first-child {
+        order: 2;
+      }
+
+      #view-play > .grid > div:last-child {
+        order: 1;
+      }
+
+      #canvasContainer {
+        border-radius: 1.35rem;
+      }
+
+      #arcadeCanvas {
+        aspect-ratio: 760 / 480;
+        height: auto;
+      }
+
+      #view-play .touch-control {
+        flex: 1;
+      }
+
+      #view-play .flex.items-center.justify-between.w-full {
+        position: sticky;
+        bottom: calc(76px + var(--safe-bottom));
+        z-index: 20;
+        padding: 0.5rem;
+        border: 1px solid rgba(71, 85, 105, 0.8);
+        border-radius: 1.1rem;
+        background: rgba(15, 23, 42, 0.92);
+        backdrop-filter: blur(14px);
+      }
+
+      #view-play .flex.items-center.justify-between.w-full > div:first-child {
+        display: contents;
+      }
+
+      #view-play .flex.items-center.justify-between.w-full .hidden {
+        display: none;
+      }
+
+      #quizModalOverlay > div, #portalOverlay > div {
+        max-height: calc(100dvh - 1.5rem - var(--safe-top) - var(--safe-bottom));
+        overflow-y: auto;
+      }
+    }
   </style>
 </head>
 <body class="islamic-pattern min-h-screen flex flex-col">
+  <div id="networkStatus" class="network-status rounded-full border border-amber-400/50 bg-slate-900/95 px-4 py-2 text-xs font-extrabold text-amber-200 shadow-xl" role="status" aria-live="polite">
+    ⚠️ لا يوجد اتصال — سيُحفظ التقدم على هذا الجهاز
+  </div>
 
   <!-- =====================================================================
        1. بوابة الدخول الآمنة (Secure Google Portal - /portal.html & /login.html)
@@ -110,7 +351,7 @@
           </svg>
         </div>
         <h1 class="text-2xl md:text-3xl font-extrabold font-display text-white">
-          لعبة حور: العب وتعلّم 🎮✨
+          لعبة حور: العب وتعلّم
         </h1>
         <p class="text-slate-300 text-sm md:text-base mt-1 max-w-xl">
           مغامرات أركيد فضائية وتعليمية ممتعة في ٢٢ مرحلة، مع روضة أصحاب القرآن الكريم وتحدي العباقرة!
@@ -120,12 +361,12 @@
       <!-- بطاقات معاينة التحديات الكبرى داخل البوابة -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
         <div class="bg-gradient-to-b from-emerald-950/90 to-slate-900 border border-amber-400/40 rounded-2xl p-4 text-center">
-          <div class="text-2xl mb-1">📖👑</div>
+          <div class="text-2xl mb-1">📖</div>
           <div class="font-bold text-amber-300 text-sm">روضة أصحاب القرآن (٢٢)</div>
           <p class="text-xs text-slate-300 mt-1">تلاوات ندية، طائر النور والبركة، ومكافأة تاج الوقار</p>
         </div>
         <div class="bg-gradient-to-b from-purple-950/90 to-slate-900 border border-purple-400/40 rounded-2xl p-4 text-center">
-          <div class="text-2xl mb-1">🧠⚡</div>
+          <div class="text-2xl mb-1">🧠</div>
           <div class="font-bold text-purple-300 text-sm">تحدي العباقرة (٢١)</div>
           <p class="text-xs text-slate-300 mt-1">متتابعات حسابية، ألغاز ذكاء، وزعيم النيون الكوني</p>
         </div>
@@ -158,7 +399,7 @@
               🚀 الدخول السريع كبطل / بطلة
             </button>
 
-            <div class="text-xs text-slate-400 font-semibold">— أو احفظ تقدمك سحابياً عبر جوجل —</div>
+            <div class="text-xs text-slate-400 font-semibold">— التقدم محفوظ على هذا الجهاز —</div>
 
             <div class="rounded-xl border border-slate-600 bg-slate-900/70 px-4 py-3 text-center text-xs font-bold text-slate-300">
               🔒 هذه النسخة تحفظ التقدم على هذا الجهاز فقط. لا نطلب بريدك الإلكتروني ولا نرسل بيانات الأطفال من داخل اللعبة.
@@ -222,24 +463,42 @@
   <!-- =====================================================================
        3. شريط التنقل الرئيسي بين أقسام المنصة
        ===================================================================== -->
-  <nav class="bg-slate-900/60 border-b border-slate-800 px-4 py-2 overflow-x-auto">
+  <nav id="desktopNav" class="bg-slate-900/60 border-b border-slate-800 px-4 py-2 overflow-x-auto" aria-label="التنقل الرئيسي">
     <div class="max-w-7xl mx-auto flex items-center gap-2">
-      <button onclick="switchMainView('play', this)" class="nav-tab active px-4 py-2 rounded-xl text-xs md:text-sm font-extrabold bg-emerald-600 text-white whitespace-nowrap transition">
-        🎮 ساحة اللعب الأركيد
+      <button data-view="play" onclick="switchMainView('play', this)" class="nav-tab active px-4 py-2 rounded-xl text-xs md:text-sm font-extrabold bg-emerald-600 text-white whitespace-nowrap transition">
+        ساحة اللعب
       </button>
-      <button onclick="switchMainView('map', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
-        🗺️ خريطة الـ 22 مرحلة
+      <button data-view="map" onclick="switchMainView('map', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
+        خريطة المراحل
       </button>
-      <button onclick="switchMainView('quran', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-amber-300 hover:bg-slate-700 whitespace-nowrap transition">
-        📖 روضة القرآن والتلاوات
+      <button data-view="quran" onclick="switchMainView('quran', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-amber-300 hover:bg-slate-700 whitespace-nowrap transition">
+        روضة القرآن
       </button>
-      <button onclick="switchMainView('catalog', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
-        📚 بنك الأسئلة والمراجعة
+      <button data-view="catalog" onclick="switchMainView('catalog', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
+        بنك التدريب
       </button>
-      <button onclick="switchMainView('leaderboard', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
-        🏆 لوحة المتصدرين والنسخ الاحتياطي
+      <button data-view="leaderboard" onclick="switchMainView('leaderboard', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
+        الإنجازات والنسخ الاحتياطي
       </button>
     </div>
+  </nav>
+
+  <nav class="mobile-bottom-nav" aria-label="تنقل الهاتف">
+    <button class="mobile-nav-tab" aria-current="page" data-view="play" onclick="switchMainView('play')" type="button">
+      <span class="nav-icon" aria-hidden="true">🎮</span><span>اللعب</span>
+    </button>
+    <button class="mobile-nav-tab" data-view="map" onclick="switchMainView('map')" type="button">
+      <span class="nav-icon" aria-hidden="true">🗺️</span><span>المراحل</span>
+    </button>
+    <button class="mobile-nav-tab" data-view="quran" onclick="switchMainView('quran')" type="button">
+      <span class="nav-icon" aria-hidden="true">📖</span><span>القرآن</span>
+    </button>
+    <button class="mobile-nav-tab" data-view="catalog" onclick="switchMainView('catalog')" type="button">
+      <span class="nav-icon" aria-hidden="true">📚</span><span>التدريب</span>
+    </button>
+    <button class="mobile-nav-tab" data-view="leaderboard" onclick="switchMainView('leaderboard')" type="button">
+      <span class="nav-icon" aria-hidden="true">🏆</span><span>إنجازاتي</span>
+    </button>
   </nav>
 
   <!-- =====================================================================
@@ -247,57 +506,7 @@
        ===================================================================== -->
   <main class="flex-1 max-w-7xl w-full mx-auto p-4 flex flex-col gap-5">
 
-    <!-- بطاقات الوصول السريع البارزة (Hero Quick-Access Cards للمرحلتين 21 و 22) -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- بطاقة المرحلة 22: روضة أصحاب القرآن الكريم -->
-      <div onclick="launchStageDirect(22)"
-        class="cursor-pointer group relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-950 via-teal-900 to-amber-950/80 border-2 border-amber-400/70 p-4 md:p-5 flex items-center justify-between gold-glow transition transform hover:-translate-y-0.5">
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-2xl bg-amber-400/20 border border-amber-300 flex items-center justify-center text-3xl shrink-0">
-            📖👑
-          </div>
-          <div>
-            <span class="inline-block text-[11px] font-extrabold bg-amber-400 text-slate-950 px-2.5 py-0.5 rounded-full mb-1">
-              المرحلة الخاصة ٢٢ • تاج الوقار
-            </span>
-            <h2 class="text-base md:text-lg font-extrabold text-white group-hover:text-amber-200 transition">
-              روضة أصحاب القرآن الكريم وخاصته 🕊️✨
-            </h2>
-            <p class="text-xs text-emerald-200 mt-0.5">
-              الزعيم الرمزي «طائر النور والبركة»، تلاوات قرآنية خاشعة، وأسئلة السبع المثاني وسورة الملك
-            </p>
-          </div>
-        </div>
-        <button class="shrink-0 bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold text-xs md:text-sm px-4 py-2.5 rounded-xl shadow-md">
-          ادخل الروضة ⬅️
-        </button>
-      </div>
-
-      <!-- بطاقة المرحلة 21: تحدي العباقرة وأذكياء المستقبل -->
-      <div onclick="launchStageDirect(21)"
-        class="cursor-pointer group relative overflow-hidden rounded-2xl bg-gradient-to-r from-indigo-950 via-purple-900 to-fuchsia-950 border-2 border-purple-400/70 p-4 md:p-5 flex items-center justify-between cosmic-glow transition transform hover:-translate-y-0.5">
-        <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-2xl bg-purple-400/20 border border-purple-300 flex items-center justify-center text-3xl shrink-0">
-            🧠⚡
-          </div>
-          <div>
-            <span class="inline-block text-[11px] font-extrabold bg-purple-400 text-slate-950 px-2.5 py-0.5 rounded-full mb-1">
-              المرحلة الخاصة ٢١ • نيون كوزميك
-            </span>
-            <h2 class="text-base md:text-lg font-extrabold text-white group-hover:text-purple-200 transition">
-              تحدي العباقرة وأذكياء المستقبل 🚀🌌
-            </h2>
-            <p class="text-xs text-purple-200 mt-0.5">
-              زعيم العباقرة الخارق، ألغاز المتتابعات الحسابية، التفكير المنطقي وسرعة البديهة
-            </p>
-          </div>
-        </div>
-        <button class="shrink-0 bg-purple-400 hover:bg-purple-300 text-slate-950 font-extrabold text-xs md:text-sm px-4 py-2.5 rounded-xl shadow-md">
-          ابدأ التحدي ⬅️
-        </button>
-      </div>
-    </div>
-
+    <!-- تم نقل الوصول إلى المراحل الخاصة إلى خريطة المراحل وروضة القرآن لتقليل التكرار. -->
     <!-- =====================================================================
          القسم (A): ساحة اللعب الأركيد (Chicken Invaders Style Arcade View)
          ===================================================================== -->
@@ -341,22 +550,22 @@
           <div class="flex flex-col gap-2 mt-1">
             <button id="btnStartPause" onclick="toggleGameLoop()"
               class="w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-extrabold text-sm shadow-lg transition">
-              ▶️ ابدأ المعركة التعليمية
+              ابدأ المعركة التعليمية
             </button>
             <button onclick="openQuizStation(false)"
               class="w-full py-2.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-500 text-white font-bold text-xs border border-emerald-400/40 transition">
-              📜 محطة سؤال الحكمة الفوري (+30 نجمة)
+              سؤال الحكمة الفوري (+30 نجمة)
             </button>
             <button onclick="switchMainView('map', document.querySelectorAll('.nav-tab')[1])"
               class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-600 transition">
-              🗺️ تغيير المرحلة (1 - 22)
+              تغيير المرحلة (1 - 22)
             </button>
           </div>
 
           <!-- مشغل التلاوة المصغر أثناء اللعب -->
           <div class="bg-emerald-950/60 border border-emerald-500/30 rounded-xl p-3 mt-1">
             <div class="text-xs font-bold text-amber-300 mb-1.5 flex items-center justify-between">
-              <span>🎧 تلاوة مباركة مصاحبة</span>
+              <span>تلاوة مصاحبة</span>
               <span id="miniQuranStatus" class="text-[10px] text-emerald-300">متوقف</span>
             </div>
             <div class="flex gap-1.5">
@@ -391,18 +600,18 @@
           <!-- أزرار لمس إضافية للهواتف والأجهزة اللوحية -->
           <div class="flex items-center justify-between w-full max-w-[760px] mt-3 gap-2">
             <div class="flex gap-2">
-              <button onpointerdown="moveTouch(-38)" class="px-5 py-2.5 rounded-xl bg-slate-800 active:bg-emerald-600 border border-slate-600 font-extrabold text-sm">
+              <button onpointerdown="moveTouch(38)" class="touch-control px-5 py-2.5 rounded-xl bg-slate-800 active:bg-emerald-600 border border-slate-600 font-extrabold text-sm" type="button" aria-label="تحريك المركبة يميناً">
                 ➡️ يمين
               </button>
-              <button onpointerdown="moveTouch(38)" class="px-5 py-2.5 rounded-xl bg-slate-800 active:bg-emerald-600 border border-slate-600 font-extrabold text-sm">
+              <button onpointerdown="moveTouch(-38)" class="touch-control px-5 py-2.5 rounded-xl bg-slate-800 active:bg-emerald-600 border border-slate-600 font-extrabold text-sm" type="button" aria-label="تحريك المركبة يساراً">
                 ⬅️ يسار
               </button>
             </div>
             <div class="text-xs text-slate-400 hidden sm:block">
               💡 اسحب بإصبعك أو الماوس مباشرة على الشاشة للتحرك، الإطلاق تلقائي وبزر المسافة (Space)!
             </div>
-            <button onpointerdown="playerShoot()" class="px-5 py-2.5 rounded-xl bg-amber-500 active:bg-amber-400 text-slate-950 font-extrabold text-sm">
-              🔥 إطلاق نوري
+            <button onpointerdown="playerShoot()" class="touch-control px-5 py-2.5 rounded-xl bg-amber-500 active:bg-amber-400 text-slate-950 font-extrabold text-sm" type="button" aria-label="إطلاق سلاح النور">
+              إطلاق النور
             </button>
           </div>
         </div>
@@ -417,7 +626,7 @@
       <div class="bg-slate-900/90 border border-slate-700 rounded-3xl p-5">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
           <div>
-            <h2 class="text-xl font-extrabold text-white">🗺️ خريطة المراحل التفاعلية (٢٢ مرحلة)</h2>
+            <h2 class="text-xl font-extrabold text-white">خريطة المراحل التفاعلية (٢٢)</h2>
             <p class="text-xs text-slate-400 mt-0.5">اختر أي مرحلة للبدء فوراً — المراحل 21 و 22 مفتوحة دائماً للوصول السريع!</p>
           </div>
           <!-- فلاتر الفرز السريعة -->
@@ -441,13 +650,13 @@
         <div class="flex flex-wrap items-center justify-between gap-4 mb-6">
           <div>
             <span class="text-xs font-extrabold bg-amber-400 text-slate-950 px-3 py-1 rounded-full">على منهج أهل السنة والجماعة</span>
-            <h2 class="text-2xl font-extrabold text-white mt-2">📖👑 روضة أصحاب القرآن الكريم وخاصته</h2>
+            <h2 class="text-2xl font-extrabold text-white mt-2">روضة أصحاب القرآن الكريم</h2>
             <p class="text-sm text-emerald-200 mt-1">
               قال رسول الله ﷺ: «إنَّ للهِ أهلينَ من النَّاسِ، قالوا: من هم يا رسولَ اللهِ؟ قال: أهلُ القرآنِ هم أهلُ اللهِ وخاصَّتُه» (صححه الألباني).
             </p>
           </div>
           <button onclick="launchStageDirect(22)" class="bg-amber-400 hover:bg-amber-300 text-slate-950 font-extrabold px-6 py-3 rounded-2xl shadow-lg">
-            🕊️ العب المرحلة ٢٢ (طائر النور والبركة)
+            العب المرحلة ٢٢
           </button>
         </div>
 
@@ -462,7 +671,7 @@
       <div class="bg-slate-900/90 border border-slate-700 rounded-3xl p-5">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
           <div>
-            <h2 class="text-xl font-extrabold text-white">📚 بنك الأسئلة المحققة وبطاقات الحكمة</h2>
+            <h2 class="text-xl font-extrabold text-white">بنك الأسئلة وبطاقات الحكمة</h2>
             <p class="text-xs text-slate-400">مراجعة شاملة لأسئلة العقيدة، القرآن، السيرة، العلوم، وتحدي العباقرة مع الدليل والحكمة.</p>
           </div>
           <div id="catalogFilterBtns" class="flex flex-wrap gap-2"></div>
@@ -479,8 +688,8 @@
         <!-- جدول المتصدرين -->
         <div class="lg:col-span-2 bg-slate-900/90 border border-slate-700 rounded-3xl p-5">
           <div class="flex items-center justify-between mb-4">
-            <h2 class="text-xl font-extrabold text-white">🏆 لوحة شرف الأبطال والبطلات</h2>
-            <span class="text-xs text-emerald-400 font-bold">محدثة تلقائياً محلياً وسحابياً</span>
+            <h2 class="text-xl font-extrabold text-white">لوحة شرف الأبطال والبطلات</h2>
+            <span class="text-xs text-emerald-400 font-bold">محدثة تلقائياً على هذا الجهاز</span>
           </div>
           <div class="overflow-x-auto">
             <table class="w-full text-right text-sm">
@@ -502,7 +711,7 @@
         <!-- إدارة النسخ الاحتياطي وتصدير اللعبة أوفلاين -->
         <div class="bg-slate-900/90 border border-slate-700 rounded-3xl p-5 flex flex-col gap-4">
           <div>
-            <h3 class="text-lg font-extrabold text-amber-300">📦 تصدير اللعبة والنسخ الاحتياطي</h3>
+            <h3 class="text-lg font-extrabold text-amber-300">التصدير والنسخ الاحتياطي</h3>
             <p class="text-xs text-slate-300 mt-1">
               يمكنك تنزيل اللعبة كاملة كملف HTML واحد يعمل بدون إنترنت على أي جوال أو حاسوب، أو حفظ ملف تقدمك.
             </p>
@@ -515,11 +724,11 @@
 
           <button onclick="exportSaveFile()"
             class="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-amber-400/40 text-amber-300 font-bold text-xs">
-            💾 تصدير ملف التقدم والنجوم (JSON)
+            تصدير ملف التقدم (JSON)
           </button>
 
           <label class="w-full py-2.5 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-600 text-slate-200 font-bold text-xs text-center cursor-pointer">
-            📂 استعادة ملف تقدم سابق (Import JSON)
+            استعادة ملف تقدم (JSON)
             <input type="file" accept=".json" onchange="importSaveFile(event)" class="hidden" />
           </label>
 
@@ -529,7 +738,7 @@
 
           <button onclick="resetAllGameData()"
             class="w-full py-2 px-4 rounded-xl bg-rose-950/70 hover:bg-rose-900 border border-rose-500/40 text-rose-300 font-bold text-xs mt-auto">
-            🗑️ إعادة تعيين التقدم من جديد
+            إعادة تعيين التقدم
           </button>
         </div>
       </div>
@@ -601,7 +810,7 @@
 
       // المرحلة الخاصة (21): تحدي العباقرة وأذكياء المستقبل
       {
-        id: 21, type: 'genius', name: 'تحدي العباقرة وأذكياء المستقبل 🧠⚡',
+        id: 21, type: 'genius', name: 'تحدي العباقرة وأذكياء المستقبل 🧠',
         world: 'نيون كوزميك العباقرة', icon: '🧠', enemyEmoji: '🔮', bossEmoji: '🧠',
         bossTitle: 'زعيم العباقرة الخارق (Cosmic Mastermind)',
         bg1: '#4C1D95', bg2: '#090D16', waves: 4, speed: 2.8
@@ -609,7 +818,7 @@
 
       // المرحلة الخاصة (22): روضة أصحاب القرآن الكريم وخاصته
       {
-        id: 22, type: 'quran', name: 'روضة أصحاب القرآن الكريم وخاصته 📖👑',
+        id: 22, type: 'quran', name: 'روضة أصحاب القرآن الكريم وخاصته 📖',
         world: 'روضة الفردوس والقرآن', icon: '📖', enemyEmoji: '🌟', bossEmoji: '🕊️',
         bossTitle: 'طائر النور والبركة 🕊️✨',
         bg1: '#064E3B', bg2: '#022C22', waves: 4, speed: 2.0
@@ -1072,7 +1281,7 @@
           'روضة أصحاب القرآن الكريم: اجمع أنوار الآيات ومخطوطات السبع المثاني وسورة الملك مع طائر النور والبركة لتفوز بتاج الوقار 👑!';
       } else if (stg.id === 21) {
         document.getElementById('sideStageDesc').textContent =
-          'تحدي العباقرة وأذكياء المستقبل: واجه زعيم العباقرة الخارق وحل ألغاز المتتابعات الحسابية وسرعة البديهة 🧠⚡!';
+          'تحدي العباقرة وأذكياء المستقبل: واجه زعيم العباقرة الخارق وحل ألغاز المتتابعات الحسابية وسرعة البديهة 🧠!';
       } else {
         document.getElementById('sideStageDesc').textContent =
           `تقدم عبر موجات (${stg.name}) واجمع العملات الذهبية ومخطوطات الحكمة التعليمية!`;
@@ -1097,13 +1306,13 @@
       initStageWave(1);
       switchMainView('play', document.querySelectorAll('.nav-tab')[0]);
       gameActive = true;
-      document.getElementById('btnStartPause').textContent = '⏸️ إيقاف مؤقت';
+      document.getElementById('btnStartPause').textContent = 'إيقاف مؤقت';
       playSfx('powerup');
     }
 
     function toggleGameLoop() {
       gameActive = !gameActive;
-      document.getElementById('btnStartPause').textContent = gameActive ? '⏸️ إيقاف مؤقت' : '▶️ استئناف المعركة';
+      document.getElementById('btnStartPause').textContent = gameActive ? 'إيقاف مؤقت' : 'استئناف المعركة';
       if (gameActive) playSfx('powerup');
     }
 
@@ -1428,7 +1637,7 @@
 
     function openQuizStation(isStageClearBonus = false) {
       gameActive = false;
-      document.getElementById('btnStartPause').textContent = '▶️ استئناف المعركة';
+      document.getElementById('btnStartPause').textContent = 'استئناف المعركة';
 
       const stg = getActiveStageObj();
       let pool = QUESTION_BANK;
@@ -1502,24 +1711,54 @@
       document.getElementById('quizModalOverlay').classList.add('hidden');
       document.getElementById('quizModalOverlay').classList.remove('flex');
       gameActive = true;
-      document.getElementById('btnStartPause').textContent = '⏸️ إيقاف مؤقت';
+      document.getElementById('btnStartPause').textContent = 'إيقاف مؤقت';
     }
 
     /*************************************************************************
      * ح. دوال عرض الأقسام (Map 22 Stages, Quran Oasis, Catalog, Leaderboard)
      *************************************************************************/
     function switchMainView(viewKey, tabBtn) {
-      document.querySelectorAll('.main-view').forEach(v => v.classList.add('hidden'));
-      document.getElementById('view-' + viewKey).classList.remove('hidden');
-      if (tabBtn) {
-        document.querySelectorAll('.nav-tab').forEach(b => {
-          b.classList.remove('bg-emerald-600', 'text-white');
-          b.classList.add('bg-slate-800', 'text-slate-300');
-        });
-        tabBtn.classList.remove('bg-slate-800', 'text-slate-300');
-        tabBtn.classList.add('bg-emerald-600', 'text-white');
+      const target = document.getElementById('view-' + viewKey);
+      if (!target) return;
+
+      document.querySelectorAll('.main-view').forEach(v => {
+        v.classList.add('hidden');
+        v.setAttribute('aria-hidden', 'true');
+      });
+      target.classList.remove('hidden');
+      target.setAttribute('aria-hidden', 'false');
+
+      document.querySelectorAll('.nav-tab').forEach(b => {
+        const isActive = b.dataset.view === viewKey;
+        b.setAttribute('aria-current', isActive ? 'page' : 'false');
+        b.classList.toggle('bg-emerald-600', isActive);
+        b.classList.toggle('text-white', isActive);
+        b.classList.toggle('bg-slate-800', !isActive);
+        b.classList.toggle('text-slate-300', !isActive);
+      });
+
+      document.querySelectorAll('.mobile-nav-tab').forEach(b => {
+        const isActive = b.dataset.view === viewKey;
+        if (isActive) b.setAttribute('aria-current', 'page');
+        else b.removeAttribute('aria-current');
+      });
+
+      try { localStorage.setItem('hoor_last_view_v1', viewKey); } catch (e) {}
+      document.title = ({
+        play: 'ساحة اللعب — حور تلعب وتتعلم',
+        map: 'خريطة المراحل — حور تلعب وتتعلم',
+        quran: 'روضة القرآن — حور تلعب وتتعلم',
+        catalog: 'بنك التدريب — حور تلعب وتتعلم',
+        leaderboard: 'إنجازاتي — حور تلعب وتتعلم'
+      })[viewKey] || 'حور تلعب وتتعلم';
+
+      if (viewKey !== 'play') {
+        gameActive = false;
+        document.getElementById('btnStartPause').textContent = 'استئناف المعركة';
       }
-      if (viewKey !== 'play') gameActive = false;
+      if (window.matchMedia('(max-width: 640px)').matches) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
     }
 
     function renderStagesMap(filterType) {
@@ -1690,10 +1929,37 @@
       }
     }
 
+    let networkStatusTimer;
+    function updateNetworkStatus() {
+      const banner = document.getElementById('networkStatus');
+      if (!banner) return;
+      window.clearTimeout(networkStatusTimer);
+      if (navigator.onLine) {
+        banner.classList.add('is-visible');
+        banner.textContent = '✅ عاد الاتصال — تقدمك محفوظ محلياً';
+        networkStatusTimer = window.setTimeout(() => banner.classList.remove('is-visible'), 1800);
+      } else {
+        banner.textContent = '⚠️ لا يوجد اتصال — سيُحفظ التقدم على هذا الجهاز';
+        banner.classList.add('is-visible');
+      }
+    }
+
+    window.addEventListener('online', updateNetworkStatus);
+    window.addEventListener('offline', updateNetworkStatus);
+
     // التهيئة الفورية عند تشغيل التطبيق
     loadAppState();
     initStageWave(1);
     requestAnimationFrame(renderArcadeFrame);
+    if (!navigator.onLine) updateNetworkStatus();
+    let initialView = null;
+    try { initialView = localStorage.getItem('hoor_last_view_v1'); } catch (e) {}
+    if (initialView && document.getElementById('view-' + initialView)) {
+      const desktopTab = Array.from(document.querySelectorAll('.nav-tab')).find(b => b.dataset.view === initialView);
+      switchMainView(initialView, desktopTab);
+    } else {
+      switchMainView('play', document.querySelector('.nav-tab'));
+    }
   </script>
 </body>
 </html>
