@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import { beforeEach, describe, expect, it } from "vitest";
+import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const html = readFileSync("public/Hoor-Plays-Learns-Android.html", "utf8");
 const start = html.indexOf("    function switchMainView(");
@@ -13,7 +13,7 @@ describe("Arcade navigation", () => {
   beforeEach(() => {
     document.body.innerHTML = html.slice(html.indexOf("<body"), html.indexOf("  <script>", html.indexOf("<body")));
     localStorage.clear();
-    window.matchMedia = (() => ({ matches: false })) as typeof window.matchMedia;
+    vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: false })));
   });
 
   it("pauses the game and remembers the selected section", () => {
