@@ -1,0 +1,7 @@
+[
+ {"capability":"code","source":"github alfitamir/hoor-plays-and-learns","outcome":"migrate","status":"done","next_action":null},
+ {"capability":"schema/records/auth","source":"none (progress saved on device)","outcome":"not applicable","status":"verified-absent","next_action":null},
+ {"capability":"offline install (service worker)","source":"vite-plugin-pwa","outcome":"stubbed","status":"pending","next_action":"Re-add offline caching if the user wants it"},
+ {"capability":"APK/Android files","source":"public/","outcome":"copied","status":"done","next_action":null},
+ {"capability":"verification","source":"-","outcome":"test + browser","status":"in-progress","next_action":null}
+]
