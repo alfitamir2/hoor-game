@@ -18,10 +18,12 @@ export default defineConfig({
         registerType: "autoUpdate",
         injectRegister: null,
         filename: "sw.js",
+        outDir: "dist/client",
         manifest: false, // served from public/manifest.webmanifest
         devOptions: { enabled: false },
         workbox: {
           navigateFallback: null,
+          globDirectory: "dist/client",
           globPatterns: ["**/*.{js,css,svg,png,jpg,woff2,webmanifest}"],
           maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
           globIgnores: ["**/*.apk", "**/Hoor-Plays-Learns-Android.html"],
