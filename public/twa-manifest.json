@@ -1,6 +1,6 @@
 {
   "packageId": "app.aistudio.hoor_plays_learns",
-  "host": "ais-pre-lfwx2oz5yaqjev6jjcfb4o-708730730945.europe-west1.run.app",
+  "host": "hoor-play-learn.lovable.app",
   "name": "حور تلعب و تتعلم",
   "launcherName": "حور تتعلم",
   "display": "standalone",
@@ -12,8 +12,8 @@
   "backgroundColor": "#F0F9FF",
   "enableNotifications": false,
   "startUrl": "/",
-  "iconUrl": "https://ais-pre-lfwx2oz5yaqjev6jjcfb4o-708730730945.europe-west1.run.app/pwa-512x512.png",
-  "maskableIconUrl": "https://ais-pre-lfwx2oz5yaqjev6jjcfb4o-708730730945.europe-west1.run.app/pwa-maskable-512x512.png",
+  "iconUrl": "https://hoor-play-learn.lovable.app/pwa-512x512.png",
+  "maskableIconUrl": "https://hoor-play-learn.lovable.app/pwa-maskable-512x512.png",
   "splashScreenFadeOutDuration": 300,
   "signingKey": {
     "path": "./android.keystore",
@@ -23,7 +23,7 @@
   "appVersionCode": 3,
   "shortcuts": [],
   "generatorApp": "bubblewrap-cli",
-  "webManifestUrl": "https://ais-pre-lfwx2oz5yaqjev6jjcfb4o-708730730945.europe-west1.run.app/manifest.webmanifest",
+  "webManifestUrl": "https://hoor-play-learn.lovable.app/manifest.webmanifest",
   "fallbackType": "customtabs",
   "features": {},
   "alphaDependencies": {
@@ -32,7 +32,7 @@
   "enableSiteSettingsShortcut": false,
   "isChromeOSOnly": false,
   "isMetaQuest": false,
-  "fullScopeUrl": "https://ais-pre-lfwx2oz5yaqjev6jjcfb4o-708730730945.europe-west1.run.app/",
+  "fullScopeUrl": "https://hoor-play-learn.lovable.app/",
   "minSdkVersion": 24,
   "orientation": "portrait",
   "fingerprints": []
