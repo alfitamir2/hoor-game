@@ -11,4 +11,4 @@
 
 - The Hoor game lives in `src/game/` (ported from a Vite SPA) and renders client-only from `/` via `ClientOnly` + lazy import, because it reads localStorage during state initialization.
 - Extra-strict TS flags (noUncheckedIndexedAccess, noPropertyAccessFromIndexSignature, exactOptionalPropertyTypes, noImplicitReturns) are off: the ported game code was written without them.
-- Offline service worker (vite-plugin-pwa) is not wired; `src/game/pwa-register.ts` is a no-op stub keeping the original API.
+- Offline uses vite-plugin-pwa generateSW writing `dist/client/sw.js`; `src/game/pwa-register.ts` is the only registrar and refuses dev/iframe/Lovable preview hosts, because a SW in preview serves stale builds.
