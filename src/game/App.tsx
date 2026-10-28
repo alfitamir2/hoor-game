@@ -37,6 +37,9 @@ import { UnifiedTopNavSettings } from './components/UnifiedTopNavSettings';
 import { OfflineStatusBanner } from './components/PWAInstallButton';
 import { ProgressBackup, type ProgressBackupDocument } from './components/ProgressBackup';
 import { ChildProfiles, type LocalChildProfile } from './components/ChildProfiles';
+import { ParentReview } from './components/ParentReview';
+import { recordQuizAttempt } from './utils/quizLog';
+import type { DifficultyLevel, SubjectFilter } from './types/game';
 
 const STORAGE_SETTINGS_KEY = 'hoor_game_settings_v2';
 const STORAGE_PROGRESS_KEY = 'hoor_game_progress_v2';
@@ -157,6 +160,8 @@ export default function App() {
   const [activeLevel, setActiveLevel] = useState<LevelConfig | null>(null);
   const [quizPurpose, setQuizPurpose] = useState<QuizPurpose | null>(null);
   const [showSettings, setShowSettings] = useState(false);
+  const [showParent, setShowParent] = useState(false);
+  const [practiceOverride, setPracticeOverride] = useState<{ subject: SubjectFilter; difficulty: DifficultyLevel } | null>(null);
   const [selectedBiomeFilter, setSelectedBiomeFilter] = useState<BiomeId | 'all'>('all');
 
   const currentLevels = React.useMemo(() => {
@@ -454,6 +459,16 @@ export default function App() {
             className="hover:text-sky-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
           >
             تخصيص الصعوبة
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              soundFX.playWoodTap();
+              setShowParent(true);
+            }}
+            className="hover:text-emerald-700 hover:underline underline-offset-4 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
+          >
+            لوحة ولي الأمر
           </button>
         </nav>
 
@@ -903,11 +918,34 @@ export default function App() {
         <QuizModal
           purpose={quizPurpose}
           ageGroup={settings.ageGroup}
-          difficulty={settings.difficulty}
-          subject={settings.subject}
+          difficulty={practiceOverride?.difficulty ?? settings.difficulty}
+          subject={practiceOverride?.subject ?? settings.subject}
           visualHelpers={settings.visualHelpers}
-          onSuccess={handleQuizSuccess}
-          onClose={() => setQuizPurpose(null)}
+          onSuccess={(purpose) => { setPracticeOverride(null); handleQuizSuccess(purpose); }}
+          onClose={() => { setPracticeOverride(null); setQuizPurpose(null); }}
+          onAnswer={(question, ok) => recordQuizAttempt(activeProfileId, {
+            t: Date.now(),
+            type: question.type,
+            age: settings.ageGroup,
+            diff: practiceOverride?.difficulty ?? settings.difficulty,
+            ok,
+          })}
+        />
+      )}
+
+      {showParent && (
+        <ParentReview
+          profiles={profiles}
+          activeProfileId={activeProfileId}
+          activeAgeGroup={settings.ageGroup}
+          onClose={() => setShowParent(false)}
+          onPractice={(profileId, subject, difficulty) => {
+            if (profileId !== activeProfileId) handleSelectProfile(profileId);
+            setShowParent(false);
+            setActiveLevel(null);
+            setPracticeOverride({ subject, difficulty });
+            setQuizPurpose({ kind: 'practice' });
+          }}
         />
       )}
 
