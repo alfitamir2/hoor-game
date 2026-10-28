@@ -259,9 +259,9 @@ const GENERAL_KNOWLEDGE_DATA: GeneralKnowledgeItem[] = [
   {
     prompt: 'ما هي أعلى قمة جبلية على وجه الأرض؟',
     correct: 'قمة إيفرست',
-    distractors: ['جبل كليمنجارو', 'جبل فوجي', 'جبل الألب'],
+    distractors: ['جبل كليمنجارو', 'جبل فوجي', 'جبل مون بلان'],
     emoji: '🏔️',
-    hint: 'تقع في سلسلة جبال الهيمالايا ويبلغ ارتفاعها ٨٨٤٨ متراً!',
+    hint: 'تقع في سلسلة جبال الهيمالايا ويبلغ ارتفاعها نحو ٨٨٤٩ متراً!',
   },
   {
     prompt: 'ما هي أكبر قارات العالم مساحةً وأكثرها سكاناً؟',
@@ -376,7 +376,7 @@ function generateUnder5CountingQuestion(): EducationalQuestion {
     type: 'counting',
     ageGroup: 'under_5',
     titleAr: 'عدّ الأشكال اللطيفة 🐣',
-    promptAr: `كم ${item.nameAr} ترينا في الصورة يا بطل؟`,
+    promptAr: `كم ${item.nameAr} ترين في الصورة يا بطلة؟`,
     visualEmoji: item.emoji,
     countA: count,
     options,
@@ -404,7 +404,7 @@ function generateUnder5ShapeQuestion(): EducationalQuestion {
       value: c.shape,
     })),
     correctValue: target.shape,
-    hintAr: `انظري إلى الشكل ${target.emoji}، هل هو دائرة أم مثلث أم مربع؟`,
+    hintAr: `انظري جيداً إلى الشكل ${target.emoji}، هل هو ${choices.map((c) => c.shape).join(' أم ')}؟`,
   };
 }
 
@@ -590,7 +590,10 @@ function generate10PlusMultiplicationQuestion(difficulty: DifficultyLevel): Educ
     visualEmoji: '⚡',
     options: generateNumericOptions(answer, 4, 20, a * b + 25),
     correctValue: answer,
-    hintAr: `تذكري: يمكنكِ تبسيط الضرب؛ مثلاً (${a} × ${b}) = (${Math.floor(a / 2)} × ${b * 2})!`,
+    hintAr:
+      a % 2 === 0
+        ? `تذكري: يمكنكِ تبسيط الضرب؛ (${a} × ${b}) = (${a / 2} × ${b * 2})!`
+        : `تذكري: يمكنكِ تفكيك الضرب؛ (${a} × ${b}) = (${a - 1} × ${b}) + ${b}!`,
   };
 }
 
@@ -613,7 +616,7 @@ function generate10PlusDivisionQuestion(): EducationalQuestion {
   const chosen = pairs[randomInt(0, pairs.length - 1)];
   const dividend = chosen[0];
   const divisor = chosen[1];
-  const quotient = chosen[2];
+  const quotient = dividend / divisor;
 
   return {
     id: `div-${Date.now()}-${Math.random()}`,
@@ -723,7 +726,7 @@ function generate10PlusEquationQuestion(): EducationalQuestion {
   if (kind === 2) {
     // 3X - a = b => 3X = b + a => X = (b + a)/3
     const x = randomInt(4, 12);
-    const a = randomInt(3, 15);
+    const a = randomInt(3, Math.min(15, 3 * x - 2)); // keep the right side positive
     const b = 3 * x - a;
     return {
       id: `eq-${Date.now()}-${Math.random()}`,
@@ -772,7 +775,7 @@ function generate10PlusEquationQuestion(): EducationalQuestion {
     promptAr: `تذكري: الضرب يتم أولاً! ما ناتج التعبير التالي:`,
     equationDisplay: `${a} + (${b} × ${c}) - ${d} = ؟`,
     visualEmoji: '🚀',
-    options: generateNumericOptions(answer, 4, 10, answer + 20),
+    options: generateNumericOptions(answer, 4, 0, answer + 20),
     correctValue: answer,
     hintAr: `احسبي الضرب أولاً (${b} × ${c} = ${b * c})، ثم اجمعي ${a} واطرحي ${d}!`,
   };
@@ -832,17 +835,17 @@ function generateEnglishQuestion(ageGroup: AgeGroupId): EducationalQuestion {
           : 'كلمة إنجليزية ممتعة 🔤',
       promptAr: `ما هي الكلمة الإنجليزية لـ (${target.arabic})؟`,
       englishWord: target.word,
+      hideWordUntilAnswered: true,
       arabicMeaning: target.arabic,
       visualEmoji: target.emoji,
       options: allChoices.map((item) => ({
         id: `opt-${item.word}`,
         label: item.word,
-        subLabel: item.arabic,
-        emoji: item.emoji,
+        ...(ageGroup === 'under_5' ? { emoji: item.emoji } : {}),
         value: item.word,
       })),
       correctValue: target.word,
-      hintAr: `استمعي لنطق الكلمة بالضغط على زر السماعة 🔊: (${target.word}) تعني ${target.arabic}!`,
+      hintAr: `فكّري في الصورة ${target.emoji}: الكلمة تبدأ بالحرف (${target.word[0]}) وفيها ${target.word.length} أحرف.`,
     };
   }
 
@@ -863,7 +866,7 @@ function generateEnglishQuestion(ageGroup: AgeGroupId): EducationalQuestion {
     options: allChoices.map((item) => ({
       id: `opt-${item.word}`,
       label: item.arabic,
-      emoji: item.emoji,
+      ...(ageGroup === 'under_5' ? { emoji: item.emoji } : {}),
       value: item.word,
     })),
     correctValue: target.word,

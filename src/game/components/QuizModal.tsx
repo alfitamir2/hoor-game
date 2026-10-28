@@ -32,7 +32,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
   useEffect(() => {
     // Automatically pronounce the English word when an English question appears
-    if (question.type === 'english' && question.englishWord) {
+    if (question.type === 'english' && question.englishWord && !question.hideWordUntilAnswered) {
       const timer = setTimeout(() => {
         soundFX.speakEnglishWord(question.englishWord!);
       }, 250);
@@ -268,7 +268,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 <div className="w-20 h-20 rounded-3xl bg-white border border-sky-200 flex items-center justify-center text-5xl shadow-2xs">
                   {question.visualEmoji}
                 </div>
-                {question.englishWord && (
+                {question.englishWord && (!question.hideWordUntilAnswered || status === 'correct') && (
                   <button
                     type="button"
                     onClick={() => soundFX.speakEnglishWord(question.englishWord!)}
@@ -280,7 +280,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 )}
               </div>
               <p className="text-xs font-bold text-slate-500">
-                اضغطي على زر السماعة 🔊 لسماع نطق الكلمة الإنجليزية
+                {question.hideWordUntilAnswered && status !== 'correct'
+                  ? 'اختاري الكلمة الإنجليزية الصحيحة، وبعدها ستسمعين نطقها 🔊'
+                  : 'اضغطي على زر السماعة 🔊 لسماع نطق الكلمة الإنجليزية'}
               </p>
             </div>
           )}

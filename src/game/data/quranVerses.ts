@@ -6,6 +6,8 @@ export interface QuranVerseTransition {
   surahNumber: number;
   ayahNumber: number;
   reflectionAr: string;
+  /** true when the text shows only part of the ayah (audio recites the full ayah) */
+  isExcerpt?: boolean;
 }
 
 export type ReciterId = 'alafasy' | 'husary';
@@ -37,6 +39,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة طه',
     surahNumber: 20,
     ayahNumber: 114,
+    isExcerpt: true,
     reflectionAr: 'الله سبحانه يعلمنا أن ندعوه دائماً ليزيدنا علماً وفهماً ونوراً يا بطلة حور!',
   },
   {
@@ -46,6 +49,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة التوبة',
     surahNumber: 9,
     ayahNumber: 105,
+    isExcerpt: true,
     reflectionAr: 'العمل الصالح والاجتهاد في التعلم يحبه الله ورسوله، وأنتِ مجتهدة ورائعة!',
   },
   {
@@ -55,6 +59,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة يوسف',
     surahNumber: 12,
     ayahNumber: 64,
+    isExcerpt: true,
     reflectionAr: 'الله الحفيظ يحفظ حور وأهلها وقطتها اللطيفة في كل خطوة.',
   },
   {
@@ -73,7 +78,8 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة البقرة',
     surahNumber: 2,
     ayahNumber: 195,
-    reflectionAr: 'الإحسان إلى الحيوانات مثل قطة حور واللطف مع الجميع يدخلنا الجنة.',
+    isExcerpt: true,
+    reflectionAr: 'الإحسان إلى الحيوانات مثل قطة حور واللطف مع الجميع يحبه الله.',
   },
   {
     levelFrom: 6,
@@ -91,6 +97,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة الإسراء',
     surahNumber: 17,
     ayahNumber: 24,
+    isExcerpt: true,
     reflectionAr: 'ندعو لبابا وماما الحبيبين بالرحمة والسعادة لأنهما يحبّان حور كثيراً.',
   },
   {
@@ -100,6 +107,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة المائدة',
     surahNumber: 5,
     ayahNumber: 2,
+    isExcerpt: true,
     reflectionAr: 'التعاون ومساعدة الآخرين يجعلنا أقوياء ومحبوبين عند الله.',
   },
   {
@@ -118,6 +126,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة النساء',
     surahNumber: 4,
     ayahNumber: 113,
+    isExcerpt: true,
     reflectionAr: 'فضل الله علينا واسع وكبير في كل نعمة نراها ونعيشها.',
   },
   {
@@ -136,6 +145,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة البقرة',
     surahNumber: 2,
     ayahNumber: 153,
+    isExcerpt: true,
     reflectionAr: 'الصبر سر النجاح في كل لعبة وفي كل درس جديد نتعلمه.',
   },
   {
@@ -145,6 +155,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة البقرة',
     surahNumber: 2,
     ayahNumber: 83,
+    isExcerpt: true,
     reflectionAr: 'الكلمة الطيبة والابتسامة الحلوة صدقة جميلة يحبها الله.',
   },
   {
@@ -154,7 +165,8 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة آل عمران',
     surahNumber: 3,
     ayahNumber: 146,
-    reflectionAr: 'حب الله هو الفوز الأكبر، والصابرون يدخلون الجنة بغير حساب.',
+    isExcerpt: true,
+    reflectionAr: 'حب الله هو الفوز الأكبر، والله يحب الصابرين ويجزيهم أجراً عظيماً.',
   },
   {
     levelFrom: 15,
@@ -163,6 +175,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة الطلاق',
     surahNumber: 65,
     ayahNumber: 7,
+    isExcerpt: true,
     reflectionAr: 'اليسر والفرج قريبان دائماً لكل من يتوكل على ربه الرحيم.',
   },
   {
@@ -181,6 +194,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة الطلاق',
     surahNumber: 65,
     ayahNumber: 3,
+    isExcerpt: true,
     reflectionAr: 'نقول دائماً: توكلت على الله، ولا حول ولا قوة إلا بالله العلي العظيم.',
   },
   {
@@ -190,6 +204,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة الأعراف',
     surahNumber: 7,
     ayahNumber: 56,
+    isExcerpt: true,
     reflectionAr: 'رحمة الله تحيط بالبطلة حور وعائلتها وكل من يحسن ويفعل الخير.',
   },
   {
@@ -199,6 +214,7 @@ export const QURAN_VERSES_BETWEEN_LEVELS: QuranVerseTransition[] = [
     surahName: 'سورة يونس',
     surahNumber: 10,
     ayahNumber: 10,
+    isExcerpt: true,
     reflectionAr: 'نصل إلى المرحلة الأخيرة الـ ٢٠ بقلب مليء بالحمد والشكر لله رب العالمين!',
   },
 ];
@@ -216,6 +232,7 @@ export function getVerseBetweenLevels(fromLevel: number, toLevel: number): Quran
     surahName: 'سورة طه',
     surahNumber: 20,
     ayahNumber: 114,
+    isExcerpt: true,
     reflectionAr: 'الله يعلمنا أن نطلب العلم دائماً ونفرح بالتعلم يا بطلة حور!',
   };
 }
@@ -240,6 +257,5 @@ export function getAyahAudioUrl(surahNumber: number, ayahNumber: number, reciter
   return [
     `https://everyayah.com/data/Alafasy_128kbps/${code}.mp3`,
     `https://verses.quran.com/Alafasy/mp3/${code}.mp3`,
-    `https://cdn.islamic.network/quran/audio/128/ar.alafasy/${code}.mp3`,
   ];
 }

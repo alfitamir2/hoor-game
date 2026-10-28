@@ -176,28 +176,11 @@ export const BetweenLevelsModal: React.FC<BetweenLevelsModalProps> = ({
     playNextUrl();
   };
 
+  // Never read Quran with a device text-to-speech voice: it cannot pronounce tajweed correctly.
   const fallbackSpeechRecitation = () => {
-    const cleanText = verse.verseText.replace(/[﴿﴾]/g, '').trim();
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      setIsDeviceReader(true);
-      setIsPlayingAyah(true);
-      window.speechSynthesis.cancel();
-      const utterance = new SpeechSynthesisUtterance(cleanText);
-      utterance.lang = 'ar-SA';
-      utterance.rate = 0.85;
-      utterance.pitch = 1.05;
-      utterance.onend = () => {
-        setIsPlayingAyah(false);
-      };
-      utterance.onerror = () => {
-        setIsPlayingAyah(false);
-        setAudioError(true);
-      };
-      window.speechSynthesis.speak(utterance);
-    } else {
-      setIsPlayingAyah(false);
-      setAudioError(true);
-    }
+    setIsDeviceReader(false);
+    setIsPlayingAyah(false);
+    setAudioError(true);
   };
 
   const handleTogglePlayRecitation = () => {
@@ -287,7 +270,7 @@ export const BetweenLevelsModal: React.FC<BetweenLevelsModalProps> = ({
               <span>آية كريمة — اضغطي للاستماع</span>
             </span>
             <span className="text-[11px] font-bold text-emerald-800 bg-emerald-100/70 px-2.5 py-0.5 rounded-lg border border-emerald-200">
-              {verse.surahName} · الآية {verse.ayahNumber}
+              {verse.surahName} · {verse.isExcerpt ? 'من الآية' : 'الآية'} {verse.ayahNumber}
             </span>
           </div>
 
@@ -299,7 +282,7 @@ export const BetweenLevelsModal: React.FC<BetweenLevelsModalProps> = ({
           </div>
 
           <p className="rounded-xl bg-sky-50 border border-sky-200 px-3 py-2 text-xs font-bold leading-relaxed text-sky-950">
-            نص الآية ظاهر ومتاح دون اتصال. التلاوة الصوتية الأصلية تحتاج اتصالاً بالإنترنت؛ ويمكن لقارئ الجهاز نطق النص كبديل، لكنه ليس تلاوة قرآنية.
+            نص الآية ظاهر ومتاح دون اتصال. التلاوة الصوتية بصوت القارئ تحتاج اتصالاً بالإنترنت.
           </p>
 
           {/* Reciter Selector & Audio Playback Wave */}
