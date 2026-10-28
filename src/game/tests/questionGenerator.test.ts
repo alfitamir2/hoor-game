@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
-import { test } from 'node:test';
-import { generateQuestion } from '../src/utils/questionGenerator';
-import type { AgeGroupId, DifficultyLevel, SubjectFilter } from '../src/types/game';
+import { test } from 'vitest';
+import { generateQuestion } from '../utils/questionGenerator';
+import type { AgeGroupId, DifficultyLevel, SubjectFilter } from '../types/game';
 
 function withFixedRandom<T>(value: number, callback: () => T): T {
   const originalRandom = Math.random;
