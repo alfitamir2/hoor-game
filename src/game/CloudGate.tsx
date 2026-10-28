@@ -136,7 +136,7 @@ export default function CloudGate() {
         </Suspense>
         <button
           onClick={signOut}
-          className="fixed bottom-2 left-2 z-50 rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-slate-600 shadow"
+          className="fixed bottom-20 left-2 z-50 rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-slate-600 shadow sm:bottom-2"
         >
           خروج ({session.user.email?.split("@")[0]})
         </button>
@@ -156,7 +156,7 @@ export default function CloudGate() {
             localStorage.removeItem(GUEST_KEY);
             setGuest(false);
           }}
-          className="fixed bottom-2 left-2 z-50 rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-sky-700 shadow"
+          className="fixed bottom-20 left-2 z-50 rounded-full bg-white/80 px-3 py-1 text-xs font-bold text-sky-700 shadow sm:bottom-2"
         >
           حفظ التقدم بحساب Google
         </button>
