@@ -30,3 +30,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# Android signing and local build state
+*.jks
+*.keystore
+android/local.properties
+android/*.aab
+android/*.apk

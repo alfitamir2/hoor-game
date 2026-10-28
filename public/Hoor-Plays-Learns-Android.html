@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="theme-color" content="#0F172A" />
+  <meta name="referrer" content="no-referrer" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://server8.mp3quran.net; connect-src 'self';" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>لعبة حور: العب وتعلّم 🎮✨ | النسخة الاحترافية الكاملة (22 مرحلة)</title>
 
@@ -36,8 +38,6 @@
     };
   </script>
 
-  <!-- Google Identity Services SDK -->
-  <script src="https://accounts.google.com/gsi/client" async defer></script>
 
   <style>
     * {
@@ -160,21 +160,8 @@
 
             <div class="text-xs text-slate-400 font-semibold">— أو احفظ تقدمك سحابياً عبر جوجل —</div>
 
-            <!-- زر Google Sign-In الرسمي -->
-            <div id="googlePortalBtnWrap" class="flex justify-center">
-              <div id="g_id_onload"
-                   data-client_id="YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com"
-                   data-callback="handleGoogleJwtResponse"
-                   data-auto_prompt="false">
-              </div>
-              <div class="g_id_signin"
-                   data-type="standard"
-                   data-shape="pill"
-                   data-theme="filled_black"
-                   data-text="signin_with"
-                   data-locale="ar"
-                   data-size="large">
-              </div>
+            <div class="rounded-xl border border-slate-600 bg-slate-900/70 px-4 py-3 text-center text-xs font-bold text-slate-300">
+              🔒 هذه النسخة تحفظ التقدم على هذا الجهاز فقط. لا نطلب بريدك الإلكتروني ولا نرسل بيانات الأطفال من داخل اللعبة.
             </div>
           </div>
         </div>
@@ -536,10 +523,9 @@
             <input type="file" accept=".json" onchange="importSaveFile(event)" class="hidden" />
           </label>
 
-          <button onclick="syncWithFirebaseCloud()"
-            class="w-full py-2.5 px-4 rounded-xl bg-indigo-600/80 hover:bg-indigo-600 text-white font-bold text-xs">
-            ☁️ مزامنة فورية مع سحابة Firebase Firestore
-          </button>
+          <div class="w-full rounded-xl border border-slate-600 bg-slate-800/70 px-4 py-2.5 text-center text-xs font-bold text-slate-300">
+            🔒 المزامنة السحابية غير مفعّلة في النسخة المحلية. استخدم ملف JSON لنقل التقدم بأمان.
+          </div>
 
           <button onclick="resetAllGameData()"
             class="w-full py-2 px-4 rounded-xl bg-rose-950/70 hover:bg-rose-900 border border-rose-500/40 text-rose-300 font-bold text-xs mt-auto">
@@ -802,12 +788,42 @@
       ]
     };
 
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>"']/g, character => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
+      }[character]));
+    }
+
+    function sanitizeState(candidate) {
+      if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate)) return appState;
+      const next = { ...appState };
+      if (typeof candidate.heroName === 'string') next.heroName = candidate.heroName.trim().slice(0, 32) || 'حور';
+      if (['5-8', '9-12', '13-16'].includes(candidate.ageTier)) next.ageTier = candidate.ageTier;
+      for (const key of ['stars', 'coins', 'crowns', 'unlockedStage', 'currentStageId', 'weaponLevel']) {
+        if (Number.isSafeInteger(candidate[key]) && candidate[key] >= 0 && candidate[key] <= 1000000) next[key] = candidate[key];
+      }
+      if (Array.isArray(candidate.leaderboard)) {
+        next.leaderboard = candidate.leaderboard.slice(0, 100).filter(row => row && typeof row === 'object').map(row => ({
+          name: typeof row.name === 'string' ? row.name.trim().slice(0, 32) || 'بطل حور' : 'بطل حور',
+          stars: Number.isSafeInteger(row.stars) && row.stars >= 0 ? Math.min(row.stars, 1000000) : 0,
+          coins: Number.isSafeInteger(row.coins) && row.coins >= 0 ? Math.min(row.coins, 1000000) : 0,
+          crowns: Number.isSafeInteger(row.crowns) && row.crowns >= 0 ? Math.min(row.crowns, 1000000) : 0,
+          badge: typeof row.badge === 'string' ? row.badge.slice(0, 80) : '🚀 بطل النور'
+        }));
+      }
+      return next;
+    }
+
     function loadAppState() {
       try {
         const raw = localStorage.getItem(STORAGE_KEY);
         if (raw) {
           const parsed = JSON.parse(raw);
-          appState = { ...appState, ...parsed };
+          appState = sanitizeState(parsed);
         }
       } catch (e) {}
       refreshHeaderUI();
@@ -873,32 +889,10 @@
       document.getElementById('portalOverlay').classList.remove('hidden');
     }
 
-    function handleGoogleJwtResponse(response) {
-      try {
-        const base64Url = response.credential.split('.')[1];
-        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-        const payload = JSON.parse(decodeURIComponent(atob(base64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')));
-        appState.heroName = payload.name || 'بطل حور';
-        appState.email = payload.email || '';
-        appState.avatar = payload.picture || '';
-        document.getElementById('syncStatusBadge').textContent = '• ☁️ متصل بحساب جوجل';
-        saveAppState();
-        document.getElementById('portalOverlay').classList.add('hidden');
-        playSfx('victory');
-      } catch (err) {
-        console.error('Google Auth Decode Error:', err);
-      }
-    }
-
-    async function syncWithFirebaseCloud() {
-      const badge = document.getElementById('syncStatusBadge');
-      badge.textContent = '• ⏳ جاري المزامنة السحابية...';
-      setTimeout(() => {
-        saveAppState();
-        badge.textContent = '• ☁️ تمت المزامنة مع السحابة والمحلي';
-        playSfx('victory');
-        alert('✅ تمت مزامنة تقدم البطل والنجوم وتاج الوقار بنجاح!');
-      }, 600);
+    // Authentication is intentionally handled by the outer application shell.
+    // This standalone document never decodes or trusts browser-provided JWTs.
+    function handleGoogleJwtResponse() {
+      console.warn('External sign-in is disabled in the standalone game document.');
     }
 
     /*************************************************************************
@@ -1638,8 +1632,8 @@
         const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `#${idx + 1}`;
         tr.innerHTML = `
           <td class="py-3 px-3 font-extrabold">${medal}</td>
-          <td class="py-3 px-3 font-bold text-white">${row.name}</td>
-          <td class="py-3 px-3 text-xs text-amber-300 font-bold">${row.badge}</td>
+          <td class="py-3 px-3 font-bold text-white">${escapeHtml(row.name)}</td>
+          <td class="py-3 px-3 text-xs text-amber-300 font-bold">${escapeHtml(row.badge)}</td>
           <td class="py-3 px-3 font-extrabold text-amber-400">${row.stars}</td>
           <td class="py-3 px-3 font-bold text-yellow-300">${row.coins}</td>
           <td class="py-3 px-3 font-extrabold text-emerald-400">${row.crowns}</td>
@@ -1679,7 +1673,7 @@
       reader.onload = e => {
         try {
           const imported = JSON.parse(e.target.result);
-          appState = { ...appState, ...imported };
+          appState = sanitizeState(imported);
           saveAppState();
           alert('✅ تمت استعادة ملف التقدم والنجوم بنجاح!');
         } catch (err) {
