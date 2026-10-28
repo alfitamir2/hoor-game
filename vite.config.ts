@@ -24,9 +24,9 @@ export default defineConfig({
         workbox: {
           navigateFallback: null,
           globDirectory: "dist/client",
-          globPatterns: ["**/*.{js,css,svg,png,jpg,woff2,webmanifest}"],
+          globPatterns: ["**/*.{js,css,svg,png,jpg,woff2,webmanifest}", "Hoor-Plays-Learns-Android.html"],
           maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
-          globIgnores: ["**/*.apk", "**/Hoor-Plays-Learns-Android.html"],
+          globIgnores: ["**/*.apk"],
           runtimeCaching: [
             {
               urlPattern: ({ request, url }) =>
@@ -42,7 +42,12 @@ export default defineConfig({
             {
               urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/,
               handler: "StaleWhileRevalidate",
-              options: { cacheName: "hoor-fonts" },
+              options: { cacheName: "hoor-fonts", cacheableResponse: { statuses: [0, 200] } },
+            },
+            {
+              urlPattern: /^https:\/\/cdn\.tailwindcss\.com\/.*/,
+              handler: "StaleWhileRevalidate",
+              options: { cacheName: "hoor-cdn", cacheableResponse: { statuses: [0, 200] } },
             },
             {
               urlPattern: /\.mp3$/,
