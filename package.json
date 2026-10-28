@@ -11,7 +11,9 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "verify:release": "node scripts/verify-release.mjs",
+    "build:release": "npm run build && npm run verify:release"
   },
   "overrides": {
     "rolldown": "1.2.1"

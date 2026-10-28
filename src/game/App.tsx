@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 export function GameApp(): React.JSX.Element {
   return (
@@ -7,7 +7,10 @@ export function GameApp(): React.JSX.Element {
         src="/Hoor-Plays-Learns-Android.html"
         title="لعبة حور: العب وتعلّم - 22 مرحلة"
         className="w-full h-full border-0"
-        allow="autoplay; fullscreen"
+        sandbox="allow-scripts allow-same-origin allow-forms"
+        referrerPolicy="no-referrer"
+        allow="autoplay"
+        loading="eager"
       />
     </div>
   );
