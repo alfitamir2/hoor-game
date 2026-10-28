@@ -12,6 +12,8 @@ interface QuizModalProps {
   visualHelpers: boolean;
   onSuccess: (purpose: QuizPurpose) => void;
   onClose: () => void;
+  /** Called once per question with whether the first tap was correct. */
+  onAnswer?: (question: EducationalQuestion, correctFirstTry: boolean) => void;
 }
 
 export const QuizModal: React.FC<QuizModalProps> = ({
@@ -22,7 +24,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   visualHelpers,
   onSuccess,
   onClose,
+  onAnswer,
 }) => {
+  const answeredRef = React.useRef<string | null>(null);
   const [question, setQuestion] = useState<EducationalQuestion>(() =>
     generateQuestion(difficulty, subject, ageGroup)
   );
@@ -46,6 +50,11 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
     const isMatch =
       String(opt.value).trim().toLowerCase() === String(question.correctValue).trim().toLowerCase();
+
+    if (answeredRef.current !== question.id) {
+      answeredRef.current = question.id;
+      onAnswer?.(question, isMatch);
+    }
 
     if (isMatch) {
       setStatus('correct');

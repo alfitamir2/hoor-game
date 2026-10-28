@@ -11,6 +11,7 @@ const SYNC_KEYS = [
   "hoor_has_selected_age_v2",
   "hoor_child_profiles_v1",
   "hoor_active_child_profile_v1",
+  "hoor_quiz_attempts_v1",
 ];
 const GUEST_KEY = "hoor_guest_mode_v1";
 const SYNC_AT_KEY = "hoor_cloud_synced_at_v1";
