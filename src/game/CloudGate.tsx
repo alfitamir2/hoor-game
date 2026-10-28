@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
+import { registerSW } from "./pwa-register";
 
 const HoorGame = lazy(() => import("./App"));
 
@@ -71,6 +72,7 @@ export default function CloudGate() {
   const [err, setErr] = useState("");
 
   useEffect(() => {
+    registerSW({ immediate: true });
     setGuest(localStorage.getItem(GUEST_KEY) === "1");
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) => setSession(s));
     supabase.auth.getSession().then(({ data }) => {
