@@ -81,6 +81,8 @@ export interface EducationalQuestion {
     | 'powers'
     | 'percentages';
   ageGroup?: AgeGroupId;
+  /** English → word question: don't show or speak the answer before it is chosen */
+  hideWordUntilAnswered?: boolean;
   titleAr: string;
   promptAr: string;
   equationDisplay?: string;
