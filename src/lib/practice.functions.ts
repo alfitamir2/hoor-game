@@ -1,6 +1,5 @@
 import { createServerFn } from '@tanstack/react-start';
 import { requireSupabaseAuth } from '@/integrations/supabase/auth-middleware';
-import { PRACTICE_CATALOG } from '@/game/data/practiceCatalog';
 import type { AgeGroupId, DifficultyLevel } from '@/game/types/game';
 
 export interface PracticeRecommendation {
