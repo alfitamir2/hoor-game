@@ -1,7 +1,7 @@
 import { createFileRoute, ClientOnly } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
-const HoorGame = lazy(() => import("@/game/App"));
+const HoorGame = lazy(() => import("@/game/CloudGate"));
 
 export const Route = createFileRoute("/")({
   head: () => ({
