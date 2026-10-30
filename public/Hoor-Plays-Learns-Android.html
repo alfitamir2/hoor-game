@@ -754,7 +754,9 @@
       <div id="quizModalBadge" class="inline-block px-3.5 py-1 rounded-full text-xs font-extrabold bg-amber-400/20 text-amber-300 border border-amber-400/40 mb-3">
         محطة الحكمة والذكاء
       </div>
-      <h3 id="quizModalQuestion" class="text-lg md:text-xl font-extrabold text-white leading-relaxed mb-5"></h3>
+      <h3 id="quizModalQuestion" class="text-lg md:text-xl font-extrabold text-white leading-relaxed mb-3"></h3>
+      <button type="button" id="quizSpeakBtn" onclick="speakCurrentQuestion()" aria-label="استمع إلى السؤال"
+        class="mb-4 px-4 py-2 rounded-full bg-sky-500/20 border border-sky-400/50 text-sky-200 font-bold text-sm">🔊 استمع للسؤال</button>
 
       <div id="quizModalOptions" class="flex flex-col gap-2.5 text-right"></div>
 
@@ -991,7 +993,30 @@
       { id: "t7", category: "العلوم والحضارة", age: "13-16", q: "من العالم المسلم الذي يُنسب إليه تأسيس علم الجبر؟", options: ["الخوارزمي", "ابن سينا", "ابن بطوطة", "الفارابي"], correctText: "الخوارزمي", hikmah: "ألّف الخوارزمي كتاب «المختصر في حساب الجبر والمقابلة»، ومنه جاءت كلمة Algebra." },
       { id: "t8", category: "الجغرافيا", age: "13-16", q: "ما أطول نهر في قارة أفريقيا؟", options: ["نهر النيل", "نهر الكونغو", "نهر النيجر", "نهر الزمبيزي"], correctText: "نهر النيل", hikmah: "النيل أطول أنهار أفريقيا ويمر بعدة دول منها مصر والسودان." },
       { id: "t9", category: "السيرة النبوية", age: "13-16", q: "ما الغزوة التي كانت أول معركة كبرى في الإسلام؟", options: ["غزوة بدر", "غزوة أحد", "غزوة الخندق", "غزوة تبوك"], correctText: "غزوة بدر", hikmah: "وقعت غزوة بدر في رمضان من السنة الثانية للهجرة." },
-      { id: "t10", category: "اللغة الإنجليزية", age: "13-16", q: "ما الماضي من الفعل go؟", options: ["went", "goed", "gone", "going"], correctText: "went", hikmah: "go فعل شاذ: go ← went ← gone." }
+      { id: "t10", category: "اللغة الإنجليزية", age: "13-16", q: "ما الماضي من الفعل go؟", options: ["went", "goed", "gone", "going"], correctText: "went", hikmah: "go فعل شاذ: go ← went ← gone." },
+
+      // 5. أسئلة جديدة (بلا تكرار)
+      { id: "k11", category: "الحساب", age: "5-8", q: "كم يساوي 5 + 5؟", options: ["10", "9", "11", "55"], correctText: "10", hikmah: "خمسة وخمسة تساوي عشرة، مثل أصابع اليدين." },
+      { id: "k12", category: "الحساب", age: "5-8", q: "كم يساوي 9 − 4؟", options: ["5", "4", "6", "13"], correctText: "5", hikmah: "من 9 نرجع 4 خطوات: 8، 7، 6، 5." },
+      { id: "k13", category: "العلوم", age: "5-8", q: "أي حيوان يعطينا الحليب؟", options: ["البقرة", "الأسد", "السمكة", "النملة"], correctText: "البقرة", hikmah: "البقرة والماعز والناقة تعطينا الحليب المفيد." },
+      { id: "k14", category: "الألوان والأشكال", age: "5-8", q: "ما لون السماء في يوم صافٍ؟", options: ["أزرق", "أحمر", "أخضر", "أسود"], correctText: "أزرق", hikmah: "تبدو السماء زرقاء في النهار الصافي." },
+      { id: "k15", category: "الأخلاق والآداب", age: "5-8", q: "ماذا نقول بعد أن ننتهي من الطعام؟", options: ["الحمد لله", "بسم الله", "تصبح على خير", "إلى اللقاء"], correctText: "الحمد لله", hikmah: "نحمد الله على نعمة الطعام بعد الأكل." },
+      { id: "k16", category: "اللغة الإنجليزية", age: "5-8", q: "ما معنى كلمة Apple؟", options: ["تفاحة", "موزة", "برتقالة", "عنب"], correctText: "تفاحة", hikmah: "Apple تفاحة، و Banana موزة." },
+      { id: "k17", category: "العقيدة والأركان", age: "5-8", q: "كم عدد أركان الإسلام؟", options: ["خمسة", "ستة", "ثلاثة", "عشرة"], correctText: "خمسة", hikmah: "الشهادتان والصلاة والزكاة والصوم والحج." },
+      { id: "m11", category: "الحساب", age: "9-12", q: "كم يساوي 6 × 7؟", options: ["42", "36", "48", "49"], correctText: "42", hikmah: "6 × 7 = 42." },
+      { id: "m12", category: "الحساب", age: "9-12", q: "كم دقيقة في الساعة الواحدة؟", options: ["60", "100", "30", "24"], correctText: "60", hikmah: "الساعة 60 دقيقة، والدقيقة 60 ثانية." },
+      { id: "m13", category: "العلوم", age: "9-12", q: "كم عدد أرجل الحشرة؟", options: ["6", "8", "4", "10"], correctText: "6", hikmah: "للحشرات ست أرجل، مثل النملة والنحلة." },
+      { id: "m14", category: "الجغرافيا", age: "9-12", q: "ما أكبر قارة في العالم؟", options: ["آسيا", "أفريقيا", "أوروبا", "أستراليا"], correctText: "آسيا", hikmah: "آسيا أكبر القارات مساحةً وسكاناً." },
+      { id: "m15", category: "قصص الأنبياء", age: "9-12", q: "من النبي الذي بنى السفينة بأمر الله؟", options: ["نوح عليه السلام", "يونس عليه السلام", "هود عليه السلام", "صالح عليه السلام"], correctText: "نوح عليه السلام", hikmah: "قال تعالى: ﴿وَاصْنَعِ الْفُلْكَ بِأَعْيُنِنَا وَوَحْيِنَا﴾ (هود: 37)." },
+      { id: "m16", category: "اللغة الإنجليزية", age: "9-12", q: "ما معنى كلمة Teacher؟", options: ["معلّم", "طبيب", "طالب", "مهندس"], correctText: "معلّم", hikmah: "Teacher معلّم، و Student طالب." },
+      { id: "t11", category: "الحساب", age: "13-16", q: "كم يساوي 2 أُس 5؟", options: ["32", "10", "25", "64"], correctText: "32", hikmah: "2 × 2 × 2 × 2 × 2 = 32." },
+      { id: "t12", category: "العلوم", age: "13-16", q: "ما سرعة الضوء في الفراغ تقريباً؟", options: ["300,000 كم/ث", "300 كم/ث", "3,000 كم/ث", "30 كم/ث"], correctText: "300,000 كم/ث", hikmah: "يقطع الضوء نحو 300 ألف كيلومتر في الثانية." },
+      { id: "t13", category: "الجغرافيا", age: "13-16", q: "ما عاصمة اليابان؟", options: ["طوكيو", "بكين", "سيول", "بانكوك"], correctText: "طوكيو", hikmah: "طوكيو عاصمة اليابان، وبكين عاصمة الصين." },
+      { id: "t14", category: "العلوم والحضارة", age: "13-16", q: "من مؤلف كتاب «القانون في الطب»؟", options: ["ابن سينا", "الرازي", "ابن رشد", "الزهراوي"], correctText: "ابن سينا", hikmah: "ظل كتاب ابن سينا مرجعاً في الطب قروناً طويلة." },
+      { id: "t15", category: "السيرة النبوية", age: "13-16", q: "في أي سنة ميلادية تقريباً كانت الهجرة النبوية؟", options: ["622م", "570م", "632م", "610م"], correctText: "622م", hikmah: "هاجر النبي ﷺ إلى المدينة سنة 622م، وبها بدأ التقويم الهجري." },
+      { id: "gn6", category: "تحدي العباقرة", age: "all", q: "أكمل المتتابعة: ( 1 ، 4 ، 9 ، 16 ، ... )؟", options: ["25", "20", "24", "32"], correctText: "25", hikmah: "هذه مربعات الأعداد: 5 × 5 = 25." },
+      { id: "qr7", category: "روضة القرآن الكريم", age: "all", q: "كم عدد سور القرآن الكريم؟", options: ["114 سورة", "110 سور", "120 سورة", "99 سورة"], correctText: "114 سورة", hikmah: "القرآن الكريم 114 سورة، أولها الفاتحة وآخرها الناس." },
+      { id: "qr8", category: "روضة القرآن الكريم", age: "all", q: "ما أطول سورة في القرآن الكريم؟", options: ["سورة البقرة", "سورة آل عمران", "سورة النساء", "سورة الكهف"], correctText: "سورة البقرة", hikmah: "سورة البقرة أطول السور، وفيها آية الكرسي." }
     ];
 
     const QURAN_OASIS_VERSES = [
@@ -1164,7 +1189,50 @@
       return audioCtx;
     }
 
+    // قراءة النص بصوت الجهاز (عربي واضح وبطيء قليلاً)
+    function speakText(text) {
+      try {
+        if (!audioEnabled || !('speechSynthesis' in window) || !text) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(String(text).replace(/[«»﴿﴾()]/g, ' '));
+        u.lang = 'ar-SA';
+        const voice = window.speechSynthesis.getVoices().find(v => v.lang && v.lang.toLowerCase().startsWith('ar'));
+        if (voice) u.voice = voice;
+        u.rate = 0.85;
+        u.volume = 1;
+        window.speechSynthesis.speak(u);
+      } catch (e) {}
+    }
+    function speakCurrentQuestion() {
+      if (currentQuizObj) speakText(currentQuizObj.q + ' . ' + currentQuizObj.shuffledOpts.join(' ، أو '));
+    }
+
+    function playMelody(notes, wave, vol) {
+      const ctx = getAudioCtx();
+      if (!ctx) return;
+      let t = ctx.currentTime;
+      notes.forEach(([freq, dur]) => {
+        const o = ctx.createOscillator();
+        const g = ctx.createGain();
+        o.type = wave;
+        o.frequency.setValueAtTime(freq, t);
+        g.gain.setValueAtTime(vol, t);
+        g.gain.exponentialRampToValueAtTime(0.001, t + dur);
+        o.connect(g); g.connect(ctx.destination);
+        o.start(t); o.stop(t + dur);
+        t += dur * 0.9;
+      });
+    }
+
     function playSfx(type) {
+      if (audioEnabled && type === 'cheer') {
+        try { playMelody([[523.25, 0.12], [659.25, 0.12], [783.99, 0.12], [1046.5, 0.35]], 'triangle', 0.16); } catch (e) {}
+        return;
+      }
+      if (audioEnabled && type === 'wrong') {
+        try { playMelody([[392, 0.18], [311.13, 0.18], [233.08, 0.4]], 'square', 0.07); } catch (e) {}
+        return;
+      }
       if (!audioEnabled) return;
       try {
         const ctx = getAudioCtx();
@@ -1762,12 +1830,16 @@
         if (agePool.length > 0) pool = agePool;
       }
 
-      // تجنّب تكرار الأسئلة الأخيرة قدر الإمكان
-      const fresh = pool.filter(q => !recentQuizIds.includes(q.id));
-      const pickFrom = fresh.length ? fresh : pool;
-      const raw = pickFrom[Math.floor(Math.random() * pickFrom.length)];
+      // لا يتكرر أي سؤال حتى تُعرض كل أسئلة المجموعة مرة واحدة
+      let fresh = pool.filter(q => !recentQuizIds.includes(q.id));
+      if (!fresh.length) {
+        const lastId = recentQuizIds[recentQuizIds.length - 1];
+        for (const q of pool) { const i = recentQuizIds.indexOf(q.id); if (i >= 0) recentQuizIds.splice(i, 1); }
+        fresh = pool.filter(q => q.id !== lastId);
+        if (!fresh.length) fresh = pool;
+      }
+      const raw = fresh[Math.floor(Math.random() * fresh.length)];
       recentQuizIds.push(raw.id);
-      while (recentQuizIds.length > Math.max(1, Math.floor(pool.length * 0.7))) recentQuizIds.shift();
       const uniqueOpts = Array.from(new Set(raw.options));
       const shuffledOpts = shuffleSafe(uniqueOpts);
       const correctIdx = shuffledOpts.indexOf(raw.correctText);
@@ -1777,6 +1849,7 @@
       document.getElementById('quizModalBadge').textContent =
         isStageClearBonus ? `🎉 سؤال إتمام المرحلة • ${raw.category}` : `📜 محطة الحكمة • ${raw.category}`;
       document.getElementById('quizModalQuestion').textContent = raw.q;
+      speakText(raw.q + ' . ' + shuffledOpts.join(' ، أو '));
 
       const optsWrap = document.getElementById('quizModalOptions');
       optsWrap.innerHTML = '';
@@ -1803,22 +1876,29 @@
       const isRight = selectedIdx === currentQuizObj.correctIdx;
       stageQuizTotal++;
       if (isRight) stageQuizRight++;
+      let penalty = 0;
       if (isRight) {
         clickedBtn.className = 'w-full p-3.5 rounded-xl bg-emerald-600/40 border-2 border-emerald-400 text-emerald-200 font-extrabold text-sm text-right';
         appState.stars += 30;
         appState.coins += 15;
         stageScore += 30;
-        playSfx('victory');
+        playSfx('cheer');
+        const cheers = ['أحسنت يا بطل!', 'ممتاز! إجابة صحيحة', 'رائع! أنت ذكي', 'ما شاء الله، أحسنت'];
+        speakText(cheers[Math.floor(Math.random() * cheers.length)]);
       } else {
         clickedBtn.className = 'w-full p-3.5 rounded-xl bg-rose-600/40 border-2 border-rose-400 text-rose-200 font-bold text-sm text-right';
         allBtns[currentQuizObj.correctIdx].className = 'w-full p-3.5 rounded-xl bg-emerald-600/40 border-2 border-emerald-400 text-emerald-200 font-extrabold text-sm text-right';
-        playSfx('hit');
+        penalty = Math.min(10, appState.stars);
+        appState.stars -= penalty;
+        stageScore = Math.max(0, stageScore - 10);
+        playSfx('wrong');
+        speakText('حاول مرة أخرى. الإجابة الصحيحة هي ' + currentQuizObj.correctText);
       }
 
       const hikmahEl = document.getElementById('quizModalHikmah');
       hikmahEl.innerHTML = `
         <div class="font-extrabold text-amber-300 mb-1">
-          ${isRight ? '✅ أحسنت يا بطل! إجابة صحيحة (+30 نجمة و +15 عملة)' : '💡 الإجابة الصحيحة: ' + escapeHtml(currentQuizObj.correctText)}
+          ${isRight ? '✅ أحسنت يا بطل! إجابة صحيحة (+30 نجمة و +15 عملة)' : '❌ إجابة خاطئة (−' + penalty + ' نجمة) • 💡 الإجابة الصحيحة: ' + escapeHtml(currentQuizObj.correctText)}
         </div>
         <div>${escapeHtml(currentQuizObj.hikmah)}</div>
       `;
