@@ -1804,6 +1804,7 @@
       document.getElementById('quizModalBadge').textContent =
         isStageClearBonus ? `🎉 سؤال إتمام المرحلة • ${raw.category}` : `📜 محطة الحكمة • ${raw.category}`;
       document.getElementById('quizModalQuestion').textContent = raw.q;
+      speakText(raw.q + ' . ' + shuffledOpts.join(' ، أو '));
 
       const optsWrap = document.getElementById('quizModalOptions');
       optsWrap.innerHTML = '';
@@ -1830,22 +1831,29 @@
       const isRight = selectedIdx === currentQuizObj.correctIdx;
       stageQuizTotal++;
       if (isRight) stageQuizRight++;
+      let penalty = 0;
       if (isRight) {
         clickedBtn.className = 'w-full p-3.5 rounded-xl bg-emerald-600/40 border-2 border-emerald-400 text-emerald-200 font-extrabold text-sm text-right';
         appState.stars += 30;
         appState.coins += 15;
         stageScore += 30;
-        playSfx('victory');
+        playSfx('cheer');
+        const cheers = ['أحسنت يا بطل!', 'ممتاز! إجابة صحيحة', 'رائع! أنت ذكي', 'ما شاء الله، أحسنت'];
+        speakText(cheers[Math.floor(Math.random() * cheers.length)]);
       } else {
         clickedBtn.className = 'w-full p-3.5 rounded-xl bg-rose-600/40 border-2 border-rose-400 text-rose-200 font-bold text-sm text-right';
         allBtns[currentQuizObj.correctIdx].className = 'w-full p-3.5 rounded-xl bg-emerald-600/40 border-2 border-emerald-400 text-emerald-200 font-extrabold text-sm text-right';
-        playSfx('hit');
+        penalty = Math.min(10, appState.stars);
+        appState.stars -= penalty;
+        stageScore = Math.max(0, stageScore - 10);
+        playSfx('wrong');
+        speakText('حاول مرة أخرى. الإجابة الصحيحة هي ' + currentQuizObj.correctText);
       }
 
       const hikmahEl = document.getElementById('quizModalHikmah');
       hikmahEl.innerHTML = `
         <div class="font-extrabold text-amber-300 mb-1">
-          ${isRight ? '✅ أحسنت يا بطل! إجابة صحيحة (+30 نجمة و +15 عملة)' : '💡 الإجابة الصحيحة: ' + escapeHtml(currentQuizObj.correctText)}
+          ${isRight ? '✅ أحسنت يا بطل! إجابة صحيحة (+30 نجمة و +15 عملة)' : '❌ إجابة خاطئة (−' + penalty + ' نجمة) • 💡 الإجابة الصحيحة: ' + escapeHtml(currentQuizObj.correctText)}
         </div>
         <div>${escapeHtml(currentQuizObj.hikmah)}</div>
       `;
