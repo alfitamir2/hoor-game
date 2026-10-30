@@ -1785,12 +1785,16 @@
         if (agePool.length > 0) pool = agePool;
       }
 
-      // تجنّب تكرار الأسئلة الأخيرة قدر الإمكان
-      const fresh = pool.filter(q => !recentQuizIds.includes(q.id));
-      const pickFrom = fresh.length ? fresh : pool;
-      const raw = pickFrom[Math.floor(Math.random() * pickFrom.length)];
+      // لا يتكرر أي سؤال حتى تُعرض كل أسئلة المجموعة مرة واحدة
+      let fresh = pool.filter(q => !recentQuizIds.includes(q.id));
+      if (!fresh.length) {
+        const lastId = recentQuizIds[recentQuizIds.length - 1];
+        for (const q of pool) { const i = recentQuizIds.indexOf(q.id); if (i >= 0) recentQuizIds.splice(i, 1); }
+        fresh = pool.filter(q => q.id !== lastId);
+        if (!fresh.length) fresh = pool;
+      }
+      const raw = fresh[Math.floor(Math.random() * fresh.length)];
       recentQuizIds.push(raw.id);
-      while (recentQuizIds.length > Math.max(1, Math.floor(pool.length * 0.7))) recentQuizIds.shift();
       const uniqueOpts = Array.from(new Set(raw.options));
       const shuffledOpts = shuffleSafe(uniqueOpts);
       const correctIdx = shuffledOpts.indexOf(raw.correctText);
