@@ -1425,11 +1425,21 @@
     function showStageResult(won) {
       const stg = getActiveStageObj();
       const el = document.getElementById('stageResultOverlay');
-      document.getElementById('stageResultIcon').textContent = won ? (stg.id === 22 ? '👑' : '🏆') : '💪';
-      document.getElementById('stageResultTitle').textContent = won ? `أحسنت! أتممت ${stg.name}` : 'انتهت القلوب… لا بأس!';
-      document.getElementById('stageResultText').textContent = won
-        ? 'هزمت الزعيم وجمعت المكافأة. جاهز للمرحلة التالية؟'
-        : 'كل بطل يتعلم من المحاولة. جرّب مرة أخرى وستكون أقوى!';
+      const isFinale = won && stg.id === 20;
+      const ratio = stageQuizTotal ? stageQuizRight / stageQuizTotal : 1;
+      const medal = !won ? '' : ratio >= 0.9 ? '⭐⭐⭐' : ratio >= 0.6 ? '⭐⭐' : '⭐';
+      document.getElementById('stageResultIcon').textContent = won ? (isFinale || stg.id === 22 ? '👑' : '🏆') : '💪';
+      document.getElementById('stageResultTitle').textContent = isFinale
+        ? `👑 تتويج البطل ${appState.heroName || ''}! أتممت العوالم كلها`
+        : won ? `أحسنت! أتممت ${stg.name} ${medal}` : 'انتهت القلوب… لا بأس!';
+      document.getElementById('stageResultText').textContent = isFinale
+        ? 'ما شاء الله! أنهيت المراحل العشرين كلها ونلت تاج الأبطال. جرّب الآن تحدي العباقرة وروضة القرآن.'
+        : won
+          ? (ratio >= 0.9 ? 'إجابات رائعة! أنت نجم المعرفة.' : 'هزمت الزعيم وجمعت المكافأة. جاهز للمرحلة التالية؟')
+          : 'كل بطل يتعلم من المحاولة. جرّب مرة أخرى وستكون أقوى!';
+      if (isFinale && !appState.finaleCrowned) { appState.finaleCrowned = true; appState.crowns += 1; saveAppState(); updateSideHUD(); }
+      if (won) { playSfx('cheer'); speakText(isFinale ? 'مبروك! لقد تُوِّجت بطلاً، أحسنت' : 'أحسنت! أتممت المرحلة'); }
+      else speakText('لا بأس، حاول مرة أخرى، أنت تستطيع');
       const acc = stageQuizTotal ? Math.round((stageQuizRight / stageQuizTotal) * 100) + '%' : '—';
       document.getElementById('stageResultStats').innerHTML = [
         ['النقاط', stageScore], ['الأسئلة', `${stageQuizRight} / ${stageQuizTotal}`], ['الدقة', acc]
