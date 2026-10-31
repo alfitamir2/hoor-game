@@ -18,10 +18,10 @@
     draw(pool, history, random = Math.random) {
       if (!pool.length) return null;
       const validIds = new Set(pool.map(q => q.id));
-      let seen = (history.seen || []).filter(id => validIds.has(id));
+      let seen = [...(history.seen || [])];
       let fresh = pool.filter(q => !seen.includes(q.id));
       if (!fresh.length) {
-        seen = [];
+        seen = seen.filter(id => !validIds.has(id));
         fresh = pool.filter(q => q.id !== history.last);
         if (!fresh.length) fresh = pool;
       }

@@ -5,7 +5,7 @@ export function GameApp(): React.JSX.Element {
     <div className="w-full h-screen bg-[#0F172A] overflow-hidden flex flex-col" dir="rtl">
       <iframe
         src="/Hoor-Plays-Learns-Android.html"
-        title="لعبة حور: العب وتعلّم - 22 مرحلة"
+        title="لعبة حور: العب وتعلّم - 26 مرحلة"
         className="w-full h-full border-0"
         sandbox="allow-scripts allow-same-origin allow-forms"
         referrerPolicy="no-referrer"
