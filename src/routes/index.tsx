@@ -7,9 +7,9 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "حور تلعب و تتعلم — لعبة صيد الدجاج التعليمية" },
-      { name: "description", content: "حور تلعب وتتعلم: مغامرة تعليمية للأطفال عبر ٢٢ مرحلة، مع أسئلة للتدريب وروضة القرآن وحفظ التقدم." },
+      { name: "description", content: "حور تلعب وتتعلم: ٢٦ مرحلة و٤٠٠ سؤال موزعة حسب العمر، مع بابا وماما وروضة القرآن وحفظ التقدم." },
       { property: "og:title", content: "حور تلعب و تتعلم — لعبة صيد الدجاج التعليمية" },
-      { property: "og:description", content: "حور تلعب وتتعلم: مغامرة تعليمية للأطفال عبر ٢٢ مرحلة، مع أسئلة للتدريب وروضة القرآن وحفظ التقدم." },
+      { property: "og:description", content: "حور تلعب وتتعلم: ٢٦ مرحلة و٤٠٠ سؤال موزعة حسب العمر، مع بابا وماما وروضة القرآن وحفظ التقدم." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

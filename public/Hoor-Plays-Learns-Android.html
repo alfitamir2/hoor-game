@@ -7,7 +7,7 @@
   <meta name="referrer" content="no-referrer" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://server8.mp3quran.net; connect-src 'self';" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
-  <title>لعبة حور: العب وتعلّم | النسخة الاحترافية الكاملة (22 مرحلة)</title>
+  <title>لعبة حور: العب وتعلّم | النسخة الاحترافية الكاملة (26 مرحلة)</title>
 
   <!-- خطوط عربية حديثة وواضحة: Cairo, Tajawal, Amiri -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -354,7 +354,7 @@
           لعبة حور: العب وتعلّم
         </h1>
         <p class="text-slate-300 text-sm md:text-base mt-1 max-w-xl">
-          مغامرات أركيد فضائية وتعليمية ممتعة في ٢٢ مرحلة، مع روضة أصحاب القرآن الكريم وتحدي العباقرة!
+          مغامرات أركيد فضائية وتعليمية ممتعة في ٢٦ مرحلة، مع روضة أصحاب القرآن الكريم وتحدي العباقرة!
         </p>
       </div>
 
@@ -387,9 +387,10 @@
 
             <label class="block text-xs font-bold text-amber-300 mb-1">الفئة العمرية ومستوى الأسئلة:</label>
             <select id="portalAgeTier" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-600 text-white font-bold focus:outline-none focus:border-amber-400">
-              <option value="5-8">🌱 5 - 8 سنوات (مستوى البراعم)</option>
-              <option value="9-12" selected>🚀 9 - 12 سنة (مستوى المستكشفين)</option>
-              <option value="13-16">⚡ 13 - 16 سنة (مستوى الطليعة والعباقرة)</option>
+              <option value="under_8">🌱 أقل من ٨ سنوات — البراعم</option>
+              <option value="8_to_15" selected>🚀 ٨ إلى ١٥ سنة — المستكشفون</option>
+              <option value="16_plus">⚡ ١٦ سنة فأكثر — الشباب</option>
+              <option value="parents">👨‍👩‍👧 بابا وماما</option>
             </select>
           </div>
 
@@ -517,7 +518,7 @@
         <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-4 flex flex-col gap-3">
           <div class="flex items-center justify-between border-b border-slate-800 pb-3">
             <div>
-              <span id="sideStageBadge" class="text-xs font-extrabold text-emerald-400">المرحلة 1 من 22</span>
+              <span id="sideStageBadge" class="text-xs font-extrabold text-emerald-400">المرحلة 1 من 26</span>
               <h3 id="sideStageTitle" class="text-base font-extrabold text-white mt-0.5">المزرعة الخضراء الهادئة</h3>
             </div>
             <div id="sideStageIcon" class="text-3xl">🌾</div>
@@ -558,7 +559,7 @@
             </button>
             <button onclick="switchMainView('map', document.querySelectorAll('.nav-tab')[1])"
               class="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold text-xs border border-slate-600 transition">
-              تغيير المرحلة (1 - 22)
+              تغيير المرحلة (1 - 26)
             </button>
           </div>
 
@@ -626,13 +627,13 @@
       <div class="bg-slate-900/90 border border-slate-700 rounded-3xl p-5">
         <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
           <div>
-            <h2 class="text-xl font-extrabold text-white">خريطة المراحل التفاعلية (٢٢)</h2>
+            <h2 class="text-xl font-extrabold text-white">خريطة المراحل التفاعلية (٢٦)</h2>
             <p class="text-xs text-slate-400 mt-0.5">اختر أي مرحلة للبدء فوراً — المراحل 21 و 22 مفتوحة دائماً للوصول السريع!</p>
           </div>
           <!-- فلاتر الفرز السريعة -->
           <div class="flex flex-wrap gap-2">
-            <button onclick="renderStagesMap('all')" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold">الكل (22)</button>
-            <button onclick="renderStagesMap('basic')" class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold">المراحل الأساسية (1-20)</button>
+            <button onclick="renderStagesMap('all')" class="px-3.5 py-1.5 rounded-xl bg-emerald-600 text-white text-xs font-bold">الكل (26)</button>
+            <button onclick="renderStagesMap('basic')" class="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-bold">المراحل الأساسية (1-20، 23-26)</button>
             <button onclick="renderStagesMap('genius')" class="px-3.5 py-1.5 rounded-xl bg-purple-600/80 hover:bg-purple-600 text-white text-xs font-bold">🧠 تحدي العباقرة (21)</button>
             <button onclick="renderStagesMap('quran')" class="px-3.5 py-1.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-extrabold">📖 روضة القرآن (22)</button>
           </div>
@@ -789,7 +790,10 @@
   <!-- =====================================================================
        6. المحرك البرمجي الشامل (Game Engine, 22 Stages, Verified Bank, Sync)
        ===================================================================== -->
+  <script src="/question-bank.js"></script>
+  <script src="/arcade-rules.js"></script>
   <script>
+    const RULES = window.HoorRules;
     /*************************************************************************
      * أ. قاعدة بيانات الـ 22 مرحلة الكاملة (22 Progressive Stages + Special 21 & 22)
      *************************************************************************/
@@ -838,186 +842,17 @@
         world: 'روضة الفردوس والقرآن', icon: '📖', enemyEmoji: '🌟', bossEmoji: '🕊️',
         bossTitle: 'طائر النور والبركة 🕊️✨',
         bg1: '#064E3B', bg2: '#022C22', waves: 4, speed: 2.0
-      }
+      },
+      { id: 23, type: 'basic', name: 'حديقة الاكتشاف', world: 'رحلة المعرفة', icon: '🌿', enemyEmoji: '🦋', bossEmoji: '🦉', bg1: '#064E3B', bg2: '#022C22', waves: 5, speed: 3.15 },
+      { id: 24, type: 'basic', name: 'جزر الحكمة', world: 'رحلة المعرفة', icon: '🏝️', enemyEmoji: '🐦', bossEmoji: '🐙', bg1: '#0C4A6E', bg2: '#082F49', waves: 5, speed: 3.2 },
+      { id: 25, type: 'basic', name: 'مرصد النجوم', world: 'رحلة المعرفة', icon: '🔭', enemyEmoji: '🛸', bossEmoji: '🤖', bg1: '#312E81', bg2: '#1E1B4B', waves: 6, speed: 3.25 },
+      { id: 26, type: 'basic', name: 'قمة المعرفة العائلية', world: 'رحلة المعرفة', icon: '🏆', enemyEmoji: '🌟', bossEmoji: '👑', bg1: '#064E3B', bg2: '#022C22', waves: 6, speed: 3.3 }
     ];
 
     /*************************************************************************
      * ب. بنك الأسئلة المحقق 100% (Zero-Error Verified Question Bank)
      *************************************************************************/
-    const QUESTION_BANK = [
-      // 1. أسئلة روضة أصحاب القرآن الكريم وخاصته (تظهر في المرحلة 22 وبنك المراجعة)
-      {
-        id: 'qr1', category: 'روضة القرآن الكريم', age: 'all',
-        q: 'ما هي السورة المباركة التي تُسمى «السبع المثاني» و«أم الكتاب» ولا تصح الصلاة إلا بها؟',
-        options: ['سورة الفاتحة', 'سورة البقرة', 'سورة الإخلاص', 'سورة يس'],
-        correctText: 'سورة الفاتحة',
-        hikmah: 'قال رسول الله ﷺ عن سورة الفاتحة: «هي السبعُ المثاني والقرآنُ العظيمُ الذي أوتيتُه» (رواه البخاري).'
-      },
-      {
-        id: 'qr2', category: 'روضة القرآن الكريم', age: 'all',
-        q: 'ما هي السورة التي تتكون من ثلاثين آية، وتشفع لصاحبها حتى يُغفر له وتنجيه من عذاب القبر؟',
-        options: ['سورة الملك (تبارك)', 'سورة القلم', 'سورة النبأ', 'سورة الرحمن'],
-        correctText: 'سورة الملك (تبارك)',
-        hikmah: 'قال النبي ﷺ: «إنَّ سورةً من القرآنِ ثلاثون آيةً شفعت لرجلٍ حتى غُفِرَ له، وهي سورةُ تباركَ الذي بيدِه الملكُ» (رواه أبو داود والترمذي وحسنه).'
-      },
-      {
-        id: 'qr3', category: 'روضة القرآن الكريم', age: 'all',
-        q: 'ماذا يُلبس والدا حافظ القرآن العامل به يوم القيامة تكريماً لهما؟',
-        options: ['تاج الوقار ضوؤه أحسن من ضوء الشمس', 'خاتم من فضة', 'وشاح من حرير فقط', 'درع من حديد'],
-        correctText: 'تاج الوقار ضوؤه أحسن من ضوء الشمس',
-        hikmah: 'يُلبس والدا صاحب القرآن تاج الوقار يوم القيامة، ويُقال لحافظ القرآن: «اقرأ وارتقِ ورتِّل كما كنت ترتل في الدنيا، فإن منزلتك عند آخر آية تقرؤها».'
-      },
-      {
-        id: 'qr4', category: 'روضة القرآن الكريم', age: 'all',
-        q: 'بكم حسنة يثاب المسلم على قراءة الحرف الواحد من كتاب الله عز وجل؟',
-        options: ['حسنة والحسنة بعشر أمثالها', 'حسنة واحدة فقط', 'ثلاث حسنات', 'خمس حسنات'],
-        correctText: 'حسنة والحسنة بعشر أمثالها',
-        hikmah: 'قال رسول الله ﷺ: «من قرأ حرفاً من كتاب الله فله به حسنة، والحسنة بعشر أمثالها، لا أقول الم حرف، ولكن ألف حرف ولام حرف وميم حرف» (رواه الترمذي).'
-      },
-      {
-        id: 'qr5', category: 'روضة القرآن الكريم', age: 'all',
-        q: 'ما هو الأدب الواجب على المسلم عند البدء بتلاوة القرآن الكريم؟',
-        options: ['الاستعاذة بالله من الشيطان الرجيم والبسملة والتدبر', 'القراءة السريعة دون فهم', 'الضحك أثناء القراءة', 'مقاطعة القارئ'],
-        correctText: 'الاستعاذة بالله من الشيطان الرجيم والبسملة والتدبر',
-        hikmah: 'قال الله تعالى: ﴿فَإِذَا قَرَأْتَ الْقُرْآنَ فَاسْتَعِذْ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ﴾ (النحل: 98).'
-      },
-      {
-        id: 'qr6', category: 'روضة القرآن الكريم', age: 'all',
-        q: 'ما هي أعظم آية في القرآن الكريم؟',
-        options: ['آية الكرسي (البقرة: 255)', 'آية الدَّين', 'آية النور', 'آخر آية من سورة الكهف'],
-        correctText: 'آية الكرسي (البقرة: 255)',
-        hikmah: 'آية الكرسي ﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ﴾ هي أعظم آية في كتاب الله كما ثبت في صحيح مسلم.'
-      },
-
-      // 2. أسئلة تحدي العباقرة وأذكياء المستقبل (تظهر في المرحلة 21 وبنك المراجعة)
-      {
-        id: 'gn1', category: 'تحدي العباقرة', age: 'all',
-        q: 'أكمل المتتابعة الحسابية الذكية التالية: ( 2 ، 4 ، 8 ، 16 ، ... )؟',
-        options: ['32', '24', '20', '30'],
-        correctText: '32',
-        hikmah: 'كل رقم في هذه المتتابعة الهندسية يتضاعف (× 2): 16 × 2 = 32!'
-      },
-      {
-        id: 'gn2', category: 'تحدي العباقرة', age: 'all',
-        q: 'أكمل المتتابعة المنطقية: ( 3 ، 7 ، 11 ، 15 ، ... )؟',
-        options: ['19', '18', '20', '21'],
-        correctText: '19',
-        hikmah: 'الفرق الثابت بين كل رقمين هو (+4): 15 + 4 = 19.'
-      },
-      {
-        id: 'gn3', category: 'تحدي العباقرة', age: 'all',
-        q: 'سفينة فضائية تقطع 60 كيلومتراً في الساعة، فكم كيلومتراً تقطع في نصف ساعة (30 دقيقة)؟',
-        options: ['30 كيلومتراً', '20 كيلومتراً', '45 كيلومتراً', '60 كيلومتراً'],
-        correctText: '30 كيلومتراً',
-        hikmah: 'نصف المسافة في نصف الزمن: 60 ÷ 2 = 30 كيلومتراً.'
-      },
-      {
-        id: 'gn4', category: 'تحدي العباقرة', age: 'all',
-        q: 'إذا كان لديك 3 صناديق، وفي كل صندوق 4 علب، وفي كل علبة عملتان ذهبيتان، فكم إجمالي العملات؟',
-        options: ['24 عملة ذهبية', '12 عملة ذهبية', '18 عملة ذهبية', '9 عملات ذهبية'],
-        correctText: '24 عملة ذهبية',
-        hikmah: 'حاصل الضرب: 3 × 4 × 2 = 24 عملة ذهبية!'
-      },
-      {
-        id: 'gn5', category: 'تحدي العباقرة', age: 'all',
-        q: 'لغز سرعة البديهة: شيء يمشي بلا أرجل ويبكي بلا عيون، فما هو؟',
-        options: ['السحاب (الغيم)', 'الرياح', 'الساعة', 'القمر'],
-        correctText: 'السحاب (الغيم)',
-        hikmah: 'السحاب يتحرك في السماء بقدرة الله وينزل منه المطر كأنه يبكي فيحيي الأرض بعد موتها.'
-      },
-
-      // 3. أسئلة العقيدة والسيرة والعلوم العامة (المراحل 1 - 20)
-      {
-        id: 'bs1', category: 'العقيدة والأركان', age: '5-8',
-        q: 'ما هو الركن الأول من أركان الإسلام الخمسة؟',
-        options: ['شهادة أن لا إله إلا الله وأن محمداً رسول الله', 'إقام الصلاة', 'إيتاء الزكاة', 'صوم رمضان'],
-        correctText: 'شهادة أن لا إله إلا الله وأن محمداً رسول الله',
-        hikmah: 'الشهادتان هما مفتاح الدخول في الإسلام وأساس التوحيد.'
-      },
-      {
-        id: 'bs2', category: 'قصص الأنبياء', age: '9-12',
-        q: 'من هو النبي الكريم الذي جعله الله ناراً برداً وسلاماً عليه حين ألقاه قومه فيها؟',
-        options: ['إبراهيم الخليل عليه السلام', 'موسى كليم الله عليه السلام', 'عيسى عليه السلام', 'سليمان عليه السلام'],
-        correctText: 'إبراهيم الخليل عليه السلام',
-        hikmah: 'قال الله تعالى: ﴿قُلْنَا يَا نَارُ كُونِي بَرْدًا وَسَلَامًا عَلَىٰ إِبْرَاهِيمَ﴾ (الأنبياء: 69).'
-      },
-      {
-        id: 'bs3', category: 'السيرة النبوية', age: '9-12',
-        q: 'في أي شهر هجري فُرض الصيام وأُنزل القرآن الكريم؟',
-        options: ['شهر رمضان المبارك', 'شهر رجب', 'شهر شعبان', 'شهر ذي الحجة'],
-        correctText: 'شهر رمضان المبارك',
-        hikmah: 'قال الله تعالى: ﴿شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ هُدًى لِّلنَّاسِ﴾ (البقرة: 185).'
-      },
-      {
-        id: 'bs4', category: 'العلوم والحضارة', age: '13-16',
-        q: 'من هو العالم المسلم رائد علم البصريات الذي شرح كيفية إبصار العين للضوء؟',
-        options: ['الحسن بن الهيثم', 'عباس بن فرناس', 'الإدريسي', 'البيروني'],
-        correctText: 'الحسن بن الهيثم',
-        hikmah: 'الحسن بن الهيثم ألّف كتاب (المناظر) وأثبت أن العين تبصر بانعكاس الضوء من الأجسام إليها.'
-      },
-      {
-        id: 'bs5', category: 'الأخلاق والآداب', age: '5-8',
-        q: 'ما هي تحية أهل الإسلام في الدنيا وتحية أهل الجنة؟',
-        options: ['السلام عليكم ورحمة الله وبركاته', 'صباح الخير فقط', 'مرحباً بكم', 'أهلاً وسهلاً'],
-        correctText: 'السلام عليكم ورحمة الله وبركاته',
-        hikmah: 'إفشاء السلام ينشر المحبة والمودة بين المسلمين ويزيد الحسنات.'
-      },
-
-      // 4. أسئلة مُراجَعة لكل فئة عمرية
-      { id: "k1", category: "الحساب", age: "5-8", q: "كم يساوي 3 + 4؟", options: ["7", "6", "8", "5"], correctText: "7", hikmah: "نعدّ 3 ثم نضيف 4: 4، 5، 6، 7." },
-      { id: "k2", category: "الحساب", age: "5-8", q: "كم يساوي 10 − 3؟", options: ["7", "6", "8", "13"], correctText: "7", hikmah: "إذا أخذنا 3 من 10 يبقى 7." },
-      { id: "k3", category: "الحساب", age: "5-8", q: "أي رقم أكبر؟", options: ["9", "6", "4", "2"], correctText: "9", hikmah: "العدد 9 هو الأكبر بين هذه الأعداد." },
-      { id: "k4", category: "العلوم", age: "5-8", q: "كم عدد أرجل العنكبوت؟", options: ["8", "6", "4", "10"], correctText: "8", hikmah: "للعنكبوت ثماني أرجل، أما الحشرات فلها ست." },
-      { id: "k5", category: "العلوم", age: "5-8", q: "ما الكوكب الذي نعيش عليه؟", options: ["الأرض", "المريخ", "القمر", "الشمس"], correctText: "الأرض", hikmah: "الأرض كوكبنا، والقمر يدور حولها، والشمس نجم." },
-      { id: "k6", category: "العلوم", age: "5-8", q: "ماذا تحتاج النبتة لتنمو؟", options: ["الماء والضوء", "الحلوى", "الظلام فقط", "البلاستيك"], correctText: "الماء والضوء", hikmah: "النبتة تحتاج الماء وضوء الشمس والهواء والتربة." },
-      { id: "k7", category: "العقيدة والأركان", age: "5-8", q: "كم عدد الصلوات المفروضة في اليوم؟", options: ["خمس صلوات", "ثلاث صلوات", "سبع صلوات", "صلاتان"], correctText: "خمس صلوات", hikmah: "الفجر والظهر والعصر والمغرب والعشاء." },
-      { id: "k8", category: "الأخلاق والآداب", age: "5-8", q: "ماذا نقول قبل أن نأكل؟", options: ["بسم الله", "الحمد لله", "مع السلامة", "صباح الخير"], correctText: "بسم الله", hikmah: "نسمّي الله قبل الطعام، ونحمده بعد أن ننتهي." },
-      { id: "k9", category: "اللغة الإنجليزية", age: "5-8", q: "ما معنى كلمة Cat؟", options: ["قطة", "كلب", "بقرة", "سمكة"], correctText: "قطة", hikmah: "Cat تعني قطة، و Dog تعني كلب." },
-      { id: "k10", category: "الألوان والأشكال", age: "5-8", q: "كم ضلعاً للمثلث؟", options: ["3", "4", "5", "6"], correctText: "3", hikmah: "المثلث له 3 أضلاع و3 زوايا." },
-      { id: "m1", category: "الحساب", age: "9-12", q: "كم يساوي 7 × 8؟", options: ["56", "54", "48", "64"], correctText: "56", hikmah: "7 × 8 = 56. حيلة: 5، 6، 7، 8 ← 56 = 7 × 8." },
-      { id: "m2", category: "الحساب", age: "9-12", q: "كم يساوي 81 ÷ 9؟", options: ["9", "8", "7", "11"], correctText: "9", hikmah: "لأن 9 × 9 = 81." },
-      { id: "m3", category: "الحساب", age: "9-12", q: "ما نصف العدد 50؟", options: ["25", "20", "30", "15"], correctText: "25", hikmah: "50 ÷ 2 = 25." },
-      { id: "m4", category: "العلوم", age: "9-12", q: "ما أكبر كوكب في المجموعة الشمسية؟", options: ["المشتري", "زحل", "الأرض", "المريخ"], correctText: "المشتري", hikmah: "المشتري أكبر الكواكب، ويتسع لأكثر من ألف كرة بحجم الأرض." },
-      { id: "m5", category: "العلوم", age: "9-12", q: "عند كم درجة مئوية يغلي الماء عند مستوى سطح البحر؟", options: ["100", "50", "0", "200"], correctText: "100", hikmah: "يغلي الماء عند 100 درجة مئوية ويتجمد عند 0." },
-      { id: "m6", category: "العلوم", age: "9-12", q: "ما الغاز الذي نتنفسه لنعيش؟", options: ["الأكسجين", "ثاني أكسيد الكربون", "الهيليوم", "النيتروجين فقط"], correctText: "الأكسجين", hikmah: "نتنفس الأكسجين ونُخرج ثاني أكسيد الكربون، والنباتات تفعل العكس في النهار." },
-      { id: "m7", category: "الجغرافيا", age: "9-12", q: "ما أكبر محيط على سطح الأرض؟", options: ["المحيط الهادئ", "المحيط الأطلسي", "المحيط الهندي", "المحيط المتجمد الشمالي"], correctText: "المحيط الهادئ", hikmah: "المحيط الهادئ هو الأكبر والأعمق." },
-      { id: "m8", category: "السيرة النبوية", age: "9-12", q: "في أي مدينة وُلد النبي محمد ﷺ؟", options: ["مكة المكرمة", "المدينة المنورة", "الطائف", "القدس"], correctText: "مكة المكرمة", hikmah: "وُلد النبي ﷺ في مكة، ثم هاجر إلى المدينة المنورة." },
-      { id: "m9", category: "اللغة الإنجليزية", age: "9-12", q: "ما معنى كلمة Library؟", options: ["مكتبة", "مختبر", "مطبخ", "ملعب"], correctText: "مكتبة", hikmah: "Library مكان الكتب، و Laboratory هو المختبر." },
-      { id: "m10", category: "العقيدة والأركان", age: "9-12", q: "كم عدد أركان الإيمان؟", options: ["ستة", "خمسة", "أربعة", "سبعة"], correctText: "ستة", hikmah: "الإيمان بالله وملائكته وكتبه ورسله واليوم الآخر والقدر خيره وشره." },
-      { id: "t1", category: "الحساب", age: "13-16", q: "ما قيمة س إذا كان 2س + 6 = 20؟", options: ["7", "8", "13", "6"], correctText: "7", hikmah: "2س = 20 − 6 = 14، إذن س = 7." },
-      { id: "t2", category: "الحساب", age: "13-16", q: "كم يساوي 15% من 200؟", options: ["30", "15", "20", "45"], correctText: "30", hikmah: "200 × 15 ÷ 100 = 30." },
-      { id: "t3", category: "الحساب", age: "13-16", q: "ما الجذر التربيعي للعدد 144؟", options: ["12", "14", "11", "72"], correctText: "12", hikmah: "لأن 12 × 12 = 144." },
-      { id: "t4", category: "العلوم", age: "13-16", q: "ما الرمز الكيميائي للماء؟", options: ["H₂O", "CO₂", "O₂", "NaCl"], correctText: "H₂O", hikmah: "جزيء الماء: ذرتا هيدروجين وذرة أكسجين." },
-      { id: "t5", category: "العلوم", age: "13-16", q: "ما العضية المسؤولة عن إنتاج الطاقة في الخلية؟", options: ["الميتوكوندريا", "النواة", "الجدار الخلوي", "الفجوة"], correctText: "الميتوكوندريا", hikmah: "الميتوكوندريا تنتج معظم طاقة الخلية، والنواة تحمل المادة الوراثية." },
-      { id: "t6", category: "العلوم", age: "13-16", q: "ما أقرب كوكب إلى الشمس؟", options: ["عطارد", "الزهرة", "الأرض", "المريخ"], correctText: "عطارد", hikmah: "عطارد أقرب الكواكب إلى الشمس وأصغرها." },
-      { id: "t7", category: "العلوم والحضارة", age: "13-16", q: "من العالم المسلم الذي يُنسب إليه تأسيس علم الجبر؟", options: ["الخوارزمي", "ابن سينا", "ابن بطوطة", "الفارابي"], correctText: "الخوارزمي", hikmah: "ألّف الخوارزمي كتاب «المختصر في حساب الجبر والمقابلة»، ومنه جاءت كلمة Algebra." },
-      { id: "t8", category: "الجغرافيا", age: "13-16", q: "ما أطول نهر في قارة أفريقيا؟", options: ["نهر النيل", "نهر الكونغو", "نهر النيجر", "نهر الزمبيزي"], correctText: "نهر النيل", hikmah: "النيل أطول أنهار أفريقيا ويمر بعدة دول منها مصر والسودان." },
-      { id: "t9", category: "السيرة النبوية", age: "13-16", q: "ما الغزوة التي كانت أول معركة كبرى في الإسلام؟", options: ["غزوة بدر", "غزوة أحد", "غزوة الخندق", "غزوة تبوك"], correctText: "غزوة بدر", hikmah: "وقعت غزوة بدر في رمضان من السنة الثانية للهجرة." },
-      { id: "t10", category: "اللغة الإنجليزية", age: "13-16", q: "ما الماضي من الفعل go؟", options: ["went", "goed", "gone", "going"], correctText: "went", hikmah: "go فعل شاذ: go ← went ← gone." },
-
-      // 5. أسئلة جديدة (بلا تكرار)
-      { id: "k11", category: "الحساب", age: "5-8", q: "كم يساوي 5 + 5؟", options: ["10", "9", "11", "55"], correctText: "10", hikmah: "خمسة وخمسة تساوي عشرة، مثل أصابع اليدين." },
-      { id: "k12", category: "الحساب", age: "5-8", q: "كم يساوي 9 − 4؟", options: ["5", "4", "6", "13"], correctText: "5", hikmah: "من 9 نرجع 4 خطوات: 8، 7، 6، 5." },
-      { id: "k13", category: "العلوم", age: "5-8", q: "أي حيوان يعطينا الحليب؟", options: ["البقرة", "الأسد", "السمكة", "النملة"], correctText: "البقرة", hikmah: "البقرة والماعز والناقة تعطينا الحليب المفيد." },
-      { id: "k14", category: "الألوان والأشكال", age: "5-8", q: "ما لون السماء في يوم صافٍ؟", options: ["أزرق", "أحمر", "أخضر", "أسود"], correctText: "أزرق", hikmah: "تبدو السماء زرقاء في النهار الصافي." },
-      { id: "k15", category: "الأخلاق والآداب", age: "5-8", q: "ماذا نقول بعد أن ننتهي من الطعام؟", options: ["الحمد لله", "بسم الله", "تصبح على خير", "إلى اللقاء"], correctText: "الحمد لله", hikmah: "نحمد الله على نعمة الطعام بعد الأكل." },
-      { id: "k16", category: "اللغة الإنجليزية", age: "5-8", q: "ما معنى كلمة Apple؟", options: ["تفاحة", "موزة", "برتقالة", "عنب"], correctText: "تفاحة", hikmah: "Apple تفاحة، و Banana موزة." },
-      { id: "k17", category: "العقيدة والأركان", age: "5-8", q: "كم عدد أركان الإسلام؟", options: ["خمسة", "ستة", "ثلاثة", "عشرة"], correctText: "خمسة", hikmah: "الشهادتان والصلاة والزكاة والصوم والحج." },
-      { id: "m11", category: "الحساب", age: "9-12", q: "كم يساوي 6 × 7؟", options: ["42", "36", "48", "49"], correctText: "42", hikmah: "6 × 7 = 42." },
-      { id: "m12", category: "الحساب", age: "9-12", q: "كم دقيقة في الساعة الواحدة؟", options: ["60", "100", "30", "24"], correctText: "60", hikmah: "الساعة 60 دقيقة، والدقيقة 60 ثانية." },
-      { id: "m13", category: "العلوم", age: "9-12", q: "كم عدد أرجل الحشرة؟", options: ["6", "8", "4", "10"], correctText: "6", hikmah: "للحشرات ست أرجل، مثل النملة والنحلة." },
-      { id: "m14", category: "الجغرافيا", age: "9-12", q: "ما أكبر قارة في العالم؟", options: ["آسيا", "أفريقيا", "أوروبا", "أستراليا"], correctText: "آسيا", hikmah: "آسيا أكبر القارات مساحةً وسكاناً." },
-      { id: "m15", category: "قصص الأنبياء", age: "9-12", q: "من النبي الذي بنى السفينة بأمر الله؟", options: ["نوح عليه السلام", "يونس عليه السلام", "هود عليه السلام", "صالح عليه السلام"], correctText: "نوح عليه السلام", hikmah: "قال تعالى: ﴿وَاصْنَعِ الْفُلْكَ بِأَعْيُنِنَا وَوَحْيِنَا﴾ (هود: 37)." },
-      { id: "m16", category: "اللغة الإنجليزية", age: "9-12", q: "ما معنى كلمة Teacher؟", options: ["معلّم", "طبيب", "طالب", "مهندس"], correctText: "معلّم", hikmah: "Teacher معلّم، و Student طالب." },
-      { id: "t11", category: "الحساب", age: "13-16", q: "كم يساوي 2 أُس 5؟", options: ["32", "10", "25", "64"], correctText: "32", hikmah: "2 × 2 × 2 × 2 × 2 = 32." },
-      { id: "t12", category: "العلوم", age: "13-16", q: "ما سرعة الضوء في الفراغ تقريباً؟", options: ["300,000 كم/ث", "300 كم/ث", "3,000 كم/ث", "30 كم/ث"], correctText: "300,000 كم/ث", hikmah: "يقطع الضوء نحو 300 ألف كيلومتر في الثانية." },
-      { id: "t13", category: "الجغرافيا", age: "13-16", q: "ما عاصمة اليابان؟", options: ["طوكيو", "بكين", "سيول", "بانكوك"], correctText: "طوكيو", hikmah: "طوكيو عاصمة اليابان، وبكين عاصمة الصين." },
-      { id: "t14", category: "العلوم والحضارة", age: "13-16", q: "من مؤلف كتاب «القانون في الطب»؟", options: ["ابن سينا", "الرازي", "ابن رشد", "الزهراوي"], correctText: "ابن سينا", hikmah: "ظل كتاب ابن سينا مرجعاً في الطب قروناً طويلة." },
-      { id: "t15", category: "السيرة النبوية", age: "13-16", q: "في أي سنة ميلادية تقريباً كانت الهجرة النبوية؟", options: ["622م", "570م", "632م", "610م"], correctText: "622م", hikmah: "هاجر النبي ﷺ إلى المدينة سنة 622م، وبها بدأ التقويم الهجري." },
-      { id: "gn6", category: "تحدي العباقرة", age: "all", q: "أكمل المتتابعة: ( 1 ، 4 ، 9 ، 16 ، ... )؟", options: ["25", "20", "24", "32"], correctText: "25", hikmah: "هذه مربعات الأعداد: 5 × 5 = 25." },
-      { id: "qr7", category: "روضة القرآن الكريم", age: "all", q: "كم عدد سور القرآن الكريم؟", options: ["114 سورة", "110 سور", "120 سورة", "99 سورة"], correctText: "114 سورة", hikmah: "القرآن الكريم 114 سورة، أولها الفاتحة وآخرها الناس." },
-      { id: "qr8", category: "روضة القرآن الكريم", age: "all", q: "ما أطول سورة في القرآن الكريم؟", options: ["سورة البقرة", "سورة آل عمران", "سورة النساء", "سورة الكهف"], correctText: "سورة البقرة", hikmah: "سورة البقرة أطول السور، وفيها آية الكرسي." }
-    ];
+    const QUESTION_BANK = window.HoorQuestionBank.questions;
 
     const QURAN_OASIS_VERSES = [
       {
@@ -1054,7 +889,11 @@
       heroName: 'حور',
       email: '',
       avatar: '',
-      ageTier: '9-12',
+      ageTier: '8_to_15',
+      ageProgress: {},
+      completedStageIds: [],
+      quizHistory: {},
+      audioEnabled: true,
       stars: 120,
       coins: 50,
       crowns: 1,
@@ -1082,7 +921,21 @@
       if (!candidate || typeof candidate !== 'object' || Array.isArray(candidate)) return appState;
       const next = { ...appState };
       if (typeof candidate.heroName === 'string') next.heroName = candidate.heroName.trim().slice(0, 32) || 'حور';
-      if (['5-8', '9-12', '13-16'].includes(candidate.ageTier)) next.ageTier = candidate.ageTier;
+      next.ageTier = RULES.normalizeAge(candidate.ageTier);
+      next.finaleCrowned = candidate.finaleCrowned === true;
+      next.audioEnabled = candidate.audioEnabled !== false;
+      const cleanProgress = value => ({ unlockedStage: Math.max(1, Math.min(20, Number(value?.unlockedStage) || 1)), currentStageId: ALL_STAGES.some(s => s.id === value?.currentStageId) ? value.currentStageId : 1, completedStageIds: Array.isArray(value?.completedStageIds) ? value.completedStageIds.filter(id => ALL_STAGES.some(s => s.id === id)) : [] });
+      next.completedStageIds = cleanProgress(candidate).completedStageIds;
+      next.ageProgress = {};
+      for (const age of RULES.ages) if (candidate.ageProgress?.[age]) next.ageProgress[age] = cleanProgress(candidate.ageProgress[age]);
+      next.quizHistory = {};
+      if (candidate.quizHistory && typeof candidate.quizHistory === 'object') {
+        for (const [key, history] of Object.entries(candidate.quizHistory).slice(0, 100)) {
+          if (!history || !Array.isArray(history.seen)) continue;
+          const validIds = new Set(QUESTION_BANK.map(q => q.id));
+          next.quizHistory[key.slice(0, 100)] = { seen: history.seen.filter(id => validIds.has(id)).slice(-400), last: validIds.has(history.last) ? history.last : null };
+        }
+      }
       for (const key of ['stars', 'coins', 'crowns', 'unlockedStage', 'currentStageId', 'weaponLevel']) {
         if (Number.isSafeInteger(candidate[key]) && candidate[key] >= 0 && candidate[key] <= 1000000) next[key] = candidate[key];
       }
@@ -1095,6 +948,8 @@
           badge: typeof row.badge === 'string' ? row.badge.slice(0, 80) : '🚀 بطل النور'
         }));
       }
+      next.currentStageId = ALL_STAGES.some(s => s.id === next.currentStageId) ? next.currentStageId : 1;
+      next.unlockedStage = Math.max(1, Math.min(20, next.unlockedStage));
       return next;
     }
 
@@ -1141,7 +996,7 @@
       document.getElementById('statStars').textContent = appState.stars;
       document.getElementById('statCoins').textContent = appState.coins;
       document.getElementById('statCrowns').textContent = appState.crowns;
-      document.getElementById('headerHeroInfo').textContent = `البطل: ${appState.heroName} (${appState.ageTier} سنة)`;
+      document.getElementById('headerHeroInfo').textContent = `البطل: ${appState.heroName} ${RULES.labels[appState.ageTier]}`;
       const av = document.getElementById('headerAvatar');
       if (appState.avatar) {
         av.src = appState.avatar;
@@ -1156,9 +1011,25 @@
       const nameVal = document.getElementById('portalHeroName').value.trim() || 'حور';
       const ageVal = document.getElementById('portalAgeTier').value;
       appState.heroName = nameVal;
-      appState.ageTier = ageVal;
+      if (ageVal !== appState.ageTier) {
+        appState.ageProgress[appState.ageTier] = { unlockedStage: appState.unlockedStage, currentStageId: appState.currentStageId, completedStageIds: appState.completedStageIds };
+        const progress = appState.ageProgress[ageVal] || { unlockedStage: 1, currentStageId: 1, completedStageIds: [] };
+        Object.assign(appState, progress);
+      }
+      appState.ageTier = RULES.normalizeAge(ageVal);
+      renderStagesMap('all');
+      renderCatalogSection('الكل');
+      initStageWave(1);
+      playerLives = 3;
+      stageCleared = false;
+      stageScore = 0;
+      stageQuizRight = 0; stageQuizTotal = 0;
+      bullets = []; drops = [];
+      closeStageResult();
+      updateSideHUD();
       saveAppState();
       document.getElementById('portalOverlay').classList.add('hidden');
+      window.speechSynthesis?.cancel();
       playSfx('powerup');
     }
 
@@ -1282,12 +1153,16 @@
 
     function toggleAudio() {
       audioEnabled = !audioEnabled;
+      appState.audioEnabled = audioEnabled;
+      saveAppState();
+      if (!audioEnabled) { window.speechSynthesis?.cancel(); document.getElementById('quranAudioPlayer').pause(); }
       document.getElementById('soundBtn').textContent = audioEnabled ? '🔊 الصوت' : '🔇 صامت';
     }
 
     function toggleQuranAudio(customUrl) {
       const player = document.getElementById('quranAudioPlayer');
       const statusEl = document.getElementById('miniQuranStatus');
+      if (!audioEnabled) return;
       const selectedUrl = customUrl || document.getElementById('miniSurahSelect').value;
 
       if (!player.paused && (!customUrl || player.src === customUrl)) {
@@ -1318,7 +1193,8 @@
     let stageCleared = false;
     let stageQuizRight = 0;
     let stageQuizTotal = 0;
-    const recentQuizIds = [];
+    let rescuePending = false;
+    let quizResumeActive = false;
     let shieldTicks = 0;
     let shootCooldown = 0;
 
@@ -1336,7 +1212,7 @@
     let activeBoss = null;
 
     function getActiveStageObj() {
-      return ALL_STAGES.find(s => s.id === appState.currentStageId) || ALL_STAGES[0];
+      return RULES.stageConfig(ALL_STAGES.find(s => s.id === appState.currentStageId) || ALL_STAGES[0], appState.ageTier);
     }
 
     function initStageWave(waveNum) {
@@ -1351,7 +1227,7 @@
       if (waveNum >= stg.waves) {
         const isQuranStage = stg.id === 22;
         const isGeniusStage = stg.id === 21;
-        const maxHp = isQuranStage ? 18 : isGeniusStage ? 35 : 15 + stg.id * 2;
+        const maxHp = stg.bossHp;
         activeBoss = {
           x: 310, y: 70, w: 120, h: 90,
           vx: Math.min(4, 1.6 + stg.speed * 0.6),
@@ -1387,12 +1263,12 @@
 
     function updateSideHUD() {
       const stg = getActiveStageObj();
-      document.getElementById('sideStageBadge').textContent = `المرحلة ${stg.id} من 22 • ${stg.world}`;
+      document.getElementById('sideStageBadge').textContent = `المرحلة ${stg.id} من 26 • ${stg.world}`;
       document.getElementById('sideStageTitle').textContent = stg.name;
       document.getElementById('sideStageIcon').textContent = stg.icon;
       document.getElementById('hudWave').textContent = `${currentWave} / ${stg.waves}`;
       document.getElementById('hudWeapon').textContent = `⚡ المستوى ${appState.weaponLevel}`;
-      document.getElementById('hudLives').textContent = '❤️'.repeat(Math.max(1, playerLives));
+      document.getElementById('hudLives').textContent = playerLives > 0 ? '❤️'.repeat(playerLives) : '♡ لا قلوب';
       document.getElementById('hudScore').textContent = stageScore;
 
       if (stg.id === 22) {
@@ -1408,13 +1284,13 @@
     }
 
     function loseLife() {
-      if (shieldTicks > 0) return;
+      if (shieldTicks > 0 || playerLives <= 0 || stageCleared || quizOpen) return;
       playerLives--;
       shieldTicks = 90; // حماية قصيرة بعد الإصابة حتى لا يخسر الطفل عدة قلوب دفعة واحدة
       playSfx('hit');
       if (playerLives <= 0) {
         playerLives = 0;
-        appState.weaponLevel = 1;
+        rescuePending = true;
         gameActive = false;
         document.getElementById('btnStartPause').textContent = 'حاول مرة أخرى';
         saveAppState();
@@ -1425,7 +1301,7 @@
     function showStageResult(won) {
       const stg = getActiveStageObj();
       const el = document.getElementById('stageResultOverlay');
-      const isFinale = won && stg.id === 20;
+      const isFinale = won && stg.id === 26;
       const ratio = stageQuizTotal ? stageQuizRight / stageQuizTotal : 1;
       const medal = !won ? '' : ratio >= 0.9 ? '⭐⭐⭐' : ratio >= 0.6 ? '⭐⭐' : '⭐';
       document.getElementById('stageResultIcon').textContent = won ? (isFinale || stg.id === 22 ? '👑' : '🏆') : '💪';
@@ -1433,7 +1309,7 @@
         ? `👑 تتويج البطل ${appState.heroName || ''}! أتممت العوالم كلها`
         : won ? `أحسنت! أتممت ${stg.name} ${medal}` : 'انتهت القلوب… لا بأس!';
       document.getElementById('stageResultText').textContent = isFinale
-        ? 'ما شاء الله! أنهيت المراحل العشرين كلها ونلت تاج الأبطال. جرّب الآن تحدي العباقرة وروضة القرآن.'
+        ? 'ما شاء الله! أنهيت مراحل رحلة المعرفة كلها ونلت تاج الأبطال. جرّب الآن تحدي العباقرة وروضة القرآن.'
         : won
           ? (ratio >= 0.9 ? 'إجابات رائعة! أنت نجم المعرفة.' : 'هزمت الزعيم وجمعت المكافأة. جاهز للمرحلة التالية؟')
           : 'كل بطل يتعلم من المحاولة. جرّب مرة أخرى وستكون أقوى!';
@@ -1445,8 +1321,11 @@
         ['النقاط', stageScore], ['الأسئلة', `${stageQuizRight} / ${stageQuizTotal}`], ['الدقة', acc]
       ].map(([k, v]) => `<div class="p-2 rounded-xl bg-slate-800 border border-slate-700"><div class="text-slate-400 text-xs">${k}</div><div class="font-extrabold text-amber-300">${v}</div></div>`).join('');
       const primary = document.getElementById('stageResultPrimary');
-      const nextId = stg.id + 1;
-      if (won && stg.id < 20) {
+      const nextId = RULES.sequence[RULES.sequence.indexOf(stg.id) + 1];
+      if (!won) {
+        primary.textContent = '💡 أجب بشكل صحيح لاستعادة قلب';
+        primary.onclick = () => { closeStageResult(); openQuizStation(false, true); };
+      } else if (nextId) {
         primary.textContent = `▶️ المرحلة ${nextId}`;
         primary.onclick = () => launchStageDirect(nextId);
       } else {
@@ -1469,7 +1348,7 @@
       if (!stg) return;
 
       // المراحل 21 و 22 مفتوحة دائماً للوصول السريع كما في المتطلبات
-      if (stageId <= 20 && stageId > appState.unlockedStage) {
+      if (!RULES.unlocked(stageId, appState)) {
         alert(`🔒 هذه المرحلة تفتح بعد إتمام المرحلة ${stageId - 1}، أو يمكنك تجربة المرحلتين 21 و 22 فوراً!`);
         return;
       }
@@ -1477,6 +1356,12 @@
       appState.currentStageId = stageId;
       stageScore = 0;
       playerLives = 3;
+      rescuePending = false;
+      quizOpen = false;
+      currentQuizObj = null;
+      window.speechSynthesis?.cancel();
+      document.getElementById('quizModalOverlay').classList.add('hidden');
+      document.getElementById('quizModalOverlay').classList.remove('flex');
       stageCleared = false;
       stageQuizRight = 0;
       stageQuizTotal = 0;
@@ -1493,7 +1378,8 @@
 
     function toggleGameLoop() {
       if (quizOpen) return;
-      if (playerLives <= 0 || stageCleared) { launchStageDirect(appState.currentStageId); return; }
+      if (playerLives <= 0) { showStageResult(false); return; }
+      if (stageCleared) { launchStageDirect(appState.currentStageId); return; }
       gameActive = !gameActive;
       document.getElementById('btnStartPause').textContent = gameActive ? 'إيقاف مؤقت' : 'استئناف المعركة';
       if (gameActive) playSfx('powerup');
@@ -1680,6 +1566,7 @@
                 if (stg.id === appState.unlockedStage && appState.unlockedStage < 20) {
                   appState.unlockedStage++;
                 }
+                if (!appState.completedStageIds.includes(stg.id)) appState.completedStageIds.push(stg.id);
                 stageCleared = true;
                 activeBoss = null;
                 document.getElementById('bossHealthBarWrap').classList.add('hidden');
@@ -1823,41 +1710,30 @@
       return copy;
     }
 
-    function openQuizStation(isStageClearBonus = false) {
+    function openQuizStation(isStageClearBonus = false, isRescue = false) {
       if (quizOpen) return;
+      if (playerLives <= 0) isRescue = true;
+      quizResumeActive = gameActive;
       quizOpen = true;
       gameActive = false;
       document.getElementById('btnStartPause').textContent = 'استئناف المعركة';
 
       const stg = getActiveStageObj();
-      let pool = QUESTION_BANK;
-      if (stg.id === 22) {
-        pool = QUESTION_BANK.filter(q => q.category === 'روضة القرآن الكريم');
-      } else if (stg.id === 21) {
-        pool = QUESTION_BANK.filter(q => q.category === 'تحدي العباقرة');
-      } else {
-        const agePool = QUESTION_BANK.filter(q => q.age === appState.ageTier || (q.age === 'all' && q.category !== 'تحدي العباقرة' && q.category !== 'روضة القرآن الكريم'));
-        if (agePool.length > 0) pool = agePool;
-      }
-
-      // لا يتكرر أي سؤال حتى تُعرض كل أسئلة المجموعة مرة واحدة
-      let fresh = pool.filter(q => !recentQuizIds.includes(q.id));
-      if (!fresh.length) {
-        const lastId = recentQuizIds[recentQuizIds.length - 1];
-        for (const q of pool) { const i = recentQuizIds.indexOf(q.id); if (i >= 0) recentQuizIds.splice(i, 1); }
-        fresh = pool.filter(q => q.id !== lastId);
-        if (!fresh.length) fresh = pool;
-      }
-      const raw = fresh[Math.floor(Math.random() * fresh.length)];
-      recentQuizIds.push(raw.id);
+      const pool = RULES.pool(QUESTION_BANK, appState.ageTier, isRescue ? 'basic' : stg.type);
+      const historyKey = appState.heroName + ':' + appState.ageTier;
+      const history = appState.quizHistory[historyKey] || { seen: [], last: null };
+      const raw = RULES.draw(pool, history);
+      if (!raw) { quizOpen = false; return; }
+      appState.quizHistory[historyKey] = history;
+      saveAppState();
       const uniqueOpts = Array.from(new Set(raw.options));
       const shuffledOpts = shuffleSafe(uniqueOpts);
       const correctIdx = shuffledOpts.indexOf(raw.correctText);
 
-      currentQuizObj = { ...raw, shuffledOpts, correctIdx, isStageClearBonus };
+      currentQuizObj = { ...raw, shuffledOpts, correctIdx, isStageClearBonus, isRescue };
 
       document.getElementById('quizModalBadge').textContent =
-        isStageClearBonus ? `🎉 سؤال إتمام المرحلة • ${raw.category}` : `📜 محطة الحكمة • ${raw.category}`;
+        isRescue ? `❤️ سؤال استعادة قلب • ${raw.category}` : isStageClearBonus ? `🎉 سؤال إتمام المرحلة • ${raw.category}` : `📜 محطة الحكمة • ${raw.category}`;
       document.getElementById('quizModalQuestion').textContent = raw.q;
       speakText(raw.q + ' . ' + shuffledOpts.join(' ، أو '));
 
@@ -1889,9 +1765,9 @@
       let penalty = 0;
       if (isRight) {
         clickedBtn.className = 'w-full p-3.5 rounded-xl bg-emerald-600/40 border-2 border-emerald-400 text-emerald-200 font-extrabold text-sm text-right';
-        appState.stars += 30;
-        appState.coins += 15;
-        stageScore += 30;
+        const reward = RULES.answer(appState.stars, stageScore, true);
+        appState.stars = reward.stars; appState.coins += reward.coins; stageScore = reward.score;
+        if (currentQuizObj.isRescue) { playerLives = RULES.rescue(playerLives, true); rescuePending = false; shieldTicks = 180; enemyProjectiles = []; }
         playSfx('cheer');
         const cheers = ['أحسنت يا بطل!', 'ممتاز! إجابة صحيحة', 'رائع! أنت ذكي', 'ما شاء الله، أحسنت'];
         speakText(cheers[Math.floor(Math.random() * cheers.length)]);
@@ -1899,8 +1775,8 @@
         clickedBtn.className = 'w-full p-3.5 rounded-xl bg-rose-600/40 border-2 border-rose-400 text-rose-200 font-bold text-sm text-right';
         allBtns[currentQuizObj.correctIdx].className = 'w-full p-3.5 rounded-xl bg-emerald-600/40 border-2 border-emerald-400 text-emerald-200 font-extrabold text-sm text-right';
         penalty = Math.min(10, appState.stars);
-        appState.stars -= penalty;
-        stageScore = Math.max(0, stageScore - 10);
+        const result = RULES.answer(appState.stars, stageScore, false);
+        appState.stars = result.stars; stageScore = result.score;
         playSfx('wrong');
         speakText('حاول مرة أخرى. الإجابة الصحيحة هي ' + currentQuizObj.correctText);
       }
@@ -1911,25 +1787,31 @@
           ${isRight ? '✅ أحسنت يا بطل! إجابة صحيحة (+30 نجمة و +15 عملة)' : '❌ إجابة خاطئة (−' + penalty + ' نجمة) • 💡 الإجابة الصحيحة: ' + escapeHtml(currentQuizObj.correctText)}
         </div>
         <div>${escapeHtml(currentQuizObj.hikmah)}</div>
+        <div>${currentQuizObj.sources.map(source => escapeHtml(source.citation)).join("<br>")}</div>
       `;
       hikmahEl.classList.remove('hidden');
+      document.getElementById('quizModalContinueBtn').textContent = currentQuizObj.isRescue ? (isRight ? '❤️ استعدت قلباً — متابعة المرحلة' : '💡 سؤال إنقاذ آخر') : 'متابعة المغامرة';
       document.getElementById('quizModalContinueBtn').classList.remove('hidden');
       saveAppState();
       updateSideHUD();
     }
 
     function closeQuizStation() {
+      if (!currentQuizObj?.answered) return;
+      window.speechSynthesis?.cancel();
+      const wasRescue = currentQuizObj.isRescue;
       document.getElementById('quizModalOverlay').classList.add('hidden');
       document.getElementById('quizModalOverlay').classList.remove('flex');
       quizOpen = false;
+      if (wasRescue && playerLives === 0) { openQuizStation(false, true); return; }
       if (stageCleared) {
         gameActive = false;
         document.getElementById('btnStartPause').textContent = 'العب مرة أخرى';
         showStageResult(true);
         return;
       }
-      gameActive = true;
-      document.getElementById('btnStartPause').textContent = 'إيقاف مؤقت';
+      gameActive = (wasRescue || quizResumeActive) && !document.getElementById('view-play').classList.contains('hidden');
+      document.getElementById('btnStartPause').textContent = gameActive ? 'إيقاف مؤقت' : 'استئناف المعركة';
     }
 
     /*************************************************************************
@@ -1982,10 +1864,11 @@
     function renderStagesMap(filterType) {
       const grid = document.getElementById('stagesMapGrid');
       grid.innerHTML = '';
-      const filtered = filterType === 'all' ? ALL_STAGES : ALL_STAGES.filter(s => s.type === filterType);
+      const stages = ALL_STAGES.map(s => RULES.stageConfig(s, appState.ageTier));
+      const filtered = filterType === 'all' ? stages : stages.filter(s => s.type === filterType);
 
       filtered.forEach(stg => {
-        const isUnlocked = stg.id >= 21 || stg.id <= appState.unlockedStage;
+        const isUnlocked = RULES.unlocked(stg.id, appState);
         const isSpecial22 = stg.id === 22;
         const isSpecial21 = stg.id === 21;
 
@@ -2049,7 +1932,8 @@
     }
 
     function renderCatalogSection(selectedCategory) {
-      const cats = ['الكل', ...Array.from(new Set(QUESTION_BANK.map(q => q.category)))];
+      const ageBank = QUESTION_BANK.filter(q => q.age === appState.ageTier);
+      const cats = ['الكل', ...Array.from(new Set(ageBank.map(q => q.category)))];
       const filterWrap = document.getElementById('catalogFilterBtns');
       filterWrap.innerHTML = '';
       cats.forEach(cat => {
@@ -2064,17 +1948,17 @@
 
       const grid = document.getElementById('catalogQuestionsGrid');
       grid.innerHTML = '';
-      const items = selectedCategory === 'الكل' ? QUESTION_BANK : QUESTION_BANK.filter(q => q.category === selectedCategory);
+      const items = selectedCategory === 'الكل' ? ageBank : ageBank.filter(q => q.category === selectedCategory);
       items.forEach(item => {
         const card = document.createElement('div');
         card.className = 'bg-slate-800/80 border border-slate-700 rounded-2xl p-4';
         card.innerHTML = `
           <span class="inline-block text-[11px] font-bold bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full mb-2">
-            ${item.category}
+            ${escapeHtml(item.category)}
           </span>
-          <h4 class="font-extrabold text-sm text-white mb-2">${item.q}</h4>
-          <div class="text-xs font-bold text-amber-300 mb-2">✅ الإجابة الصحيحة: ${item.correctText}</div>
-          <p class="text-xs text-slate-300 leading-relaxed">${item.hikmah}</p>
+          <h4 class="font-extrabold text-sm text-white mb-2">${escapeHtml(item.q)}</h4>
+          <div class="text-xs font-bold text-amber-300 mb-2">✅ الإجابة الصحيحة: ${escapeHtml(item.correctText)}</div>
+          <p class="text-xs text-slate-300 leading-relaxed">${escapeHtml(item.hikmah)}<br>${item.sources.map(source => escapeHtml(source.citation)).join("<br>")}</p>
         `;
         grid.appendChild(card);
       });
@@ -2102,13 +1986,20 @@
     /*************************************************************************
      * ط. التصدير الأوفلاين كملف HTML مفرد + النسخ الاحتياطي (Offline Bundle)
      *************************************************************************/
-    function downloadStandaloneOfflineGame() {
-      const fullHtml = '<!doctype html>\n' + document.documentElement.outerHTML;
+    async function downloadStandaloneOfflineGame() {
+      let fullHtml = '<!doctype html>\n' + document.documentElement.outerHTML;
+      try {
+        for (const name of ['question-bank.js', 'arcade-rules.js']) {
+          const response = await fetch('/' + name);
+          if (!response.ok) throw new Error('asset unavailable');
+          fullHtml = fullHtml.replace('<script src="/' + name + '"></script>', '<script>' + (await response.text()).replace(/<\/script/gi, '<\\/script') + '</script>');
+        }
+      } catch (e) { alert('تعذّر تجهيز الملف الآن؛ أعد المحاولة عند الاتصال.'); return; }
       const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'Hoor-Game-Offline-22-Stages.html';
+      a.download = 'Hoor-Game-Offline-26-Stages.html';
       a.click();
       URL.revokeObjectURL(url);
     }
@@ -2167,7 +2058,11 @@
 
     // التهيئة الفورية عند تشغيل التطبيق
     loadAppState();
+    audioEnabled = appState.audioEnabled;
+    document.getElementById('soundBtn').textContent = audioEnabled ? '🔊 الصوت' : '🔇 صامت';
     initStageWave(1);
+    document.addEventListener('visibilitychange', () => { if (document.hidden) { gameActive = false; saveAppState(); window.speechSynthesis?.cancel(); } });
+    window.addEventListener('pagehide', saveAppState);
     requestAnimationFrame(renderArcadeFrame);
     if (!navigator.onLine) updateNetworkStatus();
     let initialView = null;
