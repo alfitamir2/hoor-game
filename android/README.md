@@ -49,11 +49,11 @@ Optionally set `HOOR_RELEASE_CERT_SHA256` while running `npm run verify:release`
 ## Final checks
 
 ```sh
-npm ci
-npm test
-npm run lint
-npm run build
-npm run verify:release
+bun install --frozen-lockfile
+bun run test
+bun run lint
+bun run build
+bun run verify:release
 ```
 
 Complete Play Console Data safety, content rating, child-directed audience, privacy policy, and Families policy requirements before submission. These legal and publisher-account requirements must be reviewed by the publisher.
