@@ -1421,8 +1421,10 @@
         };
 
         document.getElementById('listeningRescueAyahTitle').textContent =
-          'سورة الأنفال — الآية ' + item.ayah + ' • ' + item.titleAr;
-        document.getElementById('listeningRescueAyahText').textContent = item.textAr;
+          'سورة ' + (item.surahNameAr || 'القرآن الكريم') + ' — الآية ' + item.ayah;
+        const ayahText = document.getElementById('listeningRescueAyahText');
+        ayahText.textContent = item.textAr || '';
+        ayahText.classList.toggle('hidden', !item.textAr);
         document.getElementById('listeningRescueToggle').textContent = '▶️ ابدأ الاستماع';
         status.textContent = 'اضغط «ابدأ الاستماع» لتشغيل التلاوة كاملة.';
         audio.onended = () => completeListeningRescue(sessionId);
