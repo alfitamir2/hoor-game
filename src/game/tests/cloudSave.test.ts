@@ -10,6 +10,7 @@ import {
   readSnapshot,
   resolveSnapshot,
   writeSnapshot,
+  shouldSkipPush,
 } from "../cloudSave";
 
 function memoryStorage(initial: Record<string, string> = {}): Storage {
@@ -71,6 +72,13 @@ describe("cloud save storage", () => {
     expect(accountSyncCacheKey("user-a")).not.toBe(accountSyncCacheKey("user-b"));
     expect(ACCOUNT_OWNER_KEY).toBe("hoor_game_owner_v1");
     expect(GAME_SAVED_AT_KEY).toBe("hoor_game_saved_at_v1");
+  });
+
+  it("does not trust a cached upload when a forced remote repair is needed", () => {
+    const snapshot = '{"hoor_game_architect_v3":"save"}';
+    expect(shouldSkipPush(snapshot, snapshot)).toBe(true);
+    expect(shouldSkipPush(snapshot, snapshot, true)).toBe(false);
+    expect(shouldSkipPush(null, snapshot)).toBe(false);
   });
 
   it("validates backup data and rejects malformed backups", () => {

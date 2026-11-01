@@ -78,3 +78,9 @@ export function parseBackup(value: string | null): { data: SaveSnapshot; savedAt
     return null;
   }
 }
+
+
+/** Skip only when the local snapshot is known to match the desired upload. */
+export function shouldSkipPush(cachedJson: string | null, snapshotJson: string, force = false): boolean {
+  return !force && cachedJson === snapshotJson;
+}
