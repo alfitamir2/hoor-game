@@ -7,11 +7,23 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 import { VitePWA } from "vite-plugin-pwa";
 
+// Public (publishable) backend config. The publish build may not receive .env, so fall back to
+// these safe public values; real env vars still take priority.
+const PUBLIC_BACKEND_URL = process.env.VITE_SUPABASE_URL || "https://dpounqurteryzhtrribk.supabase.co";
+const PUBLIC_BACKEND_KEY =
+  process.env.VITE_SUPABASE_PUBLISHABLE_KEY || "sb_publishable_dQsp8x7NKip0eDtYXgm9-g__g4SOzCr";
+const PUBLIC_BACKEND_ID = process.env.VITE_SUPABASE_PROJECT_ID || "dpounqurteryzhtrribk";
+
 export default defineConfig({
   tanstackStart: {
     server: { entry: "server" },
   },
   vite: {
+    define: {
+      "import.meta.env.VITE_SUPABASE_URL": JSON.stringify(PUBLIC_BACKEND_URL),
+      "import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY": JSON.stringify(PUBLIC_BACKEND_KEY),
+      "import.meta.env.VITE_SUPABASE_PROJECT_ID": JSON.stringify(PUBLIC_BACKEND_ID),
+    },
     plugins: [
       VitePWA({
         strategies: "generateSW",
