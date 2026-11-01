@@ -531,6 +531,17 @@
     }
   </style>
 
+
+  <style id="hoor-hybrid-icon-system">
+    .nav-svg { width: 20px; height: 20px; display: block; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+    .nav-label-icon { display: inline-flex; vertical-align: middle; margin-inline-end: .4rem; opacity: .88; }
+    .nav-tab { display: inline-flex; align-items: center; justify-content: center; gap: .35rem; }
+    .mobile-nav-tab { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .25rem; }
+    .mobile-nav-tab .nav-icon { display: grid; place-items: center; width: 34px; height: 30px; border-radius: 10px; }
+    .mobile-nav-tab .nav-svg { width: 19px; height: 19px; }
+    .mobile-nav-tab.active .nav-svg { stroke-width: 1.9; }
+  </style>
+
 </head>
 <body class="islamic-pattern min-h-screen flex flex-col">
   <div id="networkStatus" class="network-status rounded-full border border-amber-400/50 bg-slate-900/95 px-4 py-2 text-xs font-extrabold text-amber-200 shadow-xl" role="status" aria-live="polite">
@@ -678,38 +689,38 @@
   <nav id="desktopNav" class="bg-slate-900/60 border-b border-slate-800 px-4 py-2 overflow-x-auto" aria-label="التنقل الرئيسي">
     <div class="max-w-7xl mx-auto flex items-center gap-2">
       <button data-view="play" onclick="switchMainView('play', this)" class="nav-tab active px-4 py-2 rounded-xl text-xs md:text-sm font-extrabold bg-emerald-600 text-white whitespace-nowrap transition">
-        ساحة اللعب
+        <span class="nav-label-icon"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a4 4 0 0 1 3.8 5.2l-.8 2.5a2 2 0 0 1-3.2 1l-2.1-1.6H9.3l-2.1 1.6a2 2 0 0 1-3.2-1l-.8-2.5A4 4 0 0 1 7 8Z"/><path d="M8 11v4m-2-2h4m6-1h.01M18 14h.01"/></svg></span><span>ساحة اللعب</span>
       </button>
       <button data-view="map" onclick="switchMainView('map', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
-        خريطة المراحل
+        <span class="nav-label-icon"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15m6-12v15"/></svg></span><span>خريطة المراحل</span>
       </button>
       <button data-view="quran" onclick="switchMainView('quran', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-amber-300 hover:bg-slate-700 whitespace-nowrap transition">
-        روضة القرآن
+        <span class="nav-label-icon"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/><path d="M4 6h13m-9 4h8m-8 4h8"/></svg></span><span>روضة القرآن</span>
       </button>
       <button data-view="catalog" onclick="switchMainView('catalog', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
-        بنك التدريب
+        <span class="nav-label-icon"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v17H7.5A2.5 2.5 0 0 0 5 21.5v-17Z"/><path d="M5 6H3v16h14m-9-16h8m-8 4h8"/></svg></span><span>بنك التدريب</span>
       </button>
       <button data-view="leaderboard" onclick="switchMainView('leaderboard', this)" class="nav-tab px-4 py-2 rounded-xl text-xs md:text-sm font-bold bg-slate-800 text-slate-300 hover:text-white whitespace-nowrap transition">
-        الإنجازات والنسخ الاحتياطي
+        <span class="nav-label-icon"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0V4Z"/><path d="M8 6H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4m-4 0v5m-4 4h8m-6-4h4"/></svg></span><span>الإنجازات والنسخ الاحتياطي</span>
       </button>
     </div>
   </nav>
 
   <nav class="mobile-bottom-nav" aria-label="تنقل الهاتف">
     <button class="mobile-nav-tab" aria-current="page" data-view="play" onclick="switchMainView('play')" type="button">
-      <span class="nav-icon" aria-hidden="true">🎮</span><span>اللعب</span>
+      <span class="nav-icon" aria-hidden="true"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 8h10a4 4 0 0 1 3.8 5.2l-.8 2.5a2 2 0 0 1-3.2 1l-2.1-1.6H9.3l-2.1 1.6a2 2 0 0 1-3.2-1l-.8-2.5A4 4 0 0 1 7 8Z"/><path d="M8 11v4m-2-2h4m6-1h.01M18 14h.01"/></svg></span><span>اللعب</span>
     </button>
     <button class="mobile-nav-tab" data-view="map" onclick="switchMainView('map')" type="button">
-      <span class="nav-icon" aria-hidden="true">🗺️</span><span>المراحل</span>
+      <span class="nav-icon" aria-hidden="true"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 6 6-3 6 3 6-3v15l-6 3-6-3-6 3V6Z"/><path d="M9 3v15m6-12v15"/></svg></span><span>المراحل</span>
     </button>
     <button class="mobile-nav-tab" data-view="quran" onclick="switchMainView('quran')" type="button">
-      <span class="nav-icon" aria-hidden="true">📖</span><span>القرآن</span>
+      <span class="nav-icon" aria-hidden="true"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v17H6.5A2.5 2.5 0 0 0 4 22V5.5Z"/><path d="M4 6h13m-9 4h8m-8 4h8"/></svg></span><span>القرآن</span>
     </button>
     <button class="mobile-nav-tab" data-view="catalog" onclick="switchMainView('catalog')" type="button">
-      <span class="nav-icon" aria-hidden="true">📚</span><span>التدريب</span>
+      <span class="nav-icon" aria-hidden="true"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4.5A2.5 2.5 0 0 1 7.5 2H20v17H7.5A2.5 2.5 0 0 0 5 21.5v-17Z"/><path d="M5 6H3v16h14m-9-16h8m-8 4h8"/></svg></span><span>التدريب</span>
     </button>
     <button class="mobile-nav-tab" data-view="leaderboard" onclick="switchMainView('leaderboard')" type="button">
-      <span class="nav-icon" aria-hidden="true">🏆</span><span>إنجازاتي</span>
+      <span class="nav-icon" aria-hidden="true"><svg class="nav-svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0V4Z"/><path d="M8 6H4v2a4 4 0 0 0 4 4m8-6h4v2a4 4 0 0 1-4 4m-4 0v5m-4 4h8m-6-4h4"/></svg></span><span>إنجازاتي</span>
     </button>
   </nav>
 
