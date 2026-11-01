@@ -794,6 +794,15 @@
         <p id="listeningRescueAyahText" class="text-white text-lg leading-loose" dir="rtl" lang="ar"></p>
         <div id="listeningRescueReciter" class="text-xs text-slate-400 mt-3">القارئ: الشيخ ماهر المعيقلي — رواية حفص</div>
       </div>
+      <div class="mb-3">
+        <div class="flex items-center gap-2 text-xs text-slate-400" dir="ltr">
+          <span id="listeningRescueCurrentTime">0:00</span>
+          <progress id="listeningRescueProgress" max="100" value="0" class="flex-1 h-2 accent-emerald-400" aria-label="تقدم التلاوة"></progress>
+          <span id="listeningRescueDuration">--:--</span>
+        </div>
+        <label for="listeningRescueVolume" class="block text-xs text-slate-400 mt-3 mb-1">مستوى صوت التلاوة</label>
+        <input id="listeningRescueVolume" type="range" min="0" max="1" step="0.05" value="1" oninput="setRescueAudioVolume(this.value)" class="w-full accent-emerald-400" aria-label="مستوى صوت التلاوة">
+      </div>
       <p id="listeningRescueStatus" class="text-sm text-emerald-200 mb-4" role="status" aria-live="polite">اضغط «ابدأ الاستماع» لتشغيل التلاوة.</p>
       <div class="flex flex-col sm:flex-row gap-2">
         <button id="listeningRescueToggle" type="button" onclick="toggleRescueAudio()" class="flex-1 py-3 rounded-xl bg-emerald-400 text-slate-950 font-extrabold">▶️ ابدأ الاستماع</button>
@@ -1356,10 +1365,8 @@
     }
 
     async function openListeningRescue() {
-      if (!rescuePending || playerLives > 0) {
-        openQuizStation(false, true);
-        return;
-      }
+      if (!rescuePending || playerLives > 0) return;
+      const requestId = ++rescueAudioSessionId;
       gameActive = false;
       stopArcadeFrame();
       window.speechSynthesis?.cancel();
@@ -1373,6 +1380,7 @@
 
       try {
         const catalog = await loadRescueAudioCatalog();
+        if (requestId !== rescueAudioSessionId || !overlay.classList.contains('flex')) return;
         const age = RULES.normalizeAge(appState.ageTier);
         const maxDuration = catalog.ageProfiles?.[age]?.maxDurationSeconds || 75;
         const eligible = (catalog.items || []).filter(item =>
@@ -1385,7 +1393,7 @@
         if (!eligible.length) throw new Error('لا توجد تلاوة مناسبة لهذا الملف العمري');
 
         const item = eligible[Math.floor(Math.random() * eligible.length)];
-        const sessionId = ++rescueAudioSessionId;
+        const sessionId = requestId;
         rescueAudioSession = { id: sessionId, item, started: false, completed: false };
         const audio = document.getElementById('rescueAudioPlayer');
         audio.pause();
@@ -1394,7 +1402,19 @@
         audio.removeAttribute('src');
         audio.load();
         audio.src = item.audioPath;
+        audio.volume = Number(document.getElementById('listeningRescueVolume').value || 1);
         audio.load();
+        audio.ontimeupdate = () => {
+          if (rescueAudioSession?.id !== sessionId) return;
+          const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+          document.getElementById('listeningRescueProgress').value = duration > 0 ? (audio.currentTime / duration) * 100 : 0;
+          document.getElementById('listeningRescueCurrentTime').textContent = formatRescueTime(audio.currentTime);
+          document.getElementById('listeningRescueDuration').textContent = duration > 0 ? formatRescueTime(duration) : '--:--';
+        };
+        audio.onloadedmetadata = () => {
+          if (rescueAudioSession?.id !== sessionId) return;
+          document.getElementById('listeningRescueDuration').textContent = formatRescueTime(audio.duration);
+        };
 
         document.getElementById('listeningRescueAyahTitle').textContent =
           'سورة الأنفال — الآية ' + item.ayah + ' • ' + item.titleAr;
@@ -1409,6 +1429,17 @@
       } catch (error) {
         fallbackToQuizRescue('تعذر تجهيز التلاوة الآن؛ يمكنك متابعة الإنقاذ بسؤال.');
       }
+    }
+
+    function formatRescueTime(seconds) {
+      if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
+      const whole = Math.floor(seconds);
+      return Math.floor(whole / 60) + ':' + String(whole % 60).padStart(2, '0');
+    }
+
+    function setRescueAudioVolume(value) {
+      const audio = document.getElementById('rescueAudioPlayer');
+      if (audio) audio.volume = Math.max(0, Math.min(1, Number(value)));
     }
 
     async function toggleRescueAudio() {
@@ -1450,6 +1481,7 @@
       const audio = document.getElementById('rescueAudioPlayer');
       if (!session || session.id !== sessionId || session.completed || !session.started || !audio.ended || playerLives !== 0 || !rescuePending) return;
       session.completed = true;
+      rescueAudioSessionId++;
       const restoredLives = RULES.rescue(playerLives, true);
       if (restoredLives !== 1) return;
       playerLives = restoredLives;
@@ -1486,6 +1518,7 @@
         audio.load();
       }
       rescueAudioSession = null;
+      rescueAudioSessionId++;
       const overlay = document.getElementById('listeningRescueOverlay');
       overlay.classList.add('hidden');
       overlay.classList.remove('flex');
@@ -2254,7 +2287,20 @@
     audioEnabled = appState.audioEnabled;
     document.getElementById('soundBtn').textContent = audioEnabled ? '🔊 الصوت' : '🔇 صامت';
     initStageWave(1);
-    document.addEventListener('visibilitychange', () => { if (document.hidden) { gameActive = false; stopArcadeFrame(); saveAppState(); window.speechSynthesis?.cancel(); } });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (rescueAudioSession) {
+          const rescueAudio = document.getElementById('rescueAudioPlayer');
+          rescueAudio?.pause();
+          document.getElementById('listeningRescueToggle').textContent = '▶️ متابعة الاستماع';
+          document.getElementById('listeningRescueStatus').textContent = 'توقفت التلاوة مؤقتاً عند مغادرة اللعبة. اضغط متابعة عند العودة.';
+        }
+        gameActive = false;
+        stopArcadeFrame();
+        saveAppState();
+        window.speechSynthesis?.cancel();
+      }
+    });
     window.addEventListener('pagehide', saveAppState);
     scheduleArcadeFrame();
     if (!navigator.onLine) updateNetworkStatus();
