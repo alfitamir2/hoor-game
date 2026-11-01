@@ -19,18 +19,20 @@ Related rule helper: `public/arcade-rules.js` exposes `rescue(lives, right)`, wh
 
 ## Proposed insertion point
 
-The safest initial integration point is the failure overlay's primary action in `showStageResult(false)`, not a rewrite of `loseLife()` or the question engine.
+The initial integration point is the failure overlay's primary action in `showStageResult(false)`; `loseLife()` and the question engine remain intact.
 
-Replace the current rescue-question entry action with a dedicated listening-rescue entry point. That flow should:
+The primary action now opens a dedicated listening-rescue modal. That flow:
 
-- preserve the current stage, wave, score, enemies/boss state, and player position;
-- pause the game loop and all combat timers;
-- select an approved complete ayah or approved hadith audio item for the existing age profile;
+- preserve the current stage, wave, score, enemies/boss state, and player position by pausing the existing runtime rather than restarting the stage;
+- select a complete Qur'an ayah from `public/rescue-audio-catalog.json` for the existing age profile and duration limit;
 - require an intentional child tap to begin playback (no autoplay);
-- award exactly one heart only after the selected media emits a valid natural `ended` event;
-- reject duplicate, stale, interrupted, failed, or manually-seeked completion events;
+- provide play/pause, restart, read-only progress, and a separate volume control;
+- award exactly one heart only after the active audio session emits a natural `ended` event while the player still has zero hearts and rescue is pending;
+- invalidate stale sessions and pause the audio when the app is backgrounded;
 - resume the same stage and wave with brief invulnerability;
-- keep the existing question rescue as an accessible fallback if audio is unavailable or the device cannot play it;
+- keep the existing question rescue as a free fallback if catalogue loading or audio playback fails, and offer it as a manual alternative;
+- use the exact encouragement phrase `ممتاز حور وأصدقاؤها!` after a successful listening rescue;
+- keep musical victory/cheer/wrong/power-up cues silent; no music or loops are introduced;
 - never require payment, ads, or an external rewarded-ad SDK.
 
 The audio flow should be isolated from the existing quiz state (`quizOpen`, `currentQuizObj`) so rescue media events cannot accidentally complete a quiz or vice versa.
@@ -41,14 +43,14 @@ The audio flow should be isolated from the existing quiz state (`quizOpen`, `cur
 - Its current CSP allows local media (`media-src 'self'`) and one existing MP3Quran host. A bundled local audio directory can use the existing `'self'` allowance; any new remote host would need a deliberate CSP review.
 - The current player is also used by the Quran mini-player. The rescue flow must not overwrite or interrupt an unrelated active recitation without explicitly pausing and restoring it.
 - `src/game/data/quranVerses.ts` currently declares Alafasy and Husary reciters and EveryAyah/Quran.com fallback URLs. It does not describe the newly uploaded Maher Al-Muaiqly candidate files. Do not silently mix these sources or infer rights for the older URLs from the King Fahd Complex permission statement.
-- The current encouragement list does not include the required exact phrase `ممتاز حور وأصدقاؤها!`. Add it only at a positive, appropriate moment such as a successful completed listening rescue, with a cooldown to avoid repetition.
+- The successful listening-rescue path speaks the exact required phrase `ممتاز حور وأصدقاؤها!` once after the one-heart reward.
 - Preserve the no-music rule. Do not add musical success cues, loops, or background tracks as part of the rescue implementation.
 
 ## Candidate audio intake status
 
-The 29 uploaded MP3s have a separate audit in `docs/hoor-audio-intake-audit.md`. Their metadata strongly matches the King Fahd Complex Maher Al-Muaiqly Hafs collection, but archive-level verification and exact ayah mapping remain pending. In particular, `10-008C00-A08.mp3` remains unresolved.
+The 29 uploaded MP3s have a separate audit in `docs/hoor-audio-intake-audit.md`. The nine selected complete ayah files are now present under `public/audio/rescue/` and are referenced by the starter catalogue. Their metadata strongly matches the King Fahd Complex Maher Al-Muaiqly Hafs collection. The filename-to-ayah mapping is an owner-approved provisional mapping from the supplied partial collection, not an independently archive-verified manifest. The anomalous `10-008C00-A08.mp3` remains excluded. The selected files are not altered or re-encoded.
 
-No candidate audio file should be referenced by production code until the official archive or a verifiable official download manifest confirms its exact archive member and Qur'anic reference.
+The current implementation is Qur'an-only. Hadith audio is not enabled until a separately approved, rights-cleared recording and exact source/grading metadata are supplied.
 
 ## Tests required before enabling the flow
 
@@ -66,9 +68,12 @@ No candidate audio file should be referenced by production code until the offici
 ## Status
 
 - Runtime insertion point identified: complete.
-- Existing quiz rescue path mapped: complete.
-- Audio integration code: not started.
-- Exact audio-to-ayah mapping: pending.
-- Production behavior changed: no.
+- Nine selected local MP3 files present in the working branch: complete.
+- Qur'an listening-rescue runtime and age-profile filtering: implemented on the working branch.
+- Quiz rescue fallback: preserved.
+- Same-stage resume and one-heart natural-completion reward: implemented; browser/device testing still required.
+- Exact audio-to-ayah mapping: owner-approved provisional filename mapping; not independently archive-verified.
+- Hadith audio: not enabled.
+- No-music cue cleanup: implemented for cheer, wrong, victory, and power-up events; remaining one-shot gameplay sound effects are not background music.
 - Save format changed: no.
 - Merge/deployment: none.
