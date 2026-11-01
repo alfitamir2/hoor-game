@@ -92,6 +92,12 @@ describe('Family arcade rules', () => {
     expect(bank.find((q: any) => q.id === 'bank3-q008').correctText).toBe('تبقى ثابتة');
     expect(bank.find((q: any) => q.id === 'bank3-q001').correctText).toBe('سرعة الضوء في الفراغ');
   });
+  it('keeps keyboard focus inside active game dialogs', () => {
+    expect(html).toContain('function trapDialogTab(event, overlay)');
+    expect(html).toContain("quizModalOverlay').addEventListener('keydown'");
+    expect(html).toContain("stageResultOverlay').addEventListener('keydown'");
+    expect(html).toContain('primary.focus()');
+  });
   it('keeps every inline game script valid when parsed as HTML', () => {
     const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script\s*>/gi)]
       .map(match => match[1]).filter(script => script.trim());
