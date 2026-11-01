@@ -19,14 +19,13 @@ The metadata is strong provenance evidence consistent with the official King Fah
 
 ## Full repository inventory
 
-The working branch currently contains 100 MP3 files under `public/audio/rescue/`:
+The working branch now contains 98 MP3 files under `public/audio/rescue/`:
 
 - 7 numeric files named `10-001001-A08.mp3` through `10-001007-A08.mp3`, provisionally interpreted as Al-Fatihah 1:1–7.
 - 75 numeric files named `10-008001-A08.mp3` through `10-008075-A08.mp3`, provisionally interpreted as Al-Anfal 8:1–75.
 - 16 numeric files for Maryam, provisionally interpreted as 19:77–81 and 19:88–98.
-- 2 anomalous files: `10-008C00-A08.mp3` and `10-019C00-A08.mp3`. Their identifiers do not provide a numeric ayah reference.
 
-The 98 numeric files are included in `public/rescue-audio-catalog.json`. The mapping from the filename segments to Surah and ayah is owner-approved and provisional, not independently archive-verified. The two C00 files are deliberately excluded from the playable catalogue until their exact references and complete-ayah status are identified. No audio files are altered, trimmed, re-encoded, or renamed.
+All 98 remaining numeric files are included in `public/rescue-audio-catalog.json`. The mapping from the filename segments to Surah and ayah is owner-approved and provisional, not independently archive-verified. The two unresolved C00 files have been removed from the working branch and are not part of the playable catalogue. No remaining audio files are altered, trimmed, re-encoded, or renamed.
 
 For the additional files not in the original 29-file local inspection, duration values are estimated from MP3 byte size using the constant 56 kbps encoding observed in the inspected sample. The estimate was calibrated against all 29 measured files and matched their durations within approximately 0.006 seconds. These additional duration values are estimates, not direct per-file media-probe measurements.
 
@@ -44,7 +43,7 @@ The published archive fingerprints are for the complete archives. They cannot be
 
 1. Obtain the official individual-ayah archive or a verifiable official download manifest.
 2. Verify the archive SHA-256 against the Complex's published fingerprint.
-3. Match supplied files to exact official archive members and Qur'anic references; resolve both C00 files.
+3. Match the remaining supplied files to exact official archive members and Qur'anic references.
 4. Confirm exact recitation and ayah boundaries; do not trim, splice, time-stretch, pitch-shift, or synthesize recitation.
 5. Keep original filenames and immutable source hashes in the asset manifest.
 6. Directly inspect metadata and media duration for the additional 71 files not included in the original local sample.
@@ -53,9 +52,9 @@ The published archive fingerprints are for the complete archives. They cannot be
 ## Project status
 
 - Detailed metadata inspection of original 29-file sample: complete.
-- Repository inventory of 100 uploaded MP3 files: complete.
+- Repository inventory of 98 retained MP3 files: complete.
 - 98 numeric filename-mapped files included in the working-branch catalogue: complete, provisional mapping.
-- Two C00 files: unresolved and excluded from heart-rescue playback pending identification.
+- Two unresolved C00 files: removed from the working branch and catalogue.
 - Archive-level fingerprint verification: pending.
 - Independent ayah-to-audio verification: pending.
 - Runtime integration: implemented on the working branch; browser/device testing pending.
