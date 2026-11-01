@@ -52,6 +52,12 @@ The repository now contains 98 retained MP3 files under `public/audio/rescue/`. 
 
 The 29-file metadata audit remains limited to the original locally inspected sample; it does not claim that all 100 files have had their ID3 metadata independently inspected. The current implementation is Qur'an-only. Hadith audio is not enabled until a separately approved, rights-cleared recording and exact source/grading metadata are supplied.
 
+## Automated verification added
+
+`src/game/tests/listeningRescue.test.ts` now checks the retained 98-file catalogue, unique IDs and paths, local asset existence, removal of both C00 files, age-profile duration limits, expected Surah inventory counts, age-aware runtime filtering, the natural-ended/active-session one-heart guard, stale-session invalidation, and the free quiz fallback. The full CI run for commit `1b61ea8ad9196dedbcde3308a83d0b81a5c93efb` passed tests, lint, production build, and release configuration verification.
+
+These are automated repository/runtime-source checks. They do not replace real browser playback or Android WebView testing.
+
 ## Tests required before enabling the flow
 
 1. Zero-heart transition opens listening rescue on every stage, including special stages.
@@ -68,6 +74,7 @@ The 29-file metadata audit remains limited to the original locally inspected sam
 ## Status
 
 - Runtime insertion point identified: complete.
+- Automated catalogue and rescue completion-guard tests: complete; latest CI passed.
 - 98 retained MP3 files present in the working branch: complete.
 - All 98 numeric Surah/ayah files included in the playable catalogue: complete.
 - Two unresolved C00 files removed from the working branch and catalogue.
