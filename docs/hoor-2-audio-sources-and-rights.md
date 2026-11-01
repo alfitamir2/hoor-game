@@ -8,7 +8,7 @@
 
 ## Executive recommendation
 
-1. **Qur'an recitation — first candidate: King Fahd Glorious Qur'an Printing Complex.** Its official audio pages explicitly state that, with approval of the Minister of Islamic Affairs, the listed digital recitation recordings are made available free for general use in computer applications, websites, broadcast websites/channels, and government and private-sector work, inside and outside Saudi Arabia. The pages include recitations in Hafs and other named riwayat, and provide both complete-surah and ayah-by-ayah downloads for at least some reciters. This is the clearest directly published permission found in this review.
+1. **Qur'an recitation — selected provisional first reciter: Maher Al-Muaiqly, Hafs, from the King Fahd Glorious Qur'an Printing Complex.** Its official audio pages explicitly state that, with approval of the Minister of Islamic Affairs, the listed digital recitation recordings are made available free for general use in computer applications, websites, broadcast websites/channels, and government and private-sector work, inside and outside Saudi Arabia. The pages include recitations in Hafs and other named riwayat, and provide both complete-surah and ayah-by-ayah downloads for at least some reciters. This is the clearest directly published permission found in this review.
 2. **Hadith audio — preferred route: commission a human narrator and create original recordings.** Select hadith wording from a vetted primary collection; have the exact Arabic text, attribution, source reference, and grading reviewed by a qualified hadith specialist; then obtain a signed recording/performer agreement covering app playback, streaming, bundling/offline use if needed, territories, duration, attribution, and commercial/advertising status. Do not take an arbitrary hadith clip from YouTube, a lecture, podcast, or another app.
 3. **Dorar Al-Sunniyah API — possible research/verification route, not yet approved for static game content.** Its API requires an access request and manual review. Its terms require visible attribution to Dorar, a clickable source URL, showing the hadith together with its grading, no alteration or invented grading, no bulk scraping/republication, and cache duration limited to 24–48 hours. These constraints need to be reconciled with the game's offline/static content architecture before adopting the API.
 4. **Do not use EveryAyah as a rights-cleared fallback** unless written permission is obtained for the exact reciter/recording and intended use. Public availability is not proof of a reuse licence.
@@ -139,7 +139,7 @@ Only `approved` items with current rights evidence may appear in a rescue sessio
 ## Decisions still required
 
 1. Confirm whether the Hoor app/site is, or may become, ad-supported, subscription-based, or otherwise monetised. This affects which audio permissions are safest to rely on.
-2. Choose the first Qur'an reciter/riwayah from the King Fahd Complex catalogue, preferably one consistent riwayah for the first vertical slice.
+2. **Provisional choice recorded:** Maher Al-Muaiqly — Hafs. The owner has approved this as the first reciter candidate for the prototype; exact asset validation and implementation clearance remain outstanding.
 3. Decide whether Hoor should bundle a small set of approved ayah clips for offline reliability or stream them from the official source. Verify the Complex's permission covers the selected distribution method.
 4. Select a qualified hadith reviewer and agree the grading policy.
 5. Decide whether to apply for Dorar API access or use a separately permissioned small curated hadith list.
@@ -170,3 +170,27 @@ Rights-review consequence:
 - Do not assume that permission for free educational use automatically permits every form of offline bundling, redistribution, hosting, or modification. Verify the exact recording and distribution method before integration.
 - This decision supersedes the earlier unresolved advertising-status note above. Hoor is confirmed ad-free.
 - No audio has been selected, downloaded, committed, or integrated by recording this decision.
+
+
+## Provisional first-reciter decision — owner approved (2026-11-01)
+
+The owner has chosen **Sheikh Maher Al-Muaiqly — Hafs** as Hoor's provisional first Qur'an reciter for the listening-rescue prototype.
+
+Official references:
+- King Fahd Complex audio-use rights and listed recitations: https://qurancomplex.gov.sa/quran-audios/
+- Official catalogue entry for Maher Al-Muaiqly — Hafs, including the listed complete-surah and ayah-archive SHA-256 values: https://qurancomplex.gov.sa/category/quran-audios/
+- Reciter-specific page: https://qurancomplex.gov.sa/quran-audio-hafs-muaiqly/
+
+The Complex's current published rights page states that the listed digital recitations are available free for general use in computer applications, websites, broadcast websites/channels, and government/private-sector work inside and outside Saudi Arabia. The catalogue lists Maher Al-Muaiqly in Hafs and provides an ayah-level archive option.
+
+**What this approval means:** use Maher Al-Muaiqly — Hafs as the consistent first-reciter candidate when preparing the prototype content catalogue.
+
+**What it does not mean:** no individual ayah, archive, or audio file has yet been selected, downloaded, checked, or integrated. Before any asset is used, the implementation review must:
+1. Obtain the exact official ayah archive and verify its SHA-256 against the Complex's published value.
+2. Inspect the archive structure, file naming, ayah ordering, audio format, duration, and playback behaviour.
+3. Confirm the chosen ayah mapping and exact Qur'anic text with a qualified Qur'an reviewer.
+4. Record the official source URL, reciter, riwayah, asset checksum, and attribution in each catalogue entry.
+5. Confirm that the intended technical delivery (streaming and/or local offline bundling) is consistent with the published permission and the exact asset's terms. Do not modify, remix, or splice the recitation.
+6. Keep the product fully free and ad-free, with no monetisation or advertising SDKs.
+
+**Current status:** reciter choice approved provisionally; exact assets and content still pending review; no code, audio, save data, or live deployment changed.
