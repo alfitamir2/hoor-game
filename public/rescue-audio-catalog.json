@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "title": "Hoor listening rescue — selected Qur'an verses",
+  "language": "ar",
+  "reciter": "Sheikh Maher Al-Muaiqly",
+  "riwayah": "Hafs",
+  "sourceCollection": "King Fahd Glorious Qur'an Printing Complex — provisional filename mapping from owner-supplied partial collection",
+  "selectionPolicy": "Use complete individual ayahs only. The filename pattern 10-008NNN-A08 is treated as Surah 8, ayah NNN for this initial owner-approved catalogue. Do not use the anomalous C00 file.",
+  "ageProfiles": {
+    "under_8": {
+      "maxDurationSeconds": 25,
+      "note": "Prefer shorter complete ayahs; never increase difficulty as a penalty."
+    },
+    "8_to_15": {
+      "maxDurationSeconds": 45
+    },
+    "16_plus": {
+      "maxDurationSeconds": 75
+    },
+    "parents": {
+      "maxDurationSeconds": 75
+    }
+  },
+  "items": [
+    {
+      "id": "quran-8-2",
+      "surah": 8,
+      "ayah": 2,
+      "titleAr": "طمأنينة القلب وذكر الله",
+      "textAr": "إِنَّمَا ٱلْمُؤْمِنُونَ ٱلَّذِينَ إِذَا ذُكِرَ ٱللَّهُ وَجِلَتْ قُلُوبُهُمْ وَإِذَا تُلِيَتْ عَلَيْهِمْ ءَايَٰتُهُۥ زَادَتْهُمْ إِيمَٰنًا وَعَلَىٰ رَبِّهِمْ يَتَوَكَّلُونَ",
+      "audioPath": "/audio/rescue/10-008002-A08.mp3",
+      "durationSeconds": 21.88,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/2"
+    },
+    {
+      "id": "quran-8-8",
+      "surah": 8,
+      "ayah": 8,
+      "titleAr": "إظهار الحق",
+      "textAr": "لِيُحِقَّ ٱلْحَقَّ وَيُبْطِلَ ٱلْبَٰطِلَ وَلَوْ كَرِهَ ٱلْمُجْرِمُونَ",
+      "audioPath": "/audio/rescue/10-008008-A08.mp3",
+      "durationSeconds": 11.3,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/8"
+    },
+    {
+      "id": "quran-8-10",
+      "surah": 8,
+      "ayah": 10,
+      "titleAr": "طمأنينة القلوب",
+      "textAr": "وَمَا جَعَلَهُ ٱللَّهُ إِلَّا بُشْرَىٰ وَلِتَطْمَئِنَّ بِهِۦ قُلُوبُكُمْ ۚ وَمَا ٱلنَّصْرُ إِلَّا مِنْ عِندِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ عَزِيزٌ حَكِيمٌ",
+      "audioPath": "/audio/rescue/10-008010-A08.mp3",
+      "durationSeconds": 26.92,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/10"
+    },
+    {
+      "id": "quran-8-11",
+      "surah": 8,
+      "ayah": 11,
+      "titleAr": "السكينة والثبات",
+      "textAr": "إِذْ يُغَشِّيكُمُ ٱلنُّعَاسَ أَمَنَةً مِّنْهُ وَيُنَزِّلُ عَلَيْكُم مِّنَ ٱلسَّمَاءِ مَاءً لِّيُطَهِّرَكُم بِهِۦ وَيُذْهِبَ عَنكُمْ رِجْزَ ٱلشَّيْطَٰنِ وَلِيَرْبِطَ عَلَىٰ قُلُوبِكُمْ وَيُثَبِّتَ بِهِ ٱلْأَقْدَامَ",
+      "audioPath": "/audio/rescue/10-008011-A08.mp3",
+      "durationSeconds": 39.15,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/11"
+    },
+    {
+      "id": "quran-8-61",
+      "surah": 8,
+      "ayah": 61,
+      "titleAr": "الميل إلى السلم والتوكل",
+      "textAr": "۞ وَإِن جَنَحُواْ لِلسَّلْمِ فَٱجْنَحْ لَهَا وَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّهُۥ هُوَ ٱلسَّمِيعُ ٱلْعَلِيمُ",
+      "audioPath": "/audio/rescue/10-008061-A08.mp3",
+      "durationSeconds": 18.64,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/61"
+    },
+    {
+      "id": "quran-8-62",
+      "surah": 8,
+      "ayah": 62,
+      "titleAr": "حسبنا الله",
+      "textAr": "وَإِن يُرِيدُوٓاْ أَن يَخْدَعُوكَ فَإِنَّ حَسْبَكَ ٱللَّهُ ۚ هُوَ ٱلَّذِيٓ أَيَّدَكَ بِنَصْرِهِۦ وَبِٱلْمُؤْمِنِينَ",
+      "audioPath": "/audio/rescue/10-008062-A08.mp3",
+      "durationSeconds": 22.3,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/62"
+    },
+    {
+      "id": "quran-8-63",
+      "surah": 8,
+      "ayah": 63,
+      "titleAr": "تأليف القلوب",
+      "textAr": "وَأَلَّفَ بَيْنَ قُلُوبِهِمْ ۚ لَوْ أَنفَقْتَ مَا فِي ٱلْأَرْضِ جَمِيعًا مَّآ أَلَّفْتَ بَيْنَ قُلُوبِهِمْ وَلَٰكِنَّ ٱللَّهَ أَلَّفَ بَيْنَهُمْ ۚ إِنَّهُۥ عَزِيزٌ حَكِيمٌ",
+      "audioPath": "/audio/rescue/10-008063-A08.mp3",
+      "durationSeconds": 29.61,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/63"
+    },
+    {
+      "id": "quran-8-64",
+      "surah": 8,
+      "ayah": 64,
+      "titleAr": "كفاية الله",
+      "textAr": "يَٰٓأَيُّهَا ٱلنَّبِيُّ حَسْبُكَ ٱللَّهُ وَمَنِ ٱتَّبَعَكَ مِنَ ٱلْمُؤْمِنِينَ",
+      "audioPath": "/audio/rescue/10-008064-A08.mp3",
+      "durationSeconds": 13.58,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/64"
+    },
+    {
+      "id": "quran-8-74",
+      "surah": 8,
+      "ayah": 74,
+      "titleAr": "المغفرة والرزق الكريم",
+      "textAr": "وَٱلَّذِينَ ءَامَنُواْ وَهَاجَرُواْ وَجَٰهَدُواْ فِي سَبِيلِ ٱللَّهِ وَٱلَّذِينَ ءَاوَواْ وَّنَصَرُوٓاْ أُوْلَٰٓئِكَ هُمُ ٱلْمُؤْمِنُونَ حَقًّا ۚ لَّهُم مَّغْفِرَةٌ وَرِزْقٌ كَرِيمٌ",
+      "audioPath": "/audio/rescue/10-008074-A08.mp3",
+      "durationSeconds": 28.34,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/74"
+    }
+  ],
+  "implementationNotes": [
+    "This is a selected starter set, not the complete Qur'an or the complete uploaded collection.",
+    "Audio paths are intended for files placed in public/audio/rescue; the MP3s have not yet been committed to the repository.",
+    "The C00 filename is deliberately excluded until its meaning is established.",
+    "A listening rescue must only award one heart after the selected complete ayah finishes naturally; no autoplay, no seeking-to-end reward, and no ads or payments.",
+    "The existing quiz rescue remains the accessible fallback until local audio assets are present and the runtime flow is implemented and tested."
+  ]
+}
