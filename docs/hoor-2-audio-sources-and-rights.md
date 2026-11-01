@@ -154,16 +154,19 @@ Only `approved` items with current rights evidence may appear in a rescue sessio
 - No gameplay code, saves, stage logic, or live deployment has been changed.
 
 
-## Product pricing decision — user confirmed (2026-11-01)
+## Charity and advertising decision — user confirmed (2026-11-01)
 
-The owner confirmed: **Hoor is free**.
+The owner explicitly confirmed that Hoor must be a **fully free, advertisement-free charity game** intended to entertain and educate Muslim children.
 
-Implementation interpretation for this plan:
-- No paid rescue, paid revive, paid stage unlock, subscription gate, or required purchase.
-- The Qur'an/hadith listening rescue must be available without payment to every eligible player.
-- Do not design the rescue around rewarded ads or payment.
-- **Advertising status is not yet confirmed.** “Free” does not by itself establish whether the app will contain ads. Until clarified, rights review must not assume either an ad-free app or permission for advertising-supported use.
-- Prefer the King Fahd Complex audio catalogue as the first Qur'an source candidate because its official audio-use page states free general use in computer applications and websites, inside and outside Saudi Arabia. Before selecting/bundling specific recordings, preserve a copy of the applicable rights notice and verify the exact recitation assets and distribution method.
-- For hadith audio, continue to prefer a human-recorded narration made specifically for Hoor under a written rights agreement, following qualified review of the exact hadith and grading.
+Binding product requirements:
+- No advertisements, rewarded ads, sponsorship placements, promotional placements, or ad-tracking SDKs.
+- No in-app purchases, paid revives, paid stage unlocks, subscriptions, or payment gates.
+- The Qur'an/hadith listening rescue and all core educational/gameplay content must remain available without payment or advertising.
+- No music of any kind.
+- Do not introduce monetisation later without explicit owner approval; the charity and child-first purpose takes priority.
 
-This decision changes planning and content-access requirements only. It does not authorise downloading, committing, or integrating any recording, and it does not change gameplay code.
+Rights-review consequence:
+- Assess every audio licence against this ad-free, non-monetised charitable app model.
+- Do not assume that permission for free educational use automatically permits every form of offline bundling, redistribution, hosting, or modification. Verify the exact recording and distribution method before integration.
+- This decision supersedes the earlier unresolved advertising-status note above. Hoor is confirmed ad-free.
+- No audio has been selected, downloaded, committed, or integrated by recording this decision.
