@@ -220,3 +220,21 @@ Official page: https://qurancomplex.gov.sa/quran-audio-hafs-muaiqly/
 6. Keep audio outside production assets until these gates pass.
 
 No download, archive extraction, audio playback test, Qur'anic item selection, code change, or deployment was performed by this metadata check.
+
+
+## Owner authorization to proceed without an external reviewer (2026-11-01)
+
+The owner has explicitly instructed the project to continue with the listening-rescue work on the owner's responsibility, without waiting to appoint an independent Qur'an teacher/reciter or hadith specialist.
+
+This authorization changes the project workflow as follows:
+- Continue technical source validation, prototype preparation, and implementation planning without blocking on an external reviewer.
+- Record content decisions as **owner-approved** where the owner has explicitly approved them; do not label them independently reviewed, scholar-certified, or officially endorsed.
+- Preserve exact source text and complete original recordings. Do not invent, paraphrase, splice, pitch-shift, or use generated voices for Qur'an recitation or Prophetic hadith.
+- Keep source references, attribution, rights evidence, archive checksums, and known uncertainties visible in the project records.
+- For hadith, do not fabricate authenticity grades or imply scholarly consensus. If no independently established grading is documented, leave the item out of the rescue catalogue rather than guessing.
+- Any unresolved source integrity, rights, or mapping issue remains a technical release blocker even under owner responsibility.
+- The owner may later request independent review; the catalogue must make it possible to replace or withdraw an item without changing save compatibility.
+
+**Important boundary:** owner responsibility is not a substitute for recording rights. Only use audio whose published permission covers the intended app use and delivery method. The current King Fahd Complex page publishes free general-use permission for listed recitations, but the exact Maher Al-Muaiqly archive still must be downloaded and its SHA-256 checked before any file is committed or used.
+
+**Next step:** obtain the individual-ayah archive directly from the official Maher Al-Muaiqly page, verify its published SHA-256, and inspect the archive manifest. No audio asset is added to the app until that technical verification passes.
