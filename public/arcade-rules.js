@@ -12,8 +12,11 @@
     },
     pool(bank, age, mode) {
       const eligible = bank.filter(q => q.age === age);
-      const tagged = mode === 'basic' ? eligible : eligible.filter(q => q.modes.includes(mode));
-      return tagged.length ? tagged : eligible;
+      if (mode === 'basic') return eligible;
+      const tagged = eligible.filter(q => q.modes.includes(mode));
+      // Avoid exhausting tiny special pools; use the age-appropriate bank
+      // until each special category has enough questions for healthy variety.
+      return tagged.length >= 8 ? tagged : eligible;
     },
     draw(pool, history, random = Math.random) {
       if (!pool.length) return null;
