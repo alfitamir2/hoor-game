@@ -23,12 +23,14 @@ const pendingPushes = new Map<string, Promise<void>>();
 
 function Loading() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center gap-4 bg-slate-950 text-center text-white" dir="rtl" role="status" aria-live="polite">
-      <span className="text-5xl" aria-hidden="true">🐔</span>
-      <span className="text-lg font-bold">جارٍ تجهيز عالم حور…</span>
-      <span className="h-2 w-40 overflow-hidden rounded-full bg-slate-700">
-        <span className="block h-full w-2/3 animate-pulse rounded-full bg-emerald-400" />
+    <div className="relative flex min-h-screen flex-col items-center justify-center gap-4 overflow-hidden bg-[#071b1a] text-center text-[#f5f0e2]" dir="rtl" role="status" aria-live="polite">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0" style={{ background: "radial-gradient(ellipse at 50% 35%, rgba(57,168,137,.2), transparent 42%), radial-gradient(ellipse at 80% 85%, rgba(216,184,117,.1), transparent 34%)" }} />
+      <span className="relative flex h-24 w-24 items-center justify-center rounded-[1.8rem] border border-[#d8b875]/40 bg-[linear-gradient(145deg,#286e58,#102f29)] text-6xl shadow-[0_16px_40px_rgba(0,0,0,.35)]" aria-hidden="true">🐔</span>
+      <span className="relative text-lg font-extrabold text-[#fff5df]">جارٍ تجهيز عالم حور…</span>
+      <span className="relative h-2 w-44 overflow-hidden rounded-full bg-[#24483d]">
+        <span className="block h-full w-2/3 animate-pulse rounded-full bg-gradient-to-r from-[#39a889] to-[#d8b875]" />
       </span>
+      <span className="relative text-xs text-[#9eb6a7]">لحظات ونبدأ المغامرة</span>
     </div>
   );
 }
@@ -308,7 +310,7 @@ export default function CloudGate() {
         <button
           onClick={signOut}
           disabled={busy}
-          className="fixed bottom-20 left-2 z-50 rounded-full bg-white/90 px-3 py-2 text-xs font-bold text-slate-700 shadow disabled:opacity-60 sm:bottom-2"
+          className="fixed bottom-20 left-2 z-50 rounded-full border border-[#d8b875]/35 bg-[#102f29]/95 px-4 py-2.5 text-xs font-extrabold text-[#f0dfb6] shadow-lg backdrop-blur sm:bottom-2 disabled:opacity-60"
         >
           {busy ? "جارٍ الحفظ…" : "خروج (" + (session.user.email?.split("@")[0] || "الحساب") + ")"}
         </button>
@@ -329,7 +331,7 @@ export default function CloudGate() {
             localStorage.removeItem(GUEST_KEY);
             setGuest(false);
           }}
-          className="fixed bottom-20 left-2 z-50 rounded-full bg-white/90 px-3 py-2 text-xs font-bold text-sky-700 shadow sm:bottom-2"
+          className="fixed bottom-20 left-2 z-50 rounded-full border border-[#d8b875]/35 bg-[#102f29]/95 px-4 py-2.5 text-xs font-extrabold text-[#f0dfb6] shadow-lg backdrop-blur sm:bottom-2"
         >
           حفظ التقدم بحساب Google
         </button>
