@@ -152,3 +152,18 @@ Only `approved` items with current rights evidence may appear in a rescue sessio
 - No reviewer has approved any content for Hoor yet.
 - No audio source is declared production-approved until the exact assets and rights are documented.
 - No gameplay code, saves, stage logic, or live deployment has been changed.
+
+
+## Product pricing decision — user confirmed (2026-11-01)
+
+The owner confirmed: **Hoor is free**.
+
+Implementation interpretation for this plan:
+- No paid rescue, paid revive, paid stage unlock, subscription gate, or required purchase.
+- The Qur'an/hadith listening rescue must be available without payment to every eligible player.
+- Do not design the rescue around rewarded ads or payment.
+- **Advertising status is not yet confirmed.** “Free” does not by itself establish whether the app will contain ads. Until clarified, rights review must not assume either an ad-free app or permission for advertising-supported use.
+- Prefer the King Fahd Complex audio catalogue as the first Qur'an source candidate because its official audio-use page states free general use in computer applications and websites, inside and outside Saudi Arabia. Before selecting/bundling specific recordings, preserve a copy of the applicable rights notice and verify the exact recitation assets and distribution method.
+- For hadith audio, continue to prefer a human-recorded narration made specifically for Hoor under a written rights agreement, following qualified review of the exact hadith and grading.
+
+This decision changes planning and content-access requirements only. It does not authorise downloading, committing, or integrating any recording, and it does not change gameplay code.
