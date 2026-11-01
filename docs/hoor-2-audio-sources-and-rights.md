@@ -194,3 +194,29 @@ The Complex's current published rights page states that the listed digital recit
 6. Keep the product fully free and ad-free, with no monetisation or advertising SDKs.
 
 **Current status:** reciter choice approved provisionally; exact assets and content still pending review; no code, audio, save data, or live deployment changed.
+
+
+## Official Maher Al-Muaiqly archive metadata checked (2026-11-01)
+
+The current official reciter-specific page exposes two archive options and publishes these SHA-256 fingerprints:
+
+| Official archive | Published SHA-256 |
+| --- | --- |
+| Individual ayahs (المصحف آيات) | `3EDCC70407F9D19C972C002C69A43CC245A62A0FCC497D3C719406A69965E18E` |
+| Complete surahs (سور المصحف) | `1F99418CD52D2E84BD144D80F62A8FDDD45BFC633C352FD06A603C7CFBE7B5CC` |
+
+Official page: https://qurancomplex.gov.sa/quran-audio-hafs-muaiqly/
+
+**Prototype direction:** prefer the individual-ayah archive because it offers a route to play a complete ayah as a unit without cutting or editing a recitation.
+
+**Verification boundary:** these are the fingerprints published on the official page, not hashes independently computed from downloaded archives. The page was checked, but the archive itself has not been downloaded or inspected in this step. Therefore archive structure, compression format, exact per-ayah file names, file ordering, individual file checksums, durations, and exact download URLs remain unverified.
+
+**Next technical gate (before adding any audio to the repository):**
+1. Obtain the archive directly through the official page's download control.
+2. Compute SHA-256 locally and compare it byte-for-byte with the published individual-ayah archive fingerprint above.
+3. If it matches, inspect the archive listing without modifying any audio; document the exact path and metadata for candidate ayahs.
+4. Select a short complete ayah only after a qualified Qur'an reviewer confirms the exact surah/ayah reference and displayed Arabic text.
+5. Obtain the reviewer's approval of the recitation-to-reference mapping and a documented decision on streaming versus local bundling.
+6. Keep audio outside production assets until these gates pass.
+
+No download, archive extraction, audio playback test, Qur'anic item selection, code change, or deployment was performed by this metadata check.
