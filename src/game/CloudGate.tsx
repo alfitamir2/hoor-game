@@ -106,11 +106,22 @@ async function pushSave(userId: string): Promise<void> {
 async function pullSave(userId: string) {
   prepareLocalSaveForAccount(userId);
 
-  const { data, error } = await supabase
-    .from("game_saves")
-    .select("data, updated_at")
-    .eq("user_id", userId)
-    .maybeSingle();
+  const controller = new AbortController();
+  const queryTimeout = window.setTimeout(() => controller.abort(), 10000);
+  let data: { data: unknown; updated_at: string } | null = null;
+  let error: { message: string } | null = null;
+  try {
+    const result = await supabase
+      .from("game_saves")
+      .select("data, updated_at")
+      .eq("user_id", userId)
+      .abortSignal(controller.signal)
+      .maybeSingle();
+    data = result.data;
+    error = result.error;
+  } finally {
+    window.clearTimeout(queryTimeout);
+  }
   if (error) throw error;
 
   const local = readSnapshot(localStorage);
@@ -154,13 +165,35 @@ export default function CloudGate() {
       syncReadyRef.current = false;
     });
 
+    let active = true;
+    let timedOut = false;
+    const sessionTimeout = window.setTimeout(() => {
+      timedOut = true;
+      if (active) {
+        setErr("استغرق الاتصال وقتاً أطول من المعتاد. يمكنك اللعب كضيف الآن أو إعادة تحميل الصفحة.");
+        setChecked(true);
+      }
+    }, 8000);
+
     void supabase.auth.getSession()
       .then(({ data, error }) => {
         if (error) throw error;
-        setSession(data.session);
+        if (active && !timedOut) setSession(data.session);
       })
-      .catch(() => setErr("تعذّر التحقق من جلسة الدخول. تحقق من اتصالك ثم أعد تحميل الصفحة."))
-      .finally(() => setChecked(true));
+      .catch(() => {
+        if (active && !timedOut) {
+          setErr("تعذّر التحقق من جلسة الدخول. يمكنك اللعب كضيف أو المحاولة مجدداً.");
+        }
+      })
+      .finally(() => {
+        window.clearTimeout(sessionTimeout);
+        if (active) setChecked(true);
+      });
+
+    return () => {
+      active = false;
+      window.clearTimeout(sessionTimeout);
+    };
 
     return () => sub.subscription.unsubscribe();
   }, []);
