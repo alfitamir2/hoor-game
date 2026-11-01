@@ -48,7 +48,7 @@ The audio flow should be isolated from the existing quiz state (`quizOpen`, `cur
 
 ## Candidate audio intake status
 
-The repository now contains 100 uploaded MP3 files under `public/audio/rescue/`. The expanded catalogue includes all 98 files with numeric identifiers interpreted provisionally as Surah/ayah references: Al-Fatihah 1:1–7 (7 files), Al-Anfal 8:1–75 (75 files), and the supplied Maryam references 19:77–81 and 19:88–98 (16 files). The filename mapping is owner-approved and provisional; it is not independently archive-verified. Durations for the additional files are estimated from file size using the 56 kbps encoding observed in the 29-file inspected sample. The two anomalous files `10-008C00-A08.mp3` and `10-019C00-A08.mp3` remain outside the playable catalogue until their exact references and complete-ayah status are identified. The uploaded files are not altered or re-encoded.
+The repository now contains 98 retained MP3 files under `public/audio/rescue/`. The expanded catalogue includes all 98 files with numeric identifiers interpreted provisionally as Surah/ayah references: Al-Fatihah 1:1–7 (7 files), Al-Anfal 8:1–75 (75 files), and the supplied Maryam references 19:77–81 and 19:88–98 (16 files). The filename mapping is owner-approved and provisional; it is not independently archive-verified. Durations for the additional files are estimated from file size using the 56 kbps encoding observed in the 29-file inspected sample. The two unresolved C00 files have been removed from the working branch. The 98 retained audio files are not altered or re-encoded.
 
 The 29-file metadata audit remains limited to the original locally inspected sample; it does not claim that all 100 files have had their ID3 metadata independently inspected. The current implementation is Qur'an-only. Hadith audio is not enabled until a separately approved, rights-cleared recording and exact source/grading metadata are supplied.
 
@@ -68,9 +68,9 @@ The 29-file metadata audit remains limited to the original locally inspected sam
 ## Status
 
 - Runtime insertion point identified: complete.
-- 100 uploaded MP3 files present in the working branch: complete.
-- 98 numeric Surah/ayah files included in the playable catalogue: complete.
-- Two anomalous C00 files recorded as unresolved and excluded pending identification.
+- 98 retained MP3 files present in the working branch: complete.
+- All 98 numeric Surah/ayah files included in the playable catalogue: complete.
+- Two unresolved C00 files removed from the working branch and catalogue.
 - Qur'an listening-rescue runtime and age-profile/duration filtering across the expanded catalogue: implemented on the working branch.
 - Quiz rescue fallback: preserved.
 - Same-stage resume and one-heart natural-completion reward: implemented; browser/device testing still required.
