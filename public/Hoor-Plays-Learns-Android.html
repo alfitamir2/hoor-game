@@ -783,8 +783,38 @@
     </div>
   </div>
 
-  <!-- عنصر الصوت المخفي للتلاوات القرآنية الندية -->
+  <!-- إنقاذ الاستماع: مستقل عن مشغل القرآن المصغر -->
+  <div id="listeningRescueOverlay" class="fixed inset-0 z-[60] bg-slate-950/95 backdrop-blur-md hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="listeningRescueTitle">
+    <div class="max-w-xl w-full max-h-[90vh] overflow-y-auto bg-slate-900 border-2 border-emerald-400 rounded-3xl p-5 md:p-6 shadow-2xl text-center">
+      <div class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-400/15 text-emerald-200 border border-emerald-400/40 mb-3">🌿 فرصة هادئة لاستعادة قلب</div>
+      <h3 id="listeningRescueTitle" class="text-xl font-extrabold text-white mb-2">استمع إلى آية من القرآن الكريم</h3>
+      <p id="listeningRescueSubtitle" class="text-sm text-slate-300 mb-4">استمع إلى التلاوة كاملة، ثم واصل مغامرتك من الموضع نفسه.</p>
+      <div class="rounded-2xl bg-slate-800/90 border border-slate-700 p-4 text-right mb-4">
+        <div id="listeningRescueAyahTitle" class="text-emerald-200 font-extrabold text-sm mb-2" dir="rtl"></div>
+        <p id="listeningRescueAyahText" class="text-white text-lg leading-loose" dir="rtl" lang="ar"></p>
+        <div id="listeningRescueReciter" class="text-xs text-slate-400 mt-3">القارئ: الشيخ ماهر المعيقلي — رواية حفص</div>
+      </div>
+      <div class="mb-3">
+        <div class="flex items-center gap-2 text-xs text-slate-400" dir="ltr">
+          <span id="listeningRescueCurrentTime">0:00</span>
+          <progress id="listeningRescueProgress" max="100" value="0" class="flex-1 h-2 accent-emerald-400" aria-label="تقدم التلاوة"></progress>
+          <span id="listeningRescueDuration">--:--</span>
+        </div>
+        <label for="listeningRescueVolume" class="block text-xs text-slate-400 mt-3 mb-1">مستوى صوت التلاوة</label>
+        <input id="listeningRescueVolume" type="range" min="0" max="1" step="0.05" value="1" oninput="setRescueAudioVolume(this.value)" class="w-full accent-emerald-400" aria-label="مستوى صوت التلاوة">
+      </div>
+      <p id="listeningRescueStatus" class="text-sm text-emerald-200 mb-4" role="status" aria-live="polite">اضغط «ابدأ الاستماع» لتشغيل التلاوة.</p>
+      <div class="flex flex-col sm:flex-row gap-2">
+        <button id="listeningRescueToggle" type="button" onclick="toggleRescueAudio()" class="flex-1 py-3 rounded-xl bg-emerald-400 text-slate-950 font-extrabold">▶️ ابدأ الاستماع</button>
+        <button id="listeningRescueReplay" type="button" onclick="restartRescueAudio()" class="py-3 px-4 rounded-xl bg-slate-700 border border-slate-600 text-white font-bold">↺ من البداية</button>
+      </div>
+      <button type="button" onclick="fallbackToQuizRescue()" class="w-full mt-3 py-3 rounded-xl bg-slate-800 border border-slate-600 text-slate-200 font-bold text-sm">أفضّل الإنقاذ بسؤال بديل</button>
+    </div>
+  </div>
+
+  <!-- عناصر الصوت منفصلة حتى لا يتداخل إنقاذ القلب مع مشغل القرآن المصغر -->
   <audio id="quranAudioPlayer" preload="none"></audio>
+  <audio id="rescueAudioPlayer" preload="none"></audio>
 
   <!-- =====================================================================
        6. المحرك البرمجي الشامل (Game Engine, 22 Stages, Verified Bank, Sync)
@@ -1086,32 +1116,9 @@
       if (currentQuizObj) speakText(currentQuizObj.q + ' . ' + currentQuizObj.shuffledOpts.join(' ، أو '));
     }
 
-    function playMelody(notes, wave, vol) {
-      const ctx = getAudioCtx();
-      if (!ctx) return;
-      let t = ctx.currentTime;
-      notes.forEach(([freq, dur]) => {
-        const o = ctx.createOscillator();
-        const g = ctx.createGain();
-        o.type = wave;
-        o.frequency.setValueAtTime(freq, t);
-        g.gain.setValueAtTime(vol, t);
-        g.gain.exponentialRampToValueAtTime(0.001, t + dur);
-        o.connect(g); g.connect(ctx.destination);
-        o.start(t); o.stop(t + dur);
-        t += dur * 0.9;
-      });
-    }
-
     function playSfx(type) {
-      if (audioEnabled && type === 'cheer') {
-        try { playMelody([[523.25, 0.12], [659.25, 0.12], [783.99, 0.12], [1046.5, 0.35]], 'triangle', 0.16); } catch (e) {}
-        return;
-      }
-      if (audioEnabled && type === 'wrong') {
-        try { playMelody([[392, 0.18], [311.13, 0.18], [233.08, 0.4]], 'square', 0.07); } catch (e) {}
-        return;
-      }
+      // Hoor has no music or melodic victory cues; these event types are intentionally silent.
+      if (type === 'cheer' || type === 'wrong' || type === 'victory' || type === 'powerup') return;
       if (!audioEnabled) return;
       try {
         const ctx = getAudioCtx();
@@ -1138,15 +1145,6 @@
           gain.gain.linearRampToValueAtTime(0.001, now + 0.16);
           osc.start(now);
           osc.stop(now + 0.16);
-        } else if (type === 'powerup' || type === 'victory') {
-          osc.type = 'triangle';
-          osc.frequency.setValueAtTime(523.25, now);
-          osc.frequency.setValueAtTime(659.25, now + 0.08);
-          osc.frequency.setValueAtTime(783.99, now + 0.16);
-          gain.gain.setValueAtTime(0.14, now);
-          gain.gain.linearRampToValueAtTime(0.001, now + 0.3);
-          osc.start(now);
-          osc.stop(now + 0.3);
         } else if (type === 'hit') {
           osc.type = 'sawtooth';
           osc.frequency.setValueAtTime(180, now);
@@ -1331,8 +1329,8 @@
       const primary = document.getElementById('stageResultPrimary');
       const nextId = RULES.sequence[RULES.sequence.indexOf(stg.id) + 1];
       if (!won) {
-        primary.textContent = '💡 أجب بشكل صحيح لاستعادة قلب';
-        primary.onclick = () => { closeStageResult(); openQuizStation(false, true); };
+        primary.textContent = '🌿 استمع إلى آية لاستعادة قلب';
+        primary.onclick = () => openListeningRescue();
       } else if (nextId) {
         primary.textContent = `▶️ المرحلة ${nextId}`;
         primary.onclick = () => launchStageDirect(nextId);
@@ -1349,6 +1347,198 @@
       if (!el) return;
       el.classList.add('hidden');
       el.classList.remove('flex');
+    }
+
+    let rescueAudioCatalogPromise = null;
+    let rescueAudioSession = null;
+    let rescueAudioSessionId = 0;
+
+    function loadRescueAudioCatalog() {
+      if (!rescueAudioCatalogPromise) {
+        rescueAudioCatalogPromise = fetch('/rescue-audio-catalog.json', { cache: 'no-store' })
+          .then(response => {
+            if (!response.ok) throw new Error('تعذر تحميل فهرس التلاوات');
+            return response.json();
+          })
+          .catch(error => {
+            rescueAudioCatalogPromise = null;
+            throw error;
+          });
+      }
+      return rescueAudioCatalogPromise;
+    }
+
+    async function openListeningRescue() {
+      if (!rescuePending || playerLives > 0) return;
+      const requestId = ++rescueAudioSessionId;
+      gameActive = false;
+      stopArcadeFrame();
+      window.speechSynthesis?.cancel();
+      closeStageResult();
+
+      const overlay = document.getElementById('listeningRescueOverlay');
+      const status = document.getElementById('listeningRescueStatus');
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      status.textContent = 'جارٍ تجهيز التلاوة المناسبة...';
+
+      try {
+        const catalog = await loadRescueAudioCatalog();
+        if (requestId !== rescueAudioSessionId || !overlay.classList.contains('flex')) return;
+        const age = RULES.normalizeAge(appState.ageTier);
+        const maxDuration = catalog.ageProfiles?.[age]?.maxDurationSeconds || 75;
+        const eligible = (catalog.items || []).filter(item =>
+          Array.isArray(item.ageProfiles) &&
+          item.ageProfiles.includes(age) &&
+          Number(item.durationSeconds) > 0 &&
+          Number(item.durationSeconds) <= maxDuration &&
+          /^\/audio\/rescue\/[A-Za-z0-9._-]+\.mp3$/.test(item.audioPath || '')
+        );
+        if (!eligible.length) throw new Error('لا توجد تلاوة مناسبة لهذا الملف العمري');
+
+        const item = eligible[Math.floor(Math.random() * eligible.length)];
+        const sessionId = requestId;
+        rescueAudioSession = { id: sessionId, item, started: false, completed: false };
+        const audio = document.getElementById('rescueAudioPlayer');
+        audio.pause();
+        audio.onended = null;
+        audio.onerror = null;
+        audio.removeAttribute('src');
+        audio.load();
+        audio.src = item.audioPath;
+        audio.volume = Number(document.getElementById('listeningRescueVolume').value || 1);
+        audio.load();
+        audio.ontimeupdate = () => {
+          if (rescueAudioSession?.id !== sessionId) return;
+          const duration = Number.isFinite(audio.duration) ? audio.duration : 0;
+          document.getElementById('listeningRescueProgress').value = duration > 0 ? (audio.currentTime / duration) * 100 : 0;
+          document.getElementById('listeningRescueCurrentTime').textContent = formatRescueTime(audio.currentTime);
+          document.getElementById('listeningRescueDuration').textContent = duration > 0 ? formatRescueTime(duration) : '--:--';
+        };
+        audio.onloadedmetadata = () => {
+          if (rescueAudioSession?.id !== sessionId) return;
+          document.getElementById('listeningRescueDuration').textContent = formatRescueTime(audio.duration);
+        };
+
+        document.getElementById('listeningRescueAyahTitle').textContent =
+          'سورة ' + (item.surahNameAr || 'القرآن الكريم') + ' — الآية ' + item.ayah;
+        const ayahText = document.getElementById('listeningRescueAyahText');
+        ayahText.textContent = item.textAr || '';
+        ayahText.classList.toggle('hidden', !item.textAr);
+        document.getElementById('listeningRescueToggle').textContent = '▶️ ابدأ الاستماع';
+        status.textContent = 'اضغط «ابدأ الاستماع» لتشغيل التلاوة كاملة.';
+        audio.onended = () => completeListeningRescue(sessionId);
+        audio.onerror = () => {
+          if (rescueAudioSession?.id === sessionId) fallbackToQuizRescue('تعذر تشغيل الملف الصوتي على هذا الجهاز.');
+        };
+        document.getElementById('listeningRescueToggle').focus();
+      } catch (error) {
+        fallbackToQuizRescue('تعذر تجهيز التلاوة الآن؛ يمكنك متابعة الإنقاذ بسؤال.');
+      }
+    }
+
+    function formatRescueTime(seconds) {
+      if (!Number.isFinite(seconds) || seconds < 0) return '0:00';
+      const whole = Math.floor(seconds);
+      return Math.floor(whole / 60) + ':' + String(whole % 60).padStart(2, '0');
+    }
+
+    function setRescueAudioVolume(value) {
+      const audio = document.getElementById('rescueAudioPlayer');
+      if (audio) audio.volume = Math.max(0, Math.min(1, Number(value)));
+    }
+
+    async function toggleRescueAudio() {
+      const session = rescueAudioSession;
+      if (!session || session.completed) return;
+      const audio = document.getElementById('rescueAudioPlayer');
+      const status = document.getElementById('listeningRescueStatus');
+      const toggle = document.getElementById('listeningRescueToggle');
+      if (!audio.paused) {
+        audio.pause();
+        toggle.textContent = '▶️ متابعة الاستماع';
+        status.textContent = 'التلاوة متوقفة مؤقتاً. يمكنك المتابعة متى شئت.';
+        return;
+      }
+      session.started = true;
+      try {
+        await audio.play();
+        if (rescueAudioSession?.id !== session.id || session.completed) return;
+        toggle.textContent = '⏸ إيقاف مؤقت';
+        status.textContent = 'استمع إلى الآية كاملة حتى نهايتها لاستعادة قلبك.';
+      } catch (error) {
+        fallbackToQuizRescue('لم يتمكن الجهاز من تشغيل التلاوة؛ يمكنك استخدام سؤال الإنقاذ.');
+      }
+    }
+
+    function restartRescueAudio() {
+      const session = rescueAudioSession;
+      if (!session || session.completed) return;
+      const audio = document.getElementById('rescueAudioPlayer');
+      audio.pause();
+      try { audio.currentTime = 0; } catch (error) {}
+      document.getElementById('listeningRescueProgress').value = 0;
+      document.getElementById('listeningRescueCurrentTime').textContent = '0:00';
+      session.started = false;
+      document.getElementById('listeningRescueToggle').textContent = '▶️ ابدأ الاستماع';
+      document.getElementById('listeningRescueStatus').textContent = 'أُعيدت التلاوة إلى البداية. اضغط «ابدأ الاستماع».';
+    }
+
+    function completeListeningRescue(sessionId) {
+      const session = rescueAudioSession;
+      const audio = document.getElementById('rescueAudioPlayer');
+      if (!session || session.id !== sessionId || session.completed || !session.started || !audio.ended || playerLives !== 0 || !rescuePending) return;
+      const restoredLives = RULES.rescue(playerLives, true);
+      if (restoredLives !== 1) return;
+      session.completed = true;
+      rescueAudioSessionId++;
+      playerLives = restoredLives;
+      rescuePending = false;
+      shieldTicks = 180;
+      enemyProjectiles = [];
+      audio.pause();
+      audio.onended = null;
+      audio.onerror = null;
+      audio.ontimeupdate = null;
+      audio.onloadedmetadata = null;
+      audio.removeAttribute('src');
+      audio.load();
+      rescueAudioSession = null;
+
+      const overlay = document.getElementById('listeningRescueOverlay');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      saveAppState();
+      updateSideHUD();
+      speakText('ممتاز حور وأصدقاؤها!');
+      gameActive = !document.getElementById('view-play').classList.contains('hidden');
+      if (gameActive) scheduleArcadeFrame();
+      else stopArcadeFrame();
+      document.getElementById('btnStartPause').textContent = gameActive ? 'إيقاف مؤقت' : 'استئناف المعركة';
+      document.getElementById('btnStartPause')?.focus();
+    }
+
+    function fallbackToQuizRescue(message) {
+      const audio = document.getElementById('rescueAudioPlayer');
+      if (audio) {
+        audio.pause();
+        audio.onended = null;
+        audio.onerror = null;
+        audio.ontimeupdate = null;
+        audio.onloadedmetadata = null;
+        audio.removeAttribute('src');
+        audio.load();
+      }
+      rescueAudioSession = null;
+      rescueAudioSessionId++;
+      const overlay = document.getElementById('listeningRescueOverlay');
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+      if (message) {
+        const status = document.getElementById('listeningRescueStatus');
+        if (status) status.textContent = message;
+      }
+      if (rescuePending && playerLives === 0) openQuizStation(false, true);
     }
 
     function launchStageDirect(stageId) {
@@ -2109,7 +2299,20 @@
     audioEnabled = appState.audioEnabled;
     document.getElementById('soundBtn').textContent = audioEnabled ? '🔊 الصوت' : '🔇 صامت';
     initStageWave(1);
-    document.addEventListener('visibilitychange', () => { if (document.hidden) { gameActive = false; stopArcadeFrame(); saveAppState(); window.speechSynthesis?.cancel(); } });
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        if (rescueAudioSession) {
+          const rescueAudio = document.getElementById('rescueAudioPlayer');
+          rescueAudio?.pause();
+          document.getElementById('listeningRescueToggle').textContent = '▶️ متابعة الاستماع';
+          document.getElementById('listeningRescueStatus').textContent = 'توقفت التلاوة مؤقتاً عند مغادرة اللعبة. اضغط متابعة عند العودة.';
+        }
+        gameActive = false;
+        stopArcadeFrame();
+        saveAppState();
+        window.speechSynthesis?.cancel();
+      }
+    });
     window.addEventListener('pagehide', saveAppState);
     scheduleArcadeFrame();
     if (!navigator.onLine) updateNetworkStatus();

@@ -1,0 +1,1664 @@
+{
+  "schemaVersion": 1,
+  "title": "Hoor listening rescue — full uploaded Qur'an ayah collection",
+  "language": "ar",
+  "reciter": "Sheikh Maher Al-Muaiqly",
+  "riwayah": "Hafs",
+  "sourceCollection": "King Fahd Glorious Qur'an Printing Complex — provisional filename mapping from owner-supplied partial collection",
+  "selectionPolicy": "Use all 98 retained files with a numeric filename mapping 10-SSSAAA-A08 as Surah SSS, ayah AAA. The numeric files across Al-Fatihah, Al-Anfal, and Maryam are included. The two unresolved C00 files were removed from the repository and are not used for heart recovery. Age profiles filter by clip duration; the same uploaded recording is never altered or re-encoded.",
+  "ageProfiles": {
+    "under_8": {
+      "maxDurationSeconds": 25,
+      "note": "Prefer shorter complete ayahs; never increase difficulty as a penalty."
+    },
+    "8_to_15": {
+      "maxDurationSeconds": 45
+    },
+    "16_plus": {
+      "maxDurationSeconds": 75
+    },
+    "parents": {
+      "maxDurationSeconds": 75
+    }
+  },
+  "items": [
+    {
+      "id": "quran-1-1",
+      "surah": 1,
+      "ayah": 1,
+      "titleAr": "آية من سورة الفاتحة",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-001001-A08.mp3",
+      "durationSeconds": 8.8,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/1/1",
+      "surahNameAr": "الفاتحة"
+    },
+    {
+      "id": "quran-1-2",
+      "surah": 1,
+      "ayah": 2,
+      "titleAr": "آية من سورة الفاتحة",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-001002-A08.mp3",
+      "durationSeconds": 8.72,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/1/2",
+      "surahNameAr": "الفاتحة"
+    },
+    {
+      "id": "quran-1-3",
+      "surah": 1,
+      "ayah": 3,
+      "titleAr": "آية من سورة الفاتحة",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-001003-A08.mp3",
+      "durationSeconds": 6.94,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/1/3",
+      "surahNameAr": "الفاتحة"
+    },
+    {
+      "id": "quran-1-4",
+      "surah": 1,
+      "ayah": 4,
+      "titleAr": "آية من سورة الفاتحة",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-001004-A08.mp3",
+      "durationSeconds": 7.57,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/1/4",
+      "surahNameAr": "الفاتحة"
+    },
+    {
+      "id": "quran-1-5",
+      "surah": 1,
+      "ayah": 5,
+      "titleAr": "آية من سورة الفاتحة",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-001005-A08.mp3",
+      "durationSeconds": 8.87,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/1/5",
+      "surahNameAr": "الفاتحة"
+    },
+    {
+      "id": "quran-1-6",
+      "surah": 1,
+      "ayah": 6,
+      "titleAr": "آية من سورة الفاتحة",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-001006-A08.mp3",
+      "durationSeconds": 8.53,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/1/6",
+      "surahNameAr": "الفاتحة"
+    },
+    {
+      "id": "quran-1-7",
+      "surah": 1,
+      "ayah": 7,
+      "titleAr": "آية من سورة الفاتحة",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-001007-A08.mp3",
+      "durationSeconds": 17.76,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/1/7",
+      "surahNameAr": "الفاتحة"
+    },
+    {
+      "id": "quran-8-1",
+      "surah": 8,
+      "ayah": 1,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008001-A08.mp3",
+      "durationSeconds": 30.84,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/1",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-2",
+      "surah": 8,
+      "ayah": 2,
+      "titleAr": "طمأنينة القلب وذكر الله",
+      "textAr": "إِنَّمَا ٱلْمُؤْمِنُونَ ٱلَّذِينَ إِذَا ذُكِرَ ٱللَّهُ وَجِلَتْ قُلُوبُهُمْ وَإِذَا تُلِيَتْ عَلَيْهِمْ ءَايَٰتُهُۥ زَادَتْهُمْ إِيمَٰنًا وَعَلَىٰ رَبِّهِمْ يَتَوَكَّلُونَ",
+      "audioPath": "/audio/rescue/10-008002-A08.mp3",
+      "durationSeconds": 21.88,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/2",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-3",
+      "surah": 8,
+      "ayah": 3,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008003-A08.mp3",
+      "durationSeconds": 14.05,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/3",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-4",
+      "surah": 8,
+      "ayah": 4,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008004-A08.mp3",
+      "durationSeconds": 20.84,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/4",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-5",
+      "surah": 8,
+      "ayah": 5,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008005-A08.mp3",
+      "durationSeconds": 18.04,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/5",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-6",
+      "surah": 8,
+      "ayah": 6,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008006-A08.mp3",
+      "durationSeconds": 16.01,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/6",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-7",
+      "surah": 8,
+      "ayah": 7,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008007-A08.mp3",
+      "durationSeconds": 36.3,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/7",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-8",
+      "surah": 8,
+      "ayah": 8,
+      "titleAr": "إظهار الحق",
+      "textAr": "لِيُحِقَّ ٱلْحَقَّ وَيُبْطِلَ ٱلْبَٰطِلَ وَلَوْ كَرِهَ ٱلْمُجْرِمُونَ",
+      "audioPath": "/audio/rescue/10-008008-A08.mp3",
+      "durationSeconds": 11.3,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/8",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-9",
+      "surah": 8,
+      "ayah": 9,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008009-A08.mp3",
+      "durationSeconds": 19.77,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/9",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-10",
+      "surah": 8,
+      "ayah": 10,
+      "titleAr": "طمأنينة القلوب",
+      "textAr": "وَمَا جَعَلَهُ ٱللَّهُ إِلَّا بُشْرَىٰ وَلِتَطْمَئِنَّ بِهِۦ قُلُوبُكُمْ ۚ وَمَا ٱلنَّصْرُ إِلَّا مِنْ عِندِ ٱللَّهِ ۚ إِنَّ ٱللَّهَ عَزِيزٌ حَكِيمٌ",
+      "audioPath": "/audio/rescue/10-008010-A08.mp3",
+      "durationSeconds": 26.92,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/10",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-11",
+      "surah": 8,
+      "ayah": 11,
+      "titleAr": "السكينة والثبات",
+      "textAr": "إِذْ يُغَشِّيكُمُ ٱلنُّعَاسَ أَمَنَةً مِّنْهُ وَيُنَزِّلُ عَلَيْكُم مِّنَ ٱلسَّمَاءِ مَاءً لِّيُطَهِّرَكُم بِهِۦ وَيُذْهِبَ عَنكُمْ رِجْزَ ٱلشَّيْطَٰنِ وَلِيَرْبِطَ عَلَىٰ قُلُوبِكُمْ وَيُثَبِّتَ بِهِ ٱلْأَقْدَامَ",
+      "audioPath": "/audio/rescue/10-008011-A08.mp3",
+      "durationSeconds": 39.15,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/11",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-12",
+      "surah": 8,
+      "ayah": 12,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008012-A08.mp3",
+      "durationSeconds": 26.95,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/12",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-13",
+      "surah": 8,
+      "ayah": 13,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008013-A08.mp3",
+      "durationSeconds": 22.56,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/13",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-14",
+      "surah": 8,
+      "ayah": 14,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008014-A08.mp3",
+      "durationSeconds": 12.27,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/14",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-15",
+      "surah": 8,
+      "ayah": 15,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008015-A08.mp3",
+      "durationSeconds": 17.76,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/15",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-16",
+      "surah": 8,
+      "ayah": 16,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008016-A08.mp3",
+      "durationSeconds": 30.74,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/16",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-17",
+      "surah": 8,
+      "ayah": 17,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008017-A08.mp3",
+      "durationSeconds": 31.1,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/17",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-18",
+      "surah": 8,
+      "ayah": 18,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008018-A08.mp3",
+      "durationSeconds": 10.1,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/18",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-19",
+      "surah": 8,
+      "ayah": 19,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008019-A08.mp3",
+      "durationSeconds": 34.39,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/19",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-20",
+      "surah": 8,
+      "ayah": 20,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008020-A08.mp3",
+      "durationSeconds": 18.38,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/20",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-21",
+      "surah": 8,
+      "ayah": 21,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008021-A08.mp3",
+      "durationSeconds": 11.43,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/21",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-22",
+      "surah": 8,
+      "ayah": 22,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008022-A08.mp3",
+      "durationSeconds": 18.12,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/22",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-23",
+      "surah": 8,
+      "ayah": 23,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008023-A08.mp3",
+      "durationSeconds": 17.29,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/23",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-24",
+      "surah": 8,
+      "ayah": 24,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008024-A08.mp3",
+      "durationSeconds": 30.32,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/24",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-25",
+      "surah": 8,
+      "ayah": 25,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008025-A08.mp3",
+      "durationSeconds": 24.39,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/25",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-26",
+      "surah": 8,
+      "ayah": 26,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008026-A08.mp3",
+      "durationSeconds": 32.91,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/26",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-27",
+      "surah": 8,
+      "ayah": 27,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008027-A08.mp3",
+      "durationSeconds": 19.32,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/27",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-28",
+      "surah": 8,
+      "ayah": 28,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008028-A08.mp3",
+      "durationSeconds": 21.2,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/28",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-29",
+      "surah": 8,
+      "ayah": 29,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008029-A08.mp3",
+      "durationSeconds": 26.19,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/29",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-30",
+      "surah": 8,
+      "ayah": 30,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008030-A08.mp3",
+      "durationSeconds": 21.39,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/30",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-31",
+      "surah": 8,
+      "ayah": 31,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008031-A08.mp3",
+      "durationSeconds": 23.82,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/31",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-32",
+      "surah": 8,
+      "ayah": 32,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008032-A08.mp3",
+      "durationSeconds": 23.58,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/32",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-33",
+      "surah": 8,
+      "ayah": 33,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008033-A08.mp3",
+      "durationSeconds": 18.41,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/33",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-34",
+      "surah": 8,
+      "ayah": 34,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008034-A08.mp3",
+      "durationSeconds": 31.21,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/34",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-35",
+      "surah": 8,
+      "ayah": 35,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008035-A08.mp3",
+      "durationSeconds": 22.25,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/35",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-36",
+      "surah": 8,
+      "ayah": 36,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008036-A08.mp3",
+      "durationSeconds": 38.18,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/36",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-37",
+      "surah": 8,
+      "ayah": 37,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008037-A08.mp3",
+      "durationSeconds": 26.85,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/37",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-38",
+      "surah": 8,
+      "ayah": 38,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008038-A08.mp3",
+      "durationSeconds": 20.29,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/38",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-39",
+      "surah": 8,
+      "ayah": 39,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008039-A08.mp3",
+      "durationSeconds": 22.69,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/39",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-40",
+      "surah": 8,
+      "ayah": 40,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008040-A08.mp3",
+      "durationSeconds": 18.15,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/40",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-41",
+      "surah": 8,
+      "ayah": 41,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008041-A08.mp3",
+      "durationSeconds": 54.48,
+      "ageProfiles": [
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/41",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-42",
+      "surah": 8,
+      "ayah": 42,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008042-A08.mp3",
+      "durationSeconds": 42.7,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/42",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-43",
+      "surah": 8,
+      "ayah": 43,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008043-A08.mp3",
+      "durationSeconds": 26.85,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/43",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-44",
+      "surah": 8,
+      "ayah": 44,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008044-A08.mp3",
+      "durationSeconds": 25.43,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/44",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-45",
+      "surah": 8,
+      "ayah": 45,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008045-A08.mp3",
+      "durationSeconds": 18.3,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/45",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-46",
+      "surah": 8,
+      "ayah": 46,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008046-A08.mp3",
+      "durationSeconds": 18.85,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/46",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-47",
+      "surah": 8,
+      "ayah": 47,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008047-A08.mp3",
+      "durationSeconds": 27.21,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/47",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-48",
+      "surah": 8,
+      "ayah": 48,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008048-A08.mp3",
+      "durationSeconds": 46.78,
+      "ageProfiles": [
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/48",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-49",
+      "surah": 8,
+      "ayah": 49,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008049-A08.mp3",
+      "durationSeconds": 25.43,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/49",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-50",
+      "surah": 8,
+      "ayah": 50,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008050-A08.mp3",
+      "durationSeconds": 19.74,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/50",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-51",
+      "surah": 8,
+      "ayah": 51,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008051-A08.mp3",
+      "durationSeconds": 13.89,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/51",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-52",
+      "surah": 8,
+      "ayah": 52,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008052-A08.mp3",
+      "durationSeconds": 26.27,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/52",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-53",
+      "surah": 8,
+      "ayah": 53,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008053-A08.mp3",
+      "durationSeconds": 22.12,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/53",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-54",
+      "surah": 8,
+      "ayah": 54,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008054-A08.mp3",
+      "durationSeconds": 31.36,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/54",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-55",
+      "surah": 8,
+      "ayah": 55,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008055-A08.mp3",
+      "durationSeconds": 16.37,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/55",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-56",
+      "surah": 8,
+      "ayah": 56,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008056-A08.mp3",
+      "durationSeconds": 17.73,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/56",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-57",
+      "surah": 8,
+      "ayah": 57,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008057-A08.mp3",
+      "durationSeconds": 16.24,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/57",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-58",
+      "surah": 8,
+      "ayah": 58,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008058-A08.mp3",
+      "durationSeconds": 27.11,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/58",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-59",
+      "surah": 8,
+      "ayah": 59,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008059-A08.mp3",
+      "durationSeconds": 15.22,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/59",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-60",
+      "surah": 8,
+      "ayah": 60,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008060-A08.mp3",
+      "durationSeconds": 48.55,
+      "ageProfiles": [
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/60",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-61",
+      "surah": 8,
+      "ayah": 61,
+      "titleAr": "الميل إلى السلم والتوكل",
+      "textAr": "۞ وَإِن جَنَحُواْ لِلسَّلْمِ فَٱجْنَحْ لَهَا وَتَوَكَّلْ عَلَى ٱللَّهِ ۚ إِنَّهُۥ هُوَ ٱلسَّمِيعُ ٱلْعَلِيمُ",
+      "audioPath": "/audio/rescue/10-008061-A08.mp3",
+      "durationSeconds": 18.64,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/61",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-62",
+      "surah": 8,
+      "ayah": 62,
+      "titleAr": "حسبنا الله",
+      "textAr": "وَإِن يُرِيدُوٓاْ أَن يَخْدَعُوكَ فَإِنَّ حَسْبَكَ ٱللَّهُ ۚ هُوَ ٱلَّذِيٓ أَيَّدَكَ بِنَصْرِهِۦ وَبِٱلْمُؤْمِنِينَ",
+      "audioPath": "/audio/rescue/10-008062-A08.mp3",
+      "durationSeconds": 22.3,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/62",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-63",
+      "surah": 8,
+      "ayah": 63,
+      "titleAr": "تأليف القلوب",
+      "textAr": "وَأَلَّفَ بَيْنَ قُلُوبِهِمْ ۚ لَوْ أَنفَقْتَ مَا فِي ٱلْأَرْضِ جَمِيعًا مَّآ أَلَّفْتَ بَيْنَ قُلُوبِهِمْ وَلَٰكِنَّ ٱللَّهَ أَلَّفَ بَيْنَهُمْ ۚ إِنَّهُۥ عَزِيزٌ حَكِيمٌ",
+      "audioPath": "/audio/rescue/10-008063-A08.mp3",
+      "durationSeconds": 29.61,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/63",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-64",
+      "surah": 8,
+      "ayah": 64,
+      "titleAr": "كفاية الله",
+      "textAr": "يَٰٓأَيُّهَا ٱلنَّبِيُّ حَسْبُكَ ٱللَّهُ وَمَنِ ٱتَّبَعَكَ مِنَ ٱلْمُؤْمِنِينَ",
+      "audioPath": "/audio/rescue/10-008064-A08.mp3",
+      "durationSeconds": 13.58,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/64",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-65",
+      "surah": 8,
+      "ayah": 65,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008065-A08.mp3",
+      "durationSeconds": 43.48,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/65",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-66",
+      "surah": 8,
+      "ayah": 66,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008066-A08.mp3",
+      "durationSeconds": 43.59,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/66",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-67",
+      "surah": 8,
+      "ayah": 67,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008067-A08.mp3",
+      "durationSeconds": 25.98,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/67",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-68",
+      "surah": 8,
+      "ayah": 68,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008068-A08.mp3",
+      "durationSeconds": 15.64,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/68",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-69",
+      "surah": 8,
+      "ayah": 69,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008069-A08.mp3",
+      "durationSeconds": 21.26,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/69",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-70",
+      "surah": 8,
+      "ayah": 70,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008070-A08.mp3",
+      "durationSeconds": 43.09,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/70",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-71",
+      "surah": 8,
+      "ayah": 71,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008071-A08.mp3",
+      "durationSeconds": 18.67,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/71",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-72",
+      "surah": 8,
+      "ayah": 72,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008072-A08.mp3",
+      "durationSeconds": 69.45,
+      "ageProfiles": [
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/72",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-73",
+      "surah": 8,
+      "ayah": 73,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008073-A08.mp3",
+      "durationSeconds": 21.23,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/73",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-74",
+      "surah": 8,
+      "ayah": 74,
+      "titleAr": "المغفرة والرزق الكريم",
+      "textAr": "وَٱلَّذِينَ ءَامَنُواْ وَهَاجَرُواْ وَجَٰهَدُواْ فِي سَبِيلِ ٱللَّهِ وَٱلَّذِينَ ءَاوَواْ وَّنَصَرُوٓاْ أُوْلَٰٓئِكَ هُمُ ٱلْمُؤْمِنُونَ حَقًّا ۚ لَّهُم مَّغْفِرَةٌ وَرِزْقٌ كَرِيمٌ",
+      "audioPath": "/audio/rescue/10-008074-A08.mp3",
+      "durationSeconds": 28.33,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/74",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-8-75",
+      "surah": 8,
+      "ayah": 75,
+      "titleAr": "آية من سورة الأنفال",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-008075-A08.mp3",
+      "durationSeconds": 34.16,
+      "ageProfiles": [
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/8/75",
+      "surahNameAr": "الأنفال"
+    },
+    {
+      "id": "quran-19-77",
+      "surah": 19,
+      "ayah": 77,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019077-A08.mp3",
+      "durationSeconds": 14.65,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/77",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-78",
+      "surah": 19,
+      "ayah": 78,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019078-A08.mp3",
+      "durationSeconds": 10.44,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/78",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-79",
+      "surah": 19,
+      "ayah": 79,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019079-A08.mp3",
+      "durationSeconds": 12.77,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/79",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-80",
+      "surah": 19,
+      "ayah": 80,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019080-A08.mp3",
+      "durationSeconds": 8.95,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/80",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-81",
+      "surah": 19,
+      "ayah": 81,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019081-A08.mp3",
+      "durationSeconds": 11.2,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/81",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-88",
+      "surah": 19,
+      "ayah": 88,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019088-A08.mp3",
+      "durationSeconds": 7.7,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/88",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-89",
+      "surah": 19,
+      "ayah": 89,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019089-A08.mp3",
+      "durationSeconds": 6.97,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/89",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-90",
+      "surah": 19,
+      "ayah": 90,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019090-A08.mp3",
+      "durationSeconds": 14.02,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/90",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-91",
+      "surah": 19,
+      "ayah": 91,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019091-A08.mp3",
+      "durationSeconds": 7.86,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/91",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-92",
+      "surah": 19,
+      "ayah": 92,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019092-A08.mp3",
+      "durationSeconds": 11.04,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/92",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-93",
+      "surah": 19,
+      "ayah": 93,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019093-A08.mp3",
+      "durationSeconds": 13.86,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/93",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-94",
+      "surah": 19,
+      "ayah": 94,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019094-A08.mp3",
+      "durationSeconds": 8.19,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/94",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-95",
+      "surah": 19,
+      "ayah": 95,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019095-A08.mp3",
+      "durationSeconds": 9.08,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/95",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-96",
+      "surah": 19,
+      "ayah": 96,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019096-A08.mp3",
+      "durationSeconds": 13.52,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/96",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-97",
+      "surah": 19,
+      "ayah": 97,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019097-A08.mp3",
+      "durationSeconds": 15.82,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/97",
+      "surahNameAr": "مريم"
+    },
+    {
+      "id": "quran-19-98",
+      "surah": 19,
+      "ayah": 98,
+      "titleAr": "آية من سورة مريم",
+      "textAr": "",
+      "audioPath": "/audio/rescue/10-019098-A08.mp3",
+      "durationSeconds": 17.55,
+      "ageProfiles": [
+        "under_8",
+        "8_to_15",
+        "16_plus",
+        "parents"
+      ],
+      "sourceUrl": "https://quran.com/19/98",
+      "surahNameAr": "مريم"
+    }
+  ],
+  "implementationNotes": [
+    "Includes all 98 uploaded MP3 files whose filenames carry a numeric Surah/ayah identifier: Al-Fatihah 1:1–7, Al-Anfal 8:1–75, and the supplied Maryam 19 ayahs 77–81 and 88–98.",
+    "The two unresolved C00 files were removed from the repository and are not part of the rescue catalogue.",
+    "Existing nine selected entries retain their Arabic ayah text. Other entries display their verified filename-derived Surah and ayah reference without fabricated Arabic text; the full Arabic text can be added after a reliable source cross-check.",
+    "Durations for the additional files are estimated from MP3 byte size using the observed constant 56 kbps encoding, calibrated against the 29 files whose durations were measured directly; the measured sample fit is within approximately 0.006 seconds.",
+    "Age profiles preserve the existing duration limits: under_8 up to 25 seconds, 8_to_15 up to 45 seconds, and 16_plus/parents up to 75 seconds.",
+    "Listening rescue awards exactly one heart only after natural completion of the selected audio. No autoplay, no seeking-to-end reward, and no ads or payments.",
+    "The existing quiz rescue remains a free fallback if the audio catalogue or playback is unavailable."
+  ]
+}
