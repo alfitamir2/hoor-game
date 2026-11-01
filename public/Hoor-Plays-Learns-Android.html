@@ -542,6 +542,76 @@
     .mobile-nav-tab.active .nav-svg { stroke-width: 1.9; }
   </style>
 
+
+<style id="hoor-complete-screen-polish">
+:root{--hp-line:rgba(216,184,117,.25);--hp-soft:rgba(181,207,191,.14);--hp-copy:#f5f1e6}
+body{isolation:isolate}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 8% 30%,rgba(44,125,96,.12),transparent 34%),radial-gradient(ellipse at 92% 68%,rgba(194,157,91,.08),transparent 32%)}
+header{min-height:72px}
+header .cursor-pointer{transition:transform .2s,box-shadow .2s}
+header .cursor-pointer:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.28)}
+header #statStars,header #statCoins,header #statCrowns{font-variant-numeric:tabular-nums;font-weight:900}
+#desktopNav{border-bottom:1px solid var(--hp-line)!important;padding-block:9px}
+.nav-tab{min-height:42px;padding:8px 14px!important}
+.nav-tab[aria-current=page],.mobile-nav-tab[aria-current=page]{color:#fff3d5!important;border-color:var(--hp-line)!important;background:linear-gradient(135deg,rgba(44,119,91,.38),rgba(216,184,117,.12))!important;box-shadow:inset 0 1px rgba(255,255,255,.07),0 5px 18px rgba(0,0,0,.16)!important}
+main{width:min(100%,1440px);margin-inline:auto}
+.main-view{width:100%;min-width:0;padding-block:clamp(1rem,2.2vw,2rem)}
+.main-view>h1,.main-view>h2,.main-view>.text-center h1,.main-view>.text-center h2{color:var(--hp-copy)!important;line-height:1.35}
+.main-view p{line-height:1.8}
+.main-view .grid{align-items:stretch}
+.main-view .grid>*,.main-view .flex>*{min-width:0}
+.main-view [class*=rounded-][class*=border]{border-color:var(--hp-soft)}
+.main-view .bg-slate-900,.main-view .bg-slate-900\/90,.main-view .bg-slate-900\/80,.main-view .bg-slate-800,.main-view .bg-slate-800\/80,.main-view .bg-slate-800\/70{background-image:linear-gradient(145deg,rgba(19,55,47,.94),rgba(8,31,29,.97))}
+.main-view button:not(.nav-tab):not(.mobile-nav-tab){min-height:42px;font-weight:800}
+#view-play>.grid{gap:clamp(1rem,2vw,1.5rem)}
+#view-play #canvasContainer{position:relative}
+#view-play .touch-control{border:1px solid var(--hp-line)!important;background:linear-gradient(145deg,rgba(27,78,63,.96),rgba(10,43,38,.98))!important;box-shadow:0 7px 18px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.06);font-weight:900}
+#view-map .flex.flex-wrap,#view-catalog .flex.flex-wrap,#catalogFilterBtns{gap:.55rem}
+#stagesMapGrid,#quranCardsGrid,#catalogQuestionsGrid{align-items:stretch;grid-auto-rows:1fr}
+#stagesMapGrid>*,#quranCardsGrid>*,#catalogQuestionsGrid>*{min-width:0;overflow-wrap:anywhere;border-width:1px!important;padding:clamp(.9rem,1.6vw,1.25rem)}
+#stagesMapGrid>*:focus-visible{outline:3px solid var(--hoor-gold);outline-offset:4px}
+#quranCardsGrid .font-quran{color:#f4e8c8!important;background:rgba(3,20,19,.5)!important;border-color:rgba(216,184,117,.45)!important;font-size:clamp(1.25rem,2vw,1.75rem);line-height:2.15;text-align:center}
+#quranCardsGrid a{text-underline-offset:4px}
+#catalogQuestionsGrid h4,#catalogQuestionsGrid p{line-height:1.85}
+#view-leaderboard{overflow-x:auto}
+#view-leaderboard table{width:100%;border-collapse:separate;border-spacing:0}
+#view-leaderboard thead th{color:#f0dfb6;background:rgba(216,184,117,.09);font-size:.78rem;font-weight:900;white-space:nowrap}
+#view-leaderboard th,#view-leaderboard td{padding:.85rem .75rem}
+#leaderboardBody tr:nth-child(even){background:rgba(255,255,255,.018)}
+#portalOverlay{padding:max(1rem,env(safe-area-inset-top)) 1rem max(1rem,env(safe-area-inset-bottom))}
+#portalOverlay>div{width:min(100%,900px)}
+#portalOverlay .grid>div,#portalOverlay .bg-slate-800\/80{border-color:var(--hp-line)!important;box-shadow:inset 0 1px rgba(255,255,255,.035)}
+#portalOverlay input,#portalOverlay select{width:100%}
+#portalOverlay button{min-height:50px}
+#quizModalOverlay,#stageResultOverlay,#listeningRescueOverlay{padding:max(1rem,env(safe-area-inset-top)) 1rem max(1rem,env(safe-area-inset-bottom));backdrop-filter:blur(12px)}
+#quizModalOverlay>div,#stageResultOverlay>div,#listeningRescueOverlay>div{width:min(100%,680px);max-height:min(88dvh,900px);overflow-y:auto;overscroll-behavior:contain}
+#quizModalOptions{display:grid;gap:.65rem}
+#quizModalOptions button{min-height:50px;line-height:1.6}
+#quizModalHikmah{line-height:1.9;overflow-wrap:anywhere}
+#listeningRescueProgress{height:9px;border-radius:99px;overflow:hidden}
+#networkStatus{max-width:calc(100vw - 2rem);text-align:center}
+input,select,textarea{accent-color:var(--hoor-emerald)}
+@media(min-width:1100px){#stagesMapGrid,#quranCardsGrid,#catalogQuestionsGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(min-width:641px) and (max-width:900px){#stagesMapGrid,#quranCardsGrid,#catalogQuestionsGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){
+header>div{gap:.65rem}
+header .flex.items-center.gap-2.flex-wrap{width:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.4rem}
+header .flex.items-center.gap-2.flex-wrap>div{justify-content:center;min-width:0;padding-inline:.35rem}
+header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35rem}
+.main-view{padding:1rem .2rem 1.25rem}
+.main-view>.flex.items-center.justify-between,.main-view>.flex.justify-between{align-items:flex-start;gap:.7rem;flex-wrap:wrap}
+#stagesMapGrid,#quranCardsGrid,#catalogQuestionsGrid{grid-template-columns:minmax(0,1fr);gap:.75rem}
+#view-leaderboard table{min-width:590px}
+#view-play .touch-control{min-width:0;padding-inline:.6rem}
+#portalOverlay>div{padding:1.1rem}
+#portalOverlay .grid{gap:.75rem}
+#quizModalOverlay>div,#stageResultOverlay>div,#listeningRescueOverlay>div{width:100%;max-height:calc(100dvh - 2rem - var(--safe-top) - var(--safe-bottom));padding:1.1rem}
+.mobile-nav-tab{min-width:0;overflow:hidden}
+.mobile-nav-tab span:last-child{max-width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden}
+}
+@media(prefers-reduced-motion:reduce){.main-view{animation:none!important}#stagesMapGrid>*,#quranCardsGrid>*,#catalogQuestionsGrid>*{transition:none!important}}
+</style>
+
 </head>
 <body class="islamic-pattern min-h-screen flex flex-col">
   <div id="networkStatus" class="network-status rounded-full border border-amber-400/50 bg-slate-900/95 px-4 py-2 text-xs font-extrabold text-amber-200 shadow-xl" role="status" aria-live="polite">
