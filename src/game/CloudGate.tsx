@@ -15,6 +15,7 @@ import {
   readSnapshot,
   resolveSnapshot,
   writeSnapshot,
+  shouldSkipPush,
 } from "./cloudSave";
 
 const HoorGame = lazy(() => import("./App"));
@@ -80,7 +81,7 @@ async function pushSave(userId: string, force = false): Promise<void> {
 
     const json = JSON.stringify(snapshot);
     const cacheKey = accountSyncCacheKey(userId);
-    if (!force && localStorage.getItem(cacheKey) === json) return;
+    if (shouldSkipPush(localStorage.getItem(cacheKey), json, force)) return;
 
     const now = new Date().toISOString();
     const { error } = await supabase
