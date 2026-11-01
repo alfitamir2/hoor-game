@@ -1,5 +1,5 @@
 import { readFileSync } from 'node:fs';
-import { runInNewContext } from 'node:vm';
+import { runInNewContext, Script } from 'node:vm';
 import { describe, expect, it } from 'vitest';
 
 const context: any = { window: {} };
@@ -76,8 +76,14 @@ describe('Family arcade rules', () => {
     expect(rules.normalizeAge('13-16')).toBe('16_plus');
     expect(rules.normalizeAge('parents')).toBe('parents');
   });
-  it('uses reviewed wording for energy conservation and relativity', () => {
-    expect(bank.find((q: any) => q.id === 'bank3-q008').q).toContain('الطاقة الكلية');
-    expect(bank.find((q: any) => q.id === 'bank3-q001').q).toContain('أي سرعة');
+  it('has correct reviewed answers for energy conservation and relativity', () => {
+    expect(bank.find((q: any) => q.id === 'bank3-q008').correctText).toBe('تبقى ثابتة');
+    expect(bank.find((q: any) => q.id === 'bank3-q001').correctText).toBe('سرعة الضوء في الفراغ');
+  });
+  it('keeps every inline game script valid when parsed as HTML', () => {
+    const scripts = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script\s*>/gi)]
+      .map(match => match[1]).filter(script => script.trim());
+    expect(scripts.length).toBeGreaterThan(0);
+    for (const script of scripts) expect(() => new Script(script)).not.toThrow();
   });
 });
