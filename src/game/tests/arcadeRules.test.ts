@@ -33,6 +33,18 @@ describe('Family arcade rules', () => {
     expect(new Set(drawn).size).toBe(100);
     expect(rules.draw(pool, history, () => 0).id).not.toBe(drawn[99]);
   });
+  it('falls back to the age-appropriate pool when a special pool is too small', () => {
+    expect(rules.pool(bank, 'under_8', 'quran')).toHaveLength(13);
+    expect(rules.pool(bank, '16_plus', 'quran')).toHaveLength(100);
+    expect(rules.pool(bank, 'parents', 'quran')).toHaveLength(100);
+    expect(rules.pool(bank, 'parents', 'genius')).toHaveLength(100);
+  });
+  it('draws a long non-repeating run from expanded special pools', () => {
+    const pool = rules.pool(bank, '16_plus', 'quran');
+    const history = { seen: [], last: null };
+    const drawn = Array.from({ length: 50 }, () => rules.draw(pool, history, () => 0).id);
+    expect(new Set(drawn).size).toBe(50);
+  });
   it('retains general history when switching to a special question pool', () => {
     const history = { seen: [], last: null };
     const pool = rules.pool(bank, '8_to_15', 'basic');
