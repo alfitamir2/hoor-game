@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#0F172A" />
   <meta name="referrer" content="no-referrer" />
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'none'; object-src 'none'; frame-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' https://server8.mp3quran.net; connect-src 'self';" />
@@ -40,11 +40,10 @@
 
 
   <style>
-    * {
-      box-sizing: border-box;
+    * { box-sizing: border-box; }
+    button, select, input {
       user-select: none;
       -webkit-user-select: none;
-      -webkit-touch-callout: none;
     }
     body {
       background-color: #0F172A;
@@ -595,7 +594,7 @@
               </div>
             </div>
 
-            <canvas id="arcadeCanvas" width="760" height="480"></canvas>
+            <canvas id="arcadeCanvas" width="760" height="480" role="img" aria-label="ساحة لعب حور الفضائية. حرّك المركبة واجمع المكافآت وأجب عن الأسئلة التعليمية.">متصفحك لا يدعم لوحة الرسم المستخدمة في اللعبة.</canvas>
           </div>
 
           <!-- أزرار لمس إضافية للهواتف والأجهزة اللوحية -->
@@ -750,7 +749,7 @@
   <!-- =====================================================================
        5. نافذة محطة الأسئلة التفاعلية (Educational Quiz & Hikmah Modal)
        ===================================================================== -->
-  <div id="quizModalOverlay" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden items-center justify-center p-4">
+  <div id="quizModalOverlay" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="quizModalQuestion" tabindex="-1">
     <div class="max-w-lg w-full bg-slate-900 border-2 border-amber-400 rounded-3xl p-6 shadow-2xl text-center relative">
       <div id="quizModalBadge" class="inline-block px-3.5 py-1 rounded-full text-xs font-extrabold bg-amber-400/20 text-amber-300 border border-amber-400/40 mb-3">
         محطة الحكمة والذكاء
@@ -759,9 +758,9 @@
       <button type="button" id="quizSpeakBtn" onclick="speakCurrentQuestion()" aria-label="استمع إلى السؤال"
         class="mb-4 px-4 py-2 rounded-full bg-sky-500/20 border border-sky-400/50 text-sky-200 font-bold text-sm">🔊 استمع للسؤال</button>
 
-      <div id="quizModalOptions" class="flex flex-col gap-2.5 text-right"></div>
+      <div id="quizModalOptions" class="flex flex-col gap-2.5 text-right" role="group" aria-labelledby="quizModalQuestion"></div>
 
-      <div id="quizModalHikmah" class="hidden mt-4 p-4 rounded-2xl bg-emerald-950/80 border border-emerald-400/50 text-right text-xs md:text-sm text-emerald-100 leading-relaxed"></div>
+      <div id="quizModalHikmah" class="hidden mt-4 p-4 rounded-2xl bg-emerald-950/80 border border-emerald-400/50 text-right text-xs md:text-sm text-emerald-100 leading-relaxed" role="status" aria-live="polite"></div>
 
       <button id="quizModalContinueBtn" onclick="closeQuizStation()"
         class="hidden w-full mt-5 py-3 rounded-xl bg-gradient-to-r from-amber-400 to-yellow-500 text-slate-950 font-extrabold text-sm shadow-lg">
@@ -859,25 +858,33 @@
         title: 'فضل أهل القرآن وتاج الوقار',
         ayah: '﴿إِنَّ الَّذِينَ يَتْلُونَ كِتَابَ اللَّهِ وَأَقَامُوا الصَّلَاةَ وَأَنفَقُوا مِمَّا رَزَقْنَاهُمْ سِرًّا وَعَلَانِيَةً يَرْجُونَ تِجَارَةً لَّن تَبُورَ﴾',
         tafsir: 'تلاوة القرآن الكريم والعمل به هي التجارة الرابحة مع الله التي لا تخسر أبداً، وترفع صاحبها ووالديه في الجنة.',
-        audioUrl: 'https://server8.mp3quran.net/afs/001.mp3'
+        audioUrl: 'https://server8.mp3quran.net/afs/035.mp3',
+        reference: 'سورة فاطر 35:29–30',
+        referenceUrl: 'https://quran.com/35/29-30'
       },
       {
         title: 'سورة الملك (المنجية من عذاب القبر)',
         ayah: '﴿تَبَارَكَ الَّذِي بِيَدِهِ الْمُلْكُ وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيرٌ * الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا﴾',
         tafsir: 'سورة الملك ثلاثون آية تشفع لصاحبها الذي يواظب على قراءتها كل ليلة.',
-        audioUrl: 'https://server8.mp3quran.net/afs/067.mp3'
+        audioUrl: 'https://server8.mp3quran.net/afs/067.mp3',
+        reference: 'سورة الملك 67:1–2',
+        referenceUrl: 'https://quran.com/67/1-2'
       },
       {
         title: 'سورة الإخلاص (تعدل ثلث القرآن)',
         ayah: '﴿قُلْ هُوَ اللَّهُ أَحَدٌ * اللَّهُ الصَّمَدُ * لَمْ يَلِدْ وَلَمْ يُولَدْ * وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ﴾',
         tafsir: 'سورة التوحيد الخالص لله عز وجل، قراءتها مرة واحدة تعدل ثلث القرآن في الأجر والثواب.',
-        audioUrl: 'https://server8.mp3quran.net/afs/112.mp3'
+        audioUrl: 'https://server8.mp3quran.net/afs/112.mp3',
+        reference: 'سورة الإخلاص 112:1–4',
+        referenceUrl: 'https://quran.com/112'
       },
       {
         title: 'آداب التلاوة والإنصات للقرآن',
         ayah: '﴿وَإِذَا قُرِئَ الْقُرْآنُ فَاسْتَمِعُوا لَهُ وَأَنصِتُوا لَعَلَّكُمْ تُرْحَمُونَ﴾',
         tafsir: 'الاستماع والإنصات بخشوع وتدبر لآيات الله سبب لنزول رحمة الله وسكينته على القلوب.',
-        audioUrl: 'https://server8.mp3quran.net/afs/114.mp3'
+        audioUrl: 'https://server8.mp3quran.net/afs/007.mp3',
+        reference: 'سورة الأعراف 7:204',
+        referenceUrl: 'https://quran.com/7/204'
       }
     ];
 
@@ -987,6 +994,7 @@
         appState.leaderboard.sort((a, b) => b.stars - a.stars);
 
         localStorage.setItem(STORAGE_KEY, JSON.stringify(appState));
+        localStorage.setItem('hoor_game_saved_at_v1', String(Date.now()));
       } catch (e) {}
       refreshHeaderUI();
       renderLeaderboardTable();
@@ -1372,6 +1380,7 @@
       initStageWave(1);
       switchMainView('play', document.querySelectorAll('.nav-tab')[0]);
       gameActive = true;
+      scheduleArcadeFrame();
       document.getElementById('btnStartPause').textContent = 'إيقاف مؤقت';
       playSfx('powerup');
     }
@@ -1382,7 +1391,12 @@
       if (stageCleared) { launchStageDirect(appState.currentStageId); return; }
       gameActive = !gameActive;
       document.getElementById('btnStartPause').textContent = gameActive ? 'إيقاف مؤقت' : 'استئناف المعركة';
-      if (gameActive) playSfx('powerup');
+      if (gameActive) {
+        playSfx('powerup');
+        scheduleArcadeFrame();
+      } else {
+        stopArcadeFrame();
+      }
     }
 
     function playerShoot() {
@@ -1693,13 +1707,27 @@
       c.fillText(stg.id === 22 ? '🕌' : '🚀', ship.x + ship.w / 2, ship.y + 34);
       c.restore();
 
-      requestAnimationFrame(renderArcadeFrame);
+      if (gameActive && !document.hidden) scheduleArcadeFrame();
+    }
+
+    let arcadeFrameId = 0;
+    function scheduleArcadeFrame() {
+      if (arcadeFrameId || document.hidden) return;
+      arcadeFrameId = requestAnimationFrame(() => {
+        arcadeFrameId = 0;
+        renderArcadeFrame();
+      });
+    }
+    function stopArcadeFrame() {
+      if (arcadeFrameId) cancelAnimationFrame(arcadeFrameId);
+      arcadeFrameId = 0;
     }
 
     /*************************************************************************
      * ز. نظام محطات الأسئلة المحققة (Zero-Bug Verified Quiz Station)
      *************************************************************************/
     let currentQuizObj = null;
+    let quizReturnFocus = null;
 
     function shuffleSafe(arr) {
       const copy = [...arr];
@@ -1714,6 +1742,7 @@
       if (quizOpen) return;
       if (playerLives <= 0) isRescue = true;
       quizResumeActive = gameActive;
+      quizReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       quizOpen = true;
       gameActive = false;
       document.getElementById('btnStartPause').textContent = 'استئناف المعركة';
@@ -1751,6 +1780,7 @@
       document.getElementById('quizModalContinueBtn').classList.add('hidden');
       document.getElementById('quizModalOverlay').classList.remove('hidden');
       document.getElementById('quizModalOverlay').classList.add('flex');
+      optsWrap.querySelector('button')?.focus();
     }
 
     function checkQuizStationAnswer(selectedIdx, clickedBtn) {
@@ -1792,6 +1822,7 @@
       hikmahEl.classList.remove('hidden');
       document.getElementById('quizModalContinueBtn').textContent = currentQuizObj.isRescue ? (isRight ? '❤️ استعدت قلباً — متابعة المرحلة' : '💡 سؤال إنقاذ آخر') : 'متابعة المغامرة';
       document.getElementById('quizModalContinueBtn').classList.remove('hidden');
+      document.getElementById('quizModalContinueBtn').focus();
       saveAppState();
       updateSideHUD();
     }
@@ -1811,7 +1842,12 @@
         return;
       }
       gameActive = (wasRescue || quizResumeActive) && !document.getElementById('view-play').classList.contains('hidden');
+      if (gameActive) scheduleArcadeFrame();
+      else stopArcadeFrame();
       document.getElementById('btnStartPause').textContent = gameActive ? 'إيقاف مؤقت' : 'استئناف المعركة';
+      if (quizReturnFocus?.isConnected) quizReturnFocus.focus();
+      else document.getElementById('btnStartPause')?.focus();
+      quizReturnFocus = null;
     }
 
     /*************************************************************************
@@ -1879,7 +1915,17 @@
           isUnlocked ? 'bg-slate-800/90 border-emerald-500/40 hover:border-amber-400' :
           'bg-slate-900/60 border-slate-800 opacity-60'
         }`;
+        card.setAttribute('role', 'button');
+        card.tabIndex = 0;
+        card.setAttribute('aria-label', `المرحلة ${stg.id}: ${stg.name} — ${isUnlocked ? 'متاحة للعب' : 'مغلقة'}`);
+        card.setAttribute('aria-disabled', String(!isUnlocked));
         card.onclick = () => launchStageDirect(stg.id);
+        card.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            launchStageDirect(stg.id);
+          }
+        });
 
         card.innerHTML = `
           <div>
@@ -1926,6 +1972,7 @@
             </div>
           </div>
           <p class="text-xs text-slate-300 leading-relaxed">💡 <strong>الفائدة والتدبر:</strong> ${v.tafsir}</p>
+          <a href="${v.referenceUrl}" target="_blank" rel="noopener noreferrer" class="mt-3 text-xs font-bold text-sky-300 underline">مرجع الآيات: ${v.reference}</a>
         `;
         grid.appendChild(card);
       });
@@ -2062,9 +2109,9 @@
     audioEnabled = appState.audioEnabled;
     document.getElementById('soundBtn').textContent = audioEnabled ? '🔊 الصوت' : '🔇 صامت';
     initStageWave(1);
-    document.addEventListener('visibilitychange', () => { if (document.hidden) { gameActive = false; saveAppState(); window.speechSynthesis?.cancel(); } });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) { gameActive = false; stopArcadeFrame(); saveAppState(); window.speechSynthesis?.cancel(); } });
     window.addEventListener('pagehide', saveAppState);
-    requestAnimationFrame(renderArcadeFrame);
+    scheduleArcadeFrame();
     if (!navigator.onLine) updateNetworkStatus();
     let initialView = null;
     try { initialView = localStorage.getItem('hoor_last_view_v1'); } catch (e) {}
