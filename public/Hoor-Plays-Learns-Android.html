@@ -612,6 +612,69 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
 @media(prefers-reduced-motion:reduce){.main-view{animation:none!important}#stagesMapGrid>*,#quranCardsGrid>*,#catalogQuestionsGrid>*{transition:none!important}}
 </style>
 
+
+<style id="hoor-final-visual-finish">
+  /* Screen-specific finish: consistent hierarchy, calm contrast and responsive surfaces. */
+  :root{--hf-ivory:#f5f0e2;--hf-muted:#b8c9bd;--hf-line:rgba(216,184,117,.26);--hf-card:linear-gradient(150deg,rgba(20,61,51,.96),rgba(8,31,29,.98))}
+  body{color:var(--hf-ivory)}
+  header{position:relative;z-index:30}
+  header .font-display{color:#fff5df!important}
+  header #headerHeroInfo{min-width:0}
+  header #syncStatusBadge{border-color:var(--hf-line)!important}
+  #desktopNav{position:sticky;top:0;z-index:25}
+  #desktopNav>div{max-width:1440px;margin-inline:auto;justify-content:center;gap:.45rem}
+  .nav-tab{white-space:normal!important;line-height:1.35}
+  .main-view>div:first-child{min-width:0}
+  #view-play>.grid{align-items:stretch}
+  #view-play>.grid>div:first-child{border:1px solid var(--hf-line)!important;background:var(--hf-card)!important;box-shadow:0 16px 38px rgba(0,0,0,.2),inset 0 1px rgba(255,255,255,.045)}
+  #view-play #sideStageBadge{display:inline-flex;padding:.28rem .65rem;border:1px solid rgba(105,198,168,.25);border-radius:999px;background:rgba(53,139,108,.14)}
+  #view-play #sideStageTitle{line-height:1.55}
+  #view-play #sideStageDesc{color:var(--hf-muted)!important}
+  #view-play #hudWave,#view-play #hudWeapon,#view-play #hudLives,#view-play #hudScore{font-variant-numeric:tabular-nums}
+  #view-play #miniQuranStatus{white-space:nowrap}
+  #view-map>div,#view-catalog>div{background:var(--hf-card)!important;border:1px solid var(--hf-line)!important;box-shadow:0 18px 42px rgba(0,0,0,.18),inset 0 1px rgba(255,255,255,.04)}
+  #view-map h2,#view-catalog h2,#view-quran h2,#view-leaderboard h2{font-size:clamp(1.2rem,2vw,1.65rem);line-height:1.5}
+  #view-map .flex.flex-wrap button,#catalogFilterBtns button{border:1px solid var(--hf-line)!important;min-height:40px;padding:.55rem .9rem!important}
+  #view-quran>div{background:linear-gradient(145deg,rgba(17,65,51,.98),rgba(8,31,30,.98))!important;border:1px solid rgba(216,184,117,.4)!important;box-shadow:0 18px 42px rgba(0,0,0,.22)}
+  #view-quran>div>div:first-child>div{max-width:850px}
+  #view-quran p{max-width:78ch;color:#d6e6d9!important}
+  #view-leaderboard .grid>div{background:var(--hf-card)!important;border:1px solid var(--hf-line)!important;border-radius:22px!important;box-shadow:0 16px 38px rgba(0,0,0,.18)}
+  #view-leaderboard button,#view-leaderboard label{transition:transform .18s ease,border-color .18s ease,filter .18s ease}
+  #view-leaderboard button:hover:not(:disabled),#view-leaderboard label:hover{transform:translateY(-1px)}
+  #view-leaderboard input[type=file]{color:var(--hf-ivory)!important}
+  #quizModalOverlay>div,#stageResultOverlay>div,#listeningRescueOverlay>div{border-radius:26px!important}
+  #quizModalQuestion{line-height:1.9;overflow-wrap:anywhere}
+  #stageResultStats>div{border:1px solid var(--hf-line);border-radius:14px;background:rgba(4,22,20,.42);padding:.7rem .35rem}
+  #listeningRescueAyahText{font-family:'Amiri','serif';font-size:clamp(1.35rem,3vw,1.85rem);line-height:2.15}
+  #networkStatus{backdrop-filter:blur(16px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
+  button:focus-visible,a:focus-visible,[role=button]:focus-visible{outline-color:#f0d69b!important}
+  @media(min-width:1024px){
+    #view-play>.grid{grid-template-columns:minmax(260px,.82fr) minmax(0,2.18fr)}
+    #view-play #canvasContainer{max-width:900px}
+    #view-play #arcadeCanvas{width:100%;height:auto}
+  }
+  @media(max-width:640px){
+    #desktopNav{display:none}
+    header{position:relative}
+    header .font-display{font-size:1.05rem;line-height:1.45}
+    #view-play>.grid{gap:.8rem!important}
+    #view-play>.grid>div:first-child{padding:1rem!important}
+    #view-play #canvasContainer{width:100%;max-width:100%}
+    #view-play #arcadeCanvas{width:100%;height:auto}
+    #view-play .flex.items-center.justify-between.w-full{gap:.35rem}
+    #view-play .touch-control{font-size:.78rem;padding-inline:.45rem}
+    #view-map>div,#view-catalog>div,#view-quran>div{padding:1rem!important}
+    #view-quran>div>div:first-child{align-items:flex-start}
+    #view-quran>div>div:first-child button{width:100%}
+    #view-leaderboard .grid>div{padding:1rem!important}
+    #view-leaderboard table{min-width:560px}
+    .mobile-bottom-nav{grid-template-columns:repeat(5,minmax(0,1fr));gap:.15rem}
+    .mobile-nav-tab{font-size:.66rem;padding-inline:.05rem}
+    .mobile-nav-tab .nav-icon{width:30px;height:28px}
+  }
+  @media(prefers-reduced-motion:reduce){header .cursor-pointer:hover,#view-leaderboard button:hover,#view-leaderboard label:hover{transform:none}}
+</style>
+
 </head>
 <body class="islamic-pattern min-h-screen flex flex-col">
   <div id="networkStatus" class="network-status rounded-full border border-amber-400/50 bg-slate-900/95 px-4 py-2 text-xs font-extrabold text-amber-200 shadow-xl" role="status" aria-live="polite">
