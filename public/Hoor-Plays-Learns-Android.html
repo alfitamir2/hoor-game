@@ -1480,10 +1480,10 @@
       const session = rescueAudioSession;
       const audio = document.getElementById('rescueAudioPlayer');
       if (!session || session.id !== sessionId || session.completed || !session.started || !audio.ended || playerLives !== 0 || !rescuePending) return;
-      session.completed = true;
-      rescueAudioSessionId++;
       const restoredLives = RULES.rescue(playerLives, true);
       if (restoredLives !== 1) return;
+      session.completed = true;
+      rescueAudioSessionId++;
       playerLives = restoredLives;
       rescuePending = false;
       shieldTicks = 180;
