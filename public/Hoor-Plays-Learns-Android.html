@@ -1309,6 +1309,9 @@
     function showStageResult(won) {
       const stg = getActiveStageObj();
       const el = document.getElementById('stageResultOverlay');
+      if (el.classList.contains('hidden')) {
+        stageResultReturnFocus = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      }
       const isFinale = won && stg.id === 26;
       const ratio = stageQuizTotal ? stageQuizRight / stageQuizTotal : 1;
       const medal = !won ? '' : ratio >= 0.9 ? '⭐⭐⭐' : ratio >= 0.6 ? '⭐⭐' : '⭐';
@@ -1342,6 +1345,7 @@
       }
       el.classList.remove('hidden');
       el.classList.add('flex');
+      primary.focus();
     }
 
     function closeStageResult() {
@@ -1349,7 +1353,41 @@
       if (!el) return;
       el.classList.add('hidden');
       el.classList.remove('flex');
+      if (stageResultReturnFocus?.isConnected) stageResultReturnFocus.focus();
+      stageResultReturnFocus = null;
     }
+
+    function trapDialogTab(event, overlay) {
+      if (event.key === 'Escape') {
+        // Quiz/result dialogs require an explicit action; keep keyboard focus inside.
+        event.preventDefault();
+        return;
+      }
+      if (event.key !== 'Tab') return;
+      const focusable = [...overlay.querySelectorAll('button:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])')]
+        .filter(el => el.offsetParent !== null && !el.closest('.hidden'));
+      if (!focusable.length) {
+        event.preventDefault();
+        overlay.focus();
+        return;
+      }
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && (document.activeElement === first || document.activeElement === overlay)) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && (document.activeElement === last || document.activeElement === overlay)) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+
+    document.getElementById('quizModalOverlay').addEventListener('keydown', event => {
+      if (quizOpen) trapDialogTab(event, event.currentTarget);
+    });
+    document.getElementById('stageResultOverlay').addEventListener('keydown', event => {
+      if (!event.currentTarget.classList.contains('hidden')) trapDialogTab(event, event.currentTarget);
+    });
 
     function launchStageDirect(stageId) {
       const stg = ALL_STAGES.find(s => s.id === stageId);
@@ -1728,6 +1766,7 @@
      *************************************************************************/
     let currentQuizObj = null;
     let quizReturnFocus = null;
+    let stageResultReturnFocus = null;
 
     function shuffleSafe(arr) {
       const copy = [...arr];
