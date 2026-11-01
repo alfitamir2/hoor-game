@@ -1992,7 +1992,8 @@
         for (const name of ['question-bank.js', 'arcade-rules.js']) {
           const response = await fetch('/' + name);
           if (!response.ok) throw new Error('asset unavailable');
-          fullHtml = fullHtml.replace('<script src="/' + name + '"></script>', '<script>' + (await response.text()).replace(/<\/script/gi, '<\\/script') + '</script>');
+          const closingScript = '<' + '/script>';
+          fullHtml = fullHtml.replace('<script src="/' + name + '">' + closingScript, '<script>' + (await response.text()).replace(/<\/script/gi, '<\\/script') + closingScript);
         }
       } catch (e) { alert('تعذّر تجهيز الملف الآن؛ أعد المحاولة عند الاتصال.'); return; }
       const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
