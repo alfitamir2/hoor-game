@@ -338,27 +338,42 @@ export default function CloudGate() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gradient-to-b from-sky-100 to-sky-50 p-5" dir="rtl">
-      <div className="w-full max-w-sm rounded-3xl border-4 border-amber-300 bg-white p-8 text-center shadow-xl">
-        <div className="mb-3 text-6xl animate-float" aria-hidden="true">🐔</div>
-        <h1 className="text-3xl font-black text-sky-700">حور تلعب و تتعلم</h1>
-        <p className="mt-3 text-slate-600">
+    <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-[#071b1a] px-4 py-8 text-[#f5f0e2] sm:px-6" dir="rtl">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-70" style={{ background: "radial-gradient(ellipse at 18% 12%, rgba(57,168,137,.22), transparent 38%), radial-gradient(ellipse at 88% 82%, rgba(216,184,117,.14), transparent 36%)" }} />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-[0.12]" style={{ backgroundImage: "linear-gradient(30deg, transparent 48%, #d8b875 49%, #d8b875 50%, transparent 51%), linear-gradient(150deg, transparent 48%, #69c6a8 49%, #69c6a8 50%, transparent 51%)", backgroundSize: "44px 76px" }} />
+      <section className="relative w-full max-w-md overflow-hidden rounded-[2rem] border border-[#d8b875]/35 bg-[linear-gradient(150deg,rgba(17,55,46,.98),rgba(7,29,28,.99))] p-6 text-center shadow-[0_28px_90px_rgba(0,0,0,.48)] sm:p-9">
+        <div aria-hidden="true" className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#e7ce96] to-transparent" />
+        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#69c6a8]/25 bg-[#39a889]/10 px-4 py-2 text-xs font-extrabold text-[#bfe8d4]">
+          <span aria-hidden="true">✦</span>
+          بيئة آمنة للأطفال واليافعين — بلا إعلانات
+          <span aria-hidden="true">✦</span>
+        </div>
+        <div className="mx-auto mb-5 flex h-24 w-24 items-center justify-center rounded-[1.8rem] border border-[#d8b875]/45 bg-[linear-gradient(145deg,#286e58,#102f29)] text-6xl shadow-[0_12px_32px_rgba(0,0,0,.3)]" aria-hidden="true">🐔</div>
+        <p className="mb-2 text-xs font-extrabold tracking-[.18em] text-[#d8b875]">عَالَمٌ مِنَ اللَّعِبِ وَالتَّعَلُّمِ</p>
+        <h1 className="text-3xl font-black leading-tight text-[#fff5df] sm:text-4xl">حور تلعب وتتعلم</h1>
+        <p className="mx-auto mt-4 max-w-sm text-sm leading-8 text-[#c4d5ca]">
           سجّل الدخول بحساب Google ليُحفظ تقدم أطفالك ويعمل على أي جهاز.
         </p>
         <button
           onClick={signIn}
           disabled={busy}
-          className="mt-6 flex w-full items-center justify-center gap-3 rounded-2xl bg-sky-600 px-4 py-3 text-lg font-bold text-white shadow disabled:opacity-60"
+          className="mt-7 flex min-h-14 w-full items-center justify-center gap-3 rounded-2xl border border-[#9bd8bb]/25 bg-[linear-gradient(135deg,#287c62,#1b604f)] px-4 py-3 text-base font-extrabold text-white shadow-[0_12px_28px_rgba(0,0,0,.24)] transition hover:-translate-y-0.5 hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
         >
-          <span className="rounded-full bg-white px-2 font-english text-sky-600" aria-hidden="true">G</span>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-sm font-black text-[#246b55]" aria-hidden="true">G</span>
           {busy ? "جارٍ فتح تسجيل الدخول…" : "الدخول بحساب Google"}
         </button>
-        {err && <p className="mt-3 text-sm font-bold text-red-600" role="alert">{err}</p>}
-        <button onClick={playAsGuest} className="mt-4 text-sm font-bold text-slate-500 underline">
-          العب بدون حساب (يُحفظ على هذا الجهاز فقط)
+        {err && <p className="mt-4 rounded-xl border border-rose-300/25 bg-rose-950/50 px-3 py-2 text-sm font-bold leading-6 text-rose-200" role="alert">{err}</p>}
+        <div className="my-5 flex items-center gap-3 text-[#8da99a]">
+          <span className="h-px flex-1 bg-[#b8c9bd]/15" />
+          <span className="text-xs">أو</span>
+          <span className="h-px flex-1 bg-[#b8c9bd]/15" />
+        </div>
+        <button onClick={playAsGuest} className="min-h-12 w-full rounded-xl border border-[#d8b875]/25 bg-[#071b1a]/45 px-4 py-3 text-sm font-extrabold text-[#f0dfb6] transition hover:border-[#d8b875]/55 hover:bg-[#071b1a]/75">
+          العب بدون حساب
+          <span className="mt-1 block text-xs font-medium text-[#a9bdb0]">يُحفظ تقدمك على هذا الجهاز فقط</span>
         </button>
-        <p className="mt-6 text-xs text-slate-400">🔒 نستخدم بريدك فقط لحفظ التقدم.</p>
-      </div>
-    </div>
+        <p className="mt-6 text-xs leading-6 text-[#91a99a]">🔒 نستخدم بريدك فقط لحفظ التقدم.</p>
+      </section>
+    </main>
   );
 }
