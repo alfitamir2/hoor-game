@@ -1,10 +1,10 @@
 # Hoor rescue audio intake audit — 1 November 2026
 
-## Scope
+## Scope and distinction
 
-This note records the technical intake of 29 user-supplied MP3 files intended as candidate Qur'an recitations for Hoor's zero-heart listening rescue. It does not authorize production integration.
+The original local metadata inspection covered 29 MP3 files. A later repository inventory found 100 uploaded MP3 files under `public/audio/rescue/`. This document distinguishes the detailed metadata checks performed on the original 29-file sample from the filename inventory of all 100 repository assets. It does not claim that all 100 files have had their ID3 metadata or audio content independently inspected.
 
-## Current findings
+## Detailed findings for the original 29-file sample
 
 - 29 distinct MP3 files were inspected.
 - All 29 decode as MP3 and report 56 kbps, 22,050 Hz.
@@ -17,17 +17,18 @@ This note records the technical intake of 29 user-supplied MP3 files intended as
 
 The metadata is strong provenance evidence consistent with the official King Fahd Complex Maher Al-Muaiqly Hafs collection. Metadata alone is not cryptographic proof that the supplied files are byte-for-byte the official downloads.
 
-## Filename observations — provisional only
+## Full repository inventory
 
-Twenty-eight files use the pattern `10-008NNN-A08.mp3`; one file is named `10-008C00-A08.mp3`.
+The working branch currently contains 100 MP3 files under `public/audio/rescue/`:
 
-The numeric identifiers present are:
-- 001–002
-- 007–018
-- 059–067
-- 071–075
+- 7 numeric files named `10-001001-A08.mp3` through `10-001007-A08.mp3`, provisionally interpreted as Al-Fatihah 1:1–7.
+- 75 numeric files named `10-008001-A08.mp3` through `10-008075-A08.mp3`, provisionally interpreted as Al-Anfal 8:1–75.
+- 16 numeric files for Maryam, provisionally interpreted as 19:77–81 and 19:88–98.
+- 2 anomalous files: `10-008C00-A08.mp3` and `10-019C00-A08.mp3`. Their identifiers do not provide a numeric ayah reference.
 
-Within the apparent contiguous ranges, identifiers 003–006 and 068–070 are absent. The apparent surah/ayah interpretation of these filename segments has not yet been independently confirmed against the official archive manifest or by listening and matching each recording. The `C00` identifier is unresolved and must not be mapped by guesswork.
+The 98 numeric files are included in `public/rescue-audio-catalog.json`. The mapping from the filename segments to Surah and ayah is owner-approved and provisional, not independently archive-verified. The two C00 files are deliberately excluded from the playable catalogue until their exact references and complete-ayah status are identified. No audio files are altered, trimmed, re-encoded, or renamed.
+
+For the additional files not in the original 29-file local inspection, duration values are estimated from MP3 byte size using the constant 56 kbps encoding observed in the inspected sample. The estimate was calibrated against all 29 measured files and matched their durations within approximately 0.006 seconds. These additional duration values are estimates, not direct per-file media-probe measurements.
 
 ## Official source and usage
 
@@ -39,24 +40,25 @@ The Complex's official usage page states that the listed digital recitations are
 
 The published archive fingerprints are for the complete archives. They cannot be compared directly with hashes of individual extracted MP3 files. The archive itself has not yet been obtained and verified in this intake step.
 
-## Required before production integration
+## Remaining checks
 
 1. Obtain the official individual-ayah archive or a verifiable official download manifest.
 2. Verify the archive SHA-256 against the Complex's published fingerprint.
-3. Match each supplied file to its exact official archive member and Qur'anic reference; resolve `C00`.
-4. Confirm the exact recitation and ayah boundaries; do not trim, splice, time-stretch, pitch-shift, or synthesize recitation.
+3. Match supplied files to exact official archive members and Qur'anic references; resolve both C00 files.
+4. Confirm exact recitation and ayah boundaries; do not trim, splice, time-stretch, pitch-shift, or synthesize recitation.
 5. Keep original filenames and immutable source hashes in the asset manifest.
-6. Add only the minimum complete ayahs selected for the rescue experience, with explicit content records and source attribution.
-7. Test audio playback, interruption, completion-only reward, duplicate event handling, and accessible no-audio fallback.
+6. Directly inspect metadata and media duration for the additional 71 files not included in the original local sample.
+7. Test audio playback, interruption, completion-only reward, duplicate event handling, and accessible no-audio fallback on web and Android WebView.
 
 ## Project status
 
-- Intake metadata audit: complete.
-- Provenance confidence: strong metadata match; archive-level verification pending.
-- Exact ayah mapping: pending.
-- `C00` mapping: pending.
-- Production code changes: none.
-- Audio committed to repository: none.
+- Detailed metadata inspection of original 29-file sample: complete.
+- Repository inventory of 100 uploaded MP3 files: complete.
+- 98 numeric filename-mapped files included in the working-branch catalogue: complete, provisional mapping.
+- Two C00 files: unresolved and excluded from heart-rescue playback pending identification.
+- Archive-level fingerprint verification: pending.
+- Independent ayah-to-audio verification: pending.
+- Runtime integration: implemented on the working branch; browser/device testing pending.
 - Save data changed: no.
 - Merge or deployment: none.
 
