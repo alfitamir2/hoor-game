@@ -15,3 +15,4 @@
 - AI practice recommendations (src/lib/practice.*) may only pick topic ids from src/game/data/practiceCatalog.ts; questions always come from the tested local generator, so the model never writes questions. Requires sign-in to protect AI credits.
 - The active arcade is the sandboxed standalone document in `public/Hoor-Plays-Learns-Android.html`; keep its desktop and phone navigation synchronized through `switchMainView` so restored screens and game pausing stay consistent.
 - The active arcade uses `public/arcade-rules.js` for testable age, progression, rewards, rescue and rotation rules; compile `content/questions-source.md` with `scripts/update-question-bank.mjs` into its offline-precacheable question script, so content updates are validated before release.
+- vite.config.ts defines public backend URL/publishable key fallbacks, because the publish build may not receive `.env` (it is git-ignored) and the client would otherwise crash with a blank page.
