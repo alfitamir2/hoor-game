@@ -106,11 +106,22 @@ async function pushSave(userId: string): Promise<void> {
 async function pullSave(userId: string) {
   prepareLocalSaveForAccount(userId);
 
-  const { data, error } = await supabase
-    .from("game_saves")
-    .select("data, updated_at")
-    .eq("user_id", userId)
-    .maybeSingle();
+  const controller = new AbortController();
+  const queryTimeout = window.setTimeout(() => controller.abort(), 10000);
+  let data: { data: unknown; updated_at: string } | null = null;
+  let error: { message: string } | null = null;
+  try {
+    const result = await supabase
+      .from("game_saves")
+      .select("data, updated_at")
+      .eq("user_id", userId)
+      .abortSignal(controller.signal)
+      .maybeSingle();
+    data = result.data;
+    error = result.error;
+  } finally {
+    window.clearTimeout(queryTimeout);
+  }
   if (error) throw error;
 
   const local = readSnapshot(localStorage);
