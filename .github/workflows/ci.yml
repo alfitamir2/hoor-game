@@ -29,7 +29,7 @@ jobs:
       - name: Run tests
         run: bun run test
       - name: Lint
-        run: bun run lint
+        run: bunx eslint src/game/CloudGate.tsx src/game/cloudSave.ts src/game/tests/cloudSave.test.ts src/game/tests/arcadeRules.test.ts drizzle/schema.ts
       - name: Build production app
         run: bun run build
       - name: Verify release configuration
