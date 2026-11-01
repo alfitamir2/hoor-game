@@ -1175,9 +1175,14 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
   <!-- =====================================================================
        6. المحرك البرمجي الشامل (Game Engine, 22 Stages, Verified Bank, Sync)
        ===================================================================== -->
-  <script src="/question-bank.js"></script>
-  <script src="/arcade-rules.js"></script>
+  <script src="/question-bank.js?release=20261101-startup2"></script>
+  <script src="/arcade-rules.js?release=20261101-startup2"></script>
   <script>
+    // A missing dependency must show a recoverable error instead of a frozen screen.
+    if (!window.HoorRules || !Array.isArray(window.HoorQuestionBank?.questions)) {
+      document.body.innerHTML = '<main dir="rtl" style="min-height:100vh;display:grid;place-items:center;background:#071b1a;color:#fff5df;font-family:system-ui;text-align:center;padding:24px"><section><h1>تعذر تشغيل عالم حور</h1><p>لم تكتمل ملفات اللعبة. تحقق من اتصال الإنترنت ثم أعد تحميل الصفحة.</p><button onclick="location.reload()" style="padding:12px 24px;border-radius:12px;background:#39a889;border:0;font:inherit;cursor:pointer">إعادة المحاولة</button></section></main>';
+      throw new Error("Hoor startup failed: required game scripts did not load");
+    }
     const RULES = window.HoorRules;
     /*************************************************************************
      * أ. قاعدة بيانات الـ 22 مرحلة الكاملة (22 Progressive Stages + Special 21 & 22)
