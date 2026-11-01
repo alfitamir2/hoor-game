@@ -14,7 +14,7 @@
 
 ## 2. Current architecture observed
 
-- The published arcade is the standalone RTL document: `public/Hoor-Plays-Learns-Android.html`.
+- The published arcade is the standalone RTL document: `public/Hoor-Plays-Learns-Android.html`. `src/game/App.tsx` is a React iframe wrapper for this document; `src/game/CloudGate.tsx` owns authentication and cloud-save coordination.
 - Its age, question rotation, reward, stage progression, and current rescue rules are in `public/arcade-rules.js`.
 - The offline question bank is generated from `content/questions-source.md` by `scripts/update-question-bank.mjs` into `public/question-bank.js`.
 - The standalone arcade currently contains 26 stages and four age profiles: `under_8`, `8_to_15`, `16_plus`, and `parents`.
@@ -94,7 +94,7 @@ Age alone is not sufficient: adapt selection and presentation to progression and
 - [x] Inspect CI configuration and latest main CI result.
 - [x] Record educational-source audit limitations.
 - [ ] Run a full local desktop and mobile walkthrough against the current published build.
-- [ ] Confirm which of the React game and standalone arcade is canonical for all product surfaces.
+- [x] Confirm the standalone HTML is the canonical arcade runtime; React `GameApp` is its iframe wrapper and `CloudGate` owns auth/save coordination.
 - [ ] Establish an explicit reviewed source catalogue and licensing/hosting plan for rescue audio.
 - [ ] Obtain a qualified religious-content review process for Qur'an and hadith entries.
 
