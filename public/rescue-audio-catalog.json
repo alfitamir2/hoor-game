@@ -5,7 +5,7 @@
   "reciter": "Sheikh Maher Al-Muaiqly",
   "riwayah": "Hafs",
   "sourceCollection": "King Fahd Glorious Qur'an Printing Complex — provisional filename mapping from owner-supplied partial collection",
-  "selectionPolicy": "Use all uploaded files with a numeric filename mapping 10-SSSAAA-A08 as Surah SSS, ayah AAA. The 98 numeric files across Al-Fatihah, Al-Anfal, and Maryam are included. Two C00 files remain outside the playable catalogue until their exact Qur'anic references and complete-ayah status are confirmed. Age profiles filter by clip duration; the same uploaded recording is never altered or re-encoded.",
+  "selectionPolicy": "Use all 98 retained files with a numeric filename mapping 10-SSSAAA-A08 as Surah SSS, ayah AAA. The numeric files across Al-Fatihah, Al-Anfal, and Maryam are included. The two unresolved C00 files were removed from the repository and are not used for heart recovery. Age profiles filter by clip duration; the same uploaded recording is never altered or re-encoded.",
   "ageProfiles": {
     "under_8": {
       "maxDurationSeconds": 25,
@@ -1654,7 +1654,7 @@
   ],
   "implementationNotes": [
     "Includes all 98 uploaded MP3 files whose filenames carry a numeric Surah/ayah identifier: Al-Fatihah 1:1–7, Al-Anfal 8:1–75, and the supplied Maryam 19 ayahs 77–81 and 88–98.",
-    "Two additional uploaded files have anomalous C00 identifiers (10-008C00-A08.mp3 and 10-019C00-A08.mp3). Their exact ayah mapping and complete-ayah status are unresolved, so they are not yet used for heart recovery. Do not guess their references.",
+    "The two unresolved C00 files were removed from the repository and are not part of the rescue catalogue.",
     "Existing nine selected entries retain their Arabic ayah text. Other entries display their verified filename-derived Surah and ayah reference without fabricated Arabic text; the full Arabic text can be added after a reliable source cross-check.",
     "Durations for the additional files are estimated from MP3 byte size using the observed constant 56 kbps encoding, calibrated against the 29 files whose durations were measured directly; the measured sample fit is within approximately 0.006 seconds.",
     "Age profiles preserve the existing duration limits: under_8 up to 25 seconds, 8_to_15 up to 45 seconds, and 16_plus/parents up to 75 seconds.",
