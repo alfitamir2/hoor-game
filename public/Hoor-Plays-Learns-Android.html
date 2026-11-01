@@ -1359,6 +1359,10 @@
           .then(response => {
             if (!response.ok) throw new Error('تعذر تحميل فهرس التلاوات');
             return response.json();
+          })
+          .catch(error => {
+            rescueAudioCatalogPromise = null;
+            throw error;
           });
       }
       return rescueAudioCatalogPromise;
@@ -1471,6 +1475,8 @@
       const audio = document.getElementById('rescueAudioPlayer');
       audio.pause();
       try { audio.currentTime = 0; } catch (error) {}
+      document.getElementById('listeningRescueProgress').value = 0;
+      document.getElementById('listeningRescueCurrentTime').textContent = '0:00';
       session.started = false;
       document.getElementById('listeningRescueToggle').textContent = '▶️ ابدأ الاستماع';
       document.getElementById('listeningRescueStatus').textContent = 'أُعيدت التلاوة إلى البداية. اضغط «ابدأ الاستماع».';
@@ -1491,6 +1497,8 @@
       audio.pause();
       audio.onended = null;
       audio.onerror = null;
+      audio.ontimeupdate = null;
+      audio.onloadedmetadata = null;
       audio.removeAttribute('src');
       audio.load();
       rescueAudioSession = null;
@@ -1514,6 +1522,8 @@
         audio.pause();
         audio.onended = null;
         audio.onerror = null;
+        audio.ontimeupdate = null;
+        audio.onloadedmetadata = null;
         audio.removeAttribute('src');
         audio.load();
       }
