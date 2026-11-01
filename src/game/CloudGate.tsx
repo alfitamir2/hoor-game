@@ -69,7 +69,7 @@ function normalizeRemoteSnapshot(value: unknown): Record<string, string> {
   return snapshot;
 }
 
-async function pushSave(userId: string): Promise<void> {
+async function pushSave(userId: string, force = false): Promise<void> {
   const existing = pendingPushes.get(userId);
   if (existing) return existing;
 
@@ -80,7 +80,7 @@ async function pushSave(userId: string): Promise<void> {
 
     const json = JSON.stringify(snapshot);
     const cacheKey = accountSyncCacheKey(userId);
-    if (localStorage.getItem(cacheKey) === json) return;
+    if (!force && localStorage.getItem(cacheKey) === json) return;
 
     const now = new Date().toISOString();
     const { error } = await supabase
@@ -101,7 +101,8 @@ async function pushSave(userId: string): Promise<void> {
   }
 }
 
-async function pullSave(userId: string) {
+async function pullSave(userId: string, isCurrent: () => boolean = () => true) {
+  if (!isCurrent()) return;
   prepareLocalSaveForAccount(userId);
 
   const { data, error } = await supabase
@@ -110,6 +111,7 @@ async function pullSave(userId: string) {
     .eq("user_id", userId)
     .maybeSingle();
   if (error) throw error;
+  if (!isCurrent()) return;
 
   const local = readSnapshot(localStorage);
   const remote = normalizeRemoteSnapshot(data?.data);
@@ -117,6 +119,7 @@ async function pullSave(userId: string) {
   const remoteUpdatedAt = data?.updated_at ? Date.parse(data.updated_at) : 0;
   const selected = resolveSnapshot(local, remote, localSavedAt, remoteUpdatedAt);
 
+  if (!isCurrent()) return;
   writeSnapshot(localStorage, selected);
   if (hasSaveData(selected)) localStorage.setItem(ACCOUNT_OWNER_KEY, userId);
   if (remoteUpdatedAt && selected[GAME_STORAGE_KEY] === remote[GAME_STORAGE_KEY]) {
@@ -126,7 +129,10 @@ async function pullSave(userId: string) {
   const selectedJson = JSON.stringify(selected);
   const remoteJson = JSON.stringify(remote);
   if (hasSaveData(selected) && (!data || selectedJson !== remoteJson)) {
-    await pushSave(userId);
+    // A matching local cache is not proof the remote row still exists or is current.
+    // Force the repair upload whenever the fetched remote snapshot differs.
+    if (!isCurrent()) return;
+    await pushSave(userId, true);
   } else {
     localStorage.setItem(accountSyncCacheKey(userId), selectedJson);
   }
@@ -188,7 +194,7 @@ export default function CloudGate() {
       }
       syncing = true;
       try {
-        await pullSave(userId);
+        await pullSave(userId, () => !cancelled && session?.user.id === userId);
         if (!cancelled) {
           syncReadyRef.current = true;
           setSyncReady(true);
