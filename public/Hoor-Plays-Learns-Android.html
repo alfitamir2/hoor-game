@@ -1424,6 +1424,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
       stageScore = 0;
       stageQuizRight = 0; stageQuizTotal = 0;
       bullets = []; drops = [];
+      stageMidQuizDone = false; stageScrollDropped = false;
       closeStageResult();
       updateSideHUD();
       saveAppState();
@@ -1570,6 +1571,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
     let invaders = [];
     let enemyProjectiles = [];
     let drops = [];
+    let stageMidQuizDone = false, stageScrollDropped = false;
     let starsBg = Array.from({ length: 45 }, () => ({
       x: Math.random() * 760,
       y: Math.random() * 480,
@@ -1927,6 +1929,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
       shieldTicks = 0;
       bullets = [];
       drops = [];
+      stageMidQuizDone = false; stageScrollDropped = false;
       closeStageResult();
       initStageWave(1);
       switchMainView('play', document.querySelectorAll('.nav-tab')[0]);
@@ -1989,7 +1992,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
     function spawnCollectible(x, y) {
       const r = Math.random();
       let type = 'coin'; // 🪙 عملة ذهبية
-      if (r > 0.82) type = 'scroll'; // 📜 مخطوطة سؤال
+      if (r > 0.97 && !stageScrollDropped && !stageMidQuizDone) { type = 'scroll'; stageScrollDropped = true; } // 📜 مخطوطة سؤال
       else if (r > 0.72) type = 'upgrade'; // ⚡ ترقية سلاح النور
       else if (r > 0.64) type = 'shield'; // 🛡️ درع واقي
       drops.push({ x, y, type, vy: 2.3 });
@@ -2147,8 +2150,8 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
         if (gameActive && !stageCleared && invaders.length === 0 && !activeBoss) {
           if (currentWave < stg.waves) {
             initStageWave(currentWave + 1);
-            // فتح محطة سؤال تعليمي بين الموجات!
-            openQuizStation(false);
+            // سؤال واحد فقط في منتصف المرحلة
+            if (!stageMidQuizDone && currentWave === Math.ceil(stg.waves / 2)) { stageMidQuizDone = true; openQuizStation(false); }
           }
         }
 
@@ -2190,7 +2193,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
               playSfx('powerup');
             } else if (d.type === 'scroll') {
               playSfx('powerup');
-              if (!quizOpen) openQuizStation(false);
+              if (!quizOpen && !stageMidQuizDone) { stageMidQuizDone = true; openQuizStation(false); }
             }
             drops.splice(di, 1);
             saveAppState();
