@@ -1147,7 +1147,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
   <!-- إنقاذ الاستماع: مستقل عن مشغل القرآن المصغر -->
   <div id="listeningRescueOverlay" class="fixed inset-0 z-[60] bg-slate-950/95 backdrop-blur-md hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="listeningRescueTitle">
     <div class="max-w-xl w-full max-h-[90vh] overflow-y-auto bg-slate-900 border-2 border-emerald-400 rounded-3xl p-5 md:p-6 shadow-2xl text-center">
-      <div class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-400/15 text-emerald-200 border border-emerald-400/40 mb-3">🌿 فرصة هادئة لاستعادة قلب</div>
+      <div class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-400/15 text-emerald-200 border border-emerald-400/40 mb-3">🌿 فرصة جديدة: قلب جديد</div>
       <h3 id="listeningRescueTitle" class="text-xl font-extrabold text-white mb-2">استمع إلى آية من القرآن الكريم</h3>
       <p id="listeningRescueSubtitle" class="text-sm text-slate-300 mb-4">استمع إلى التلاوة كاملة، ثم واصل مغامرتك من الموضع نفسه.</p>
       <div class="rounded-2xl bg-slate-800/90 border border-slate-700 p-4 text-right mb-4">
@@ -1692,7 +1692,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
       const primary = document.getElementById('stageResultPrimary');
       const nextId = RULES.sequence[RULES.sequence.indexOf(stg.id) + 1];
       if (!won) {
-        primary.textContent = '🌿 استمع إلى آية لاستعادة قلب';
+        primary.textContent = '❤️ فرصة جديدة: استمع إلى آية واحصل على قلب جديد';
         primary.onclick = () => openListeningRescue();
       } else if (nextId) {
         primary.textContent = `▶️ المرحلة ${nextId}`;
@@ -2316,7 +2316,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
       currentQuizObj = { ...raw, shuffledOpts, correctIdx, isStageClearBonus, isRescue };
 
       document.getElementById('quizModalBadge').textContent =
-        isRescue ? `❤️ سؤال استعادة قلب • ${raw.category}` : isStageClearBonus ? `🎉 سؤال إتمام المرحلة • ${raw.category}` : `📜 محطة الحكمة • ${raw.category}`;
+        isRescue ? `❤️ فرصة جديدة • ${raw.category}` : isStageClearBonus ? `🎉 سؤال إتمام المرحلة • ${raw.category}` : `📜 محطة الحكمة • ${raw.category}`;
       document.getElementById('quizModalQuestion').textContent = raw.q;
       speakText(raw.q + ' . ' + shuffledOpts.join(' ، أو '));
 
