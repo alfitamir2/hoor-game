@@ -349,12 +349,17 @@
       font-family: 'Tajawal', 'Cairo', sans-serif;
       letter-spacing: .005em;
     }
-    .islamic-pattern {
-      opacity: .18 !important;
+    .islamic-pattern { position: relative; }
+    .islamic-pattern::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      opacity: .18;
       background-image:
         linear-gradient(30deg, transparent 48%, rgba(216,184,117,.11) 49%, rgba(216,184,117,.11) 50%, transparent 51%),
-        linear-gradient(150deg, transparent 48%, rgba(105,198,168,.10) 49%, rgba(105,198,168,.10) 50%, transparent 51%) !important;
-      background-size: 42px 72px !important;
+        linear-gradient(150deg, transparent 48%, rgba(105,198,168,.10) 49%, rgba(105,198,168,.10) 50%, transparent 51%);
+      background-size: 42px 72px;
       mask-image: linear-gradient(to bottom, black, transparent 88%);
       pointer-events: none;
     }

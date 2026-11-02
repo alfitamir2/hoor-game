@@ -157,7 +157,7 @@ export default function CloudGate() {
 
   useEffect(() => {
     registerSW({ immediate: true });
-    setGuest(localStorage.getItem(GUEST_KEY) === "1");
+    setGuest(localStorage.getItem(GUEST_KEY) !== "0");
     const { data: sub } = supabase.auth.onAuthStateChange((_event, nextSession) => {
       setSession(nextSession);
       setReady(false);
@@ -193,9 +193,8 @@ export default function CloudGate() {
     return () => {
       active = false;
       window.clearTimeout(sessionTimeout);
+      sub.subscription.unsubscribe();
     };
-
-    return () => sub.subscription.unsubscribe();
   }, []);
 
   useEffect(() => {
@@ -327,7 +326,7 @@ export default function CloudGate() {
     setGuest(true);
   }
 
-  if (!checked) return <Loading />;
+  if (!checked && !guest) return <Loading />;
 
   if (session && ready) {
     return (
@@ -353,7 +352,7 @@ export default function CloudGate() {
   }
   if (session) return <Loading />;
 
-  if (guest) {
+  if (guest && !session) {
     return (
       <>
         <Suspense fallback={<Loading />}>
@@ -361,7 +360,7 @@ export default function CloudGate() {
         </Suspense>
         <button
           onClick={() => {
-            localStorage.removeItem(GUEST_KEY);
+            localStorage.setItem(GUEST_KEY, "0");
             setGuest(false);
           }}
           className="fixed bottom-20 left-2 z-50 rounded-full border border-[#d8b875]/35 bg-[#102f29]/95 px-4 py-2.5 text-xs font-extrabold text-[#f0dfb6] shadow-lg backdrop-blur sm:bottom-2"
