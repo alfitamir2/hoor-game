@@ -1147,7 +1147,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
   <!-- إنقاذ الاستماع: مستقل عن مشغل القرآن المصغر -->
   <div id="listeningRescueOverlay" class="fixed inset-0 z-[60] bg-slate-950/95 backdrop-blur-md hidden items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="listeningRescueTitle">
     <div class="max-w-xl w-full max-h-[90vh] overflow-y-auto bg-slate-900 border-2 border-emerald-400 rounded-3xl p-5 md:p-6 shadow-2xl text-center">
-      <div class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-400/15 text-emerald-200 border border-emerald-400/40 mb-3">🌿 فرصة هادئة لاستعادة قلب</div>
+      <div class="inline-block px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-400/15 text-emerald-200 border border-emerald-400/40 mb-3">🌿 فرصة جديدة: قلب جديد</div>
       <h3 id="listeningRescueTitle" class="text-xl font-extrabold text-white mb-2">استمع إلى آية من القرآن الكريم</h3>
       <p id="listeningRescueSubtitle" class="text-sm text-slate-300 mb-4">استمع إلى التلاوة كاملة، ثم واصل مغامرتك من الموضع نفسه.</p>
       <div class="rounded-2xl bg-slate-800/90 border border-slate-700 p-4 text-right mb-4">
@@ -1424,6 +1424,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
       stageScore = 0;
       stageQuizRight = 0; stageQuizTotal = 0;
       bullets = []; drops = [];
+      stageMidQuizDone = false; stageScrollDropped = false;
       closeStageResult();
       updateSideHUD();
       saveAppState();
@@ -1570,6 +1571,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
     let invaders = [];
     let enemyProjectiles = [];
     let drops = [];
+    let stageMidQuizDone = false, stageScrollDropped = false;
     let starsBg = Array.from({ length: 45 }, () => ({
       x: Math.random() * 760,
       y: Math.random() * 480,
@@ -1690,7 +1692,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
       const primary = document.getElementById('stageResultPrimary');
       const nextId = RULES.sequence[RULES.sequence.indexOf(stg.id) + 1];
       if (!won) {
-        primary.textContent = '🌿 استمع إلى آية لاستعادة قلب';
+        primary.textContent = '❤️ فرصة جديدة: استمع إلى آية واحصل على قلب جديد';
         primary.onclick = () => openListeningRescue();
       } else if (nextId) {
         primary.textContent = `▶️ المرحلة ${nextId}`;
@@ -1927,6 +1929,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
       shieldTicks = 0;
       bullets = [];
       drops = [];
+      stageMidQuizDone = false; stageScrollDropped = false;
       closeStageResult();
       initStageWave(1);
       switchMainView('play', document.querySelectorAll('.nav-tab')[0]);
@@ -1989,7 +1992,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
     function spawnCollectible(x, y) {
       const r = Math.random();
       let type = 'coin'; // 🪙 عملة ذهبية
-      if (r > 0.82) type = 'scroll'; // 📜 مخطوطة سؤال
+      if (r > 0.97 && !stageScrollDropped && !stageMidQuizDone) { type = 'scroll'; stageScrollDropped = true; } // 📜 مخطوطة سؤال
       else if (r > 0.72) type = 'upgrade'; // ⚡ ترقية سلاح النور
       else if (r > 0.64) type = 'shield'; // 🛡️ درع واقي
       drops.push({ x, y, type, vy: 2.3 });
@@ -2147,8 +2150,8 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
         if (gameActive && !stageCleared && invaders.length === 0 && !activeBoss) {
           if (currentWave < stg.waves) {
             initStageWave(currentWave + 1);
-            // فتح محطة سؤال تعليمي بين الموجات!
-            openQuizStation(false);
+            // سؤال واحد فقط في منتصف المرحلة
+            if (!stageMidQuizDone && currentWave === Math.ceil(stg.waves / 2)) { stageMidQuizDone = true; openQuizStation(false); }
           }
         }
 
@@ -2190,7 +2193,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
               playSfx('powerup');
             } else if (d.type === 'scroll') {
               playSfx('powerup');
-              if (!quizOpen) openQuizStation(false);
+              if (!quizOpen && !stageMidQuizDone) { stageMidQuizDone = true; openQuizStation(false); }
             }
             drops.splice(di, 1);
             saveAppState();
@@ -2313,7 +2316,7 @@ header .flex.items-center.gap-2.flex-wrap>button{min-width:0;padding-inline:.35r
       currentQuizObj = { ...raw, shuffledOpts, correctIdx, isStageClearBonus, isRescue };
 
       document.getElementById('quizModalBadge').textContent =
-        isRescue ? `❤️ سؤال استعادة قلب • ${raw.category}` : isStageClearBonus ? `🎉 سؤال إتمام المرحلة • ${raw.category}` : `📜 محطة الحكمة • ${raw.category}`;
+        isRescue ? `❤️ فرصة جديدة • ${raw.category}` : isStageClearBonus ? `🎉 سؤال إتمام المرحلة • ${raw.category}` : `📜 محطة الحكمة • ${raw.category}`;
       document.getElementById('quizModalQuestion').textContent = raw.q;
       speakText(raw.q + ' . ' + shuffledOpts.join(' ، أو '));
 

@@ -232,7 +232,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
           {/* 2. Question Subjects */}
           <div>
             <label className="block text-sm font-extrabold text-slate-900 mb-2.5">
-              ٢. نوع المسائل المطلوبة لفتح المراحل وشراء الحياة:
+              ٢. نوع المسائل المطلوبة لفتح المراحل والحصول على قلب جديد:
             </label>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
               {[

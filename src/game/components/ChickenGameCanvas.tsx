@@ -1116,7 +1116,7 @@ export const ChickenGameCanvas: React.FC<ChickenGameCanvasProps> = ({
             className="flex items-center gap-1.5 px-3.5 py-2 min-h-[44px] rounded-xl bg-rose-600 hover:bg-rose-700 active:scale-95 text-white text-xs font-extrabold shadow-2xs transition-transform cursor-pointer whitespace-nowrap"
           >
             <Heart className="w-4 h-4 fill-white shrink-0" />
-            <span>+ حياة جديدة (سؤال بسيط)</span>
+            <span>+ قلب جديد (سؤال بسيط)</span>
           </button>
 
           <button
@@ -1170,7 +1170,7 @@ export const ChickenGameCanvas: React.FC<ChickenGameCanvasProps> = ({
             <div className="bg-white rounded-3xl p-6 max-w-sm w-full text-center shadow-xl space-y-4">
               <h3 className="text-xl font-extrabold text-slate-900">اللعبة متوقفة مؤقتاً</h3>
               <p className="text-sm font-bold text-slate-600">
-                خذي استراحة قصيرة يا بطلة أو أضيفي حياة جديدة!
+                خذي استراحة قصيرة يا بطلة أو احصلي على فرصة جديدة!
               </p>
               <div className="flex flex-col gap-2.5">
                 <button
@@ -1185,7 +1185,7 @@ export const ChickenGameCanvas: React.FC<ChickenGameCanvasProps> = ({
                   onClick={onRequestBuyLife}
                   className="w-full py-3 min-h-[48px] rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-800 font-extrabold text-sm cursor-pointer"
                 >
-                  ❤️ الحصول على حياة إضافية (حل سؤال بسيط)
+                  ❤️ الحصول على قلب جديد (حل سؤال بسيط)
                 </button>
               </div>
             </div>
@@ -1203,7 +1203,7 @@ export const ChickenGameCanvas: React.FC<ChickenGameCanvasProps> = ({
                 انتهت القلوب يا بطلة حور!
               </h3>
               <p className="text-sm font-bold text-slate-600 leading-relaxed">
-                لا تقلقي أبداً! يمكنكِ الحصول على حياة جديدة فوراً ومتابعة المرحلة من نفس المكان عند حل مسألة بسيطة جداً.
+                لا تقلقي أبداً! يمكنكِ الحصول على قلب جديد فوراً ومتابعة المرحلة من نفس المكان عند حل مسألة بسيطة جداً.
               </p>
 
               <div className="flex flex-col gap-2.5 pt-2">
@@ -1216,7 +1216,7 @@ export const ChickenGameCanvas: React.FC<ChickenGameCanvasProps> = ({
                   className="w-full py-3.5 px-5 min-h-[52px] rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-base shadow-md flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <Sparkles className="w-5 h-5 shrink-0" />
-                  <span>حل سؤال بسيط للحصول على حياة جديدة ❤️</span>
+                  <span>حل سؤال بسيط للحصول على قلب جديد ❤️</span>
                 </button>
 
                 <button

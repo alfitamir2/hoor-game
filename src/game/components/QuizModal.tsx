@@ -90,7 +90,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     }
     if (purpose.kind === 'buy_life') {
       return {
-        badge: 'هدية حياة جديدة',
+        badge: 'هدية قلب جديد',
         title: 'أجيبي عن هذا السؤال للحصول على قلب إضافي مجاناً!',
         icon: <Heart className="w-4 h-4 text-rose-600 fill-rose-500 shrink-0" />,
       };
