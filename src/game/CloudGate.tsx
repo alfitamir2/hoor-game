@@ -209,6 +209,13 @@ export default function CloudGate() {
     let syncing = false;
     let retryTimer = 0;
     let saveTimer = 0;
+    // A stalled cloud write must never trap an authenticated child in the loader.
+    const readinessTimeout = window.setTimeout(() => {
+      if (!cancelled) {
+        setReady(true);
+        setErr("يستغرق حفظ التقدم وقتاً أطول من المعتاد. يمكنك اللعب الآن وسيُعاد الاتصال تلقائياً.");
+      }
+    }, 12000);
     const userId = session.user.id;
     syncReadyRef.current = false;
     setReady(false);
@@ -232,6 +239,7 @@ export default function CloudGate() {
         if (!cancelled) setErr("تعذّر مزامنة التقدم الآن. سيظل حفظك المحلي متاحاً وسنحاول مجدداً.");
       } finally {
         syncing = false;
+        window.clearTimeout(readinessTimeout);
         if (!cancelled) setReady(true);
       }
     };
@@ -279,6 +287,7 @@ export default function CloudGate() {
       cancelled = true;
       syncReadyRef.current = false;
       window.clearInterval(retryTimer);
+      window.clearTimeout(readinessTimeout);
       window.clearTimeout(saveTimer);
       document.removeEventListener("visibilitychange", onHide);
       window.removeEventListener("pagehide", push);

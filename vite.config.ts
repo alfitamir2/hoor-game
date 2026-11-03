@@ -36,7 +36,8 @@ export default defineConfig({
         workbox: {
           navigateFallback: null,
           globDirectory: "dist/client",
-          globPatterns: ["**/*.{js,css,svg,png,jpg,woff2,webmanifest}", "Hoor-Plays-Learns-Android.html"],
+          // Keep HTML network-first: precaching it can pin a stale game after a release.
+          globPatterns: ["**/*.{js,css,svg,png,jpg,woff2,webmanifest}"],
           maximumFileSizeToCacheInBytes: 8 * 1024 * 1024,
           globIgnores: ["**/*.apk"],
           runtimeCaching: [
@@ -44,12 +45,12 @@ export default defineConfig({
               urlPattern: ({ request, url }) =>
                 request.mode === "navigate" && !url.pathname.startsWith("/~oauth"),
               handler: "NetworkFirst",
-              options: { cacheName: "hoor-pages", networkTimeoutSeconds: 4 },
+              options: { cacheName: "hoor-pages-v2", networkTimeoutSeconds: 15 },
             },
             {
               urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.startsWith("/assets/"),
               handler: "CacheFirst",
-              options: { cacheName: "hoor-assets", expiration: { maxEntries: 200 } },
+              options: { cacheName: "hoor-assets-v2", expiration: { maxEntries: 200 } },
             },
             {
               urlPattern: /^https:\/\/fonts\.(googleapis|gstatic)\.com\/.*/,
